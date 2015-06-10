@@ -27,27 +27,19 @@ public class MainMenuTest {
     @Test
     public void testGetMainMenuOptions() throws Exception {
         MainMenu mainMenu = new MainMenu();
-        ArrayList<MainMenuOption> options = mainMenu.getOptions();
+        ArrayList<String> options = mainMenu.getOptions();
         assertEquals(1, options.size());
-        assertEquals("List Books", options.get(0).getName());
+        assertEquals("List Books", options.get(0));
     }
 
     @Test
-    public void testExecuteListBooks() throws Exception {
+    public void testSelectListBooks() throws Exception {
         MainMenu mainMenu = new MainMenu();
-        ArrayList<MainMenuOption> options = mainMenu.getOptions();
-        String feedback = options.get(0).execute(library);
+        String feedback = mainMenu.selectOption(0, library);
         assertEquals("          TITLE||         AUTHOR||  YEAR\n" +
                 "         Book 1||       Author 1||  2001\n" +
                 "         Book 2||       Author 2||  2002\n" +
                 "         Book 3||       Author 3||  2003", feedback);
     }
 
-    @Test
-    public void testGetMainMenuOptionsToString() throws Exception {
-        MainMenu mainMenu = new MainMenu();
-        String mainMenuToString = MainMenuFormatter.format(mainMenu);
-        assertEquals("          -MENU-          \n" +
-                "  1|List Books                    ", mainMenuToString);
-    }
 }

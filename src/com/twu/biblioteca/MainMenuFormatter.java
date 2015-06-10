@@ -7,14 +7,14 @@ import java.util.Formatter;
  */
 public class MainMenuFormatter {
     public static String format(MainMenu mainMenu) {
+        String format = "%3s|%-30s";
         StringBuilder sb = new StringBuilder();
         Formatter formatter = new Formatter(sb);
-        String format = "%3s|%-30s";
         formatter.format("%10s-%4s-%10s", "", "MENU", "");
         int optionNumber = 1;
-        for(MainMenuOption option : mainMenu.getOptions()) {
+        for(String option : mainMenu.getOptions()) {
             formatter.format(System.getProperty("line.separator"));
-            formatter.format(format, optionNumber++, option.getName());
+            formatter.format(format, optionNumber++, option);
         }
         return sb.toString();
     }

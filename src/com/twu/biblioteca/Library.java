@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by aloysiusang on 10/6/15.
  */
 public class Library {
-    private ArrayList<LibraryBook> allBooks;
+    private static ArrayList<LibraryBook> allBooks;
 
     public Library() {
         allBooks = new ArrayList<LibraryBook>();
