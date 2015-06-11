@@ -20,13 +20,7 @@ public class CheckoutOption extends MainMenuOption{
     @Override
     public String execute(Library library) {
         System.out.print(INPUT_TITLE);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String title = null;
-        try {
-            title = reader.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String title = getUserInput();
         boolean success = library.checkoutBook(title);
         return success ? MESSAGE_CHECKOUT_SUCCESSFUL : MESSAGE_CHECKOUT_UNSUCCESSFUL;
     }

@@ -19,14 +19,9 @@ public class ReturnOption extends MainMenuOption{
     @Override
     public String execute(Library library) {
         System.out.print(INPUT_TITLE);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String title = null;
-        try {
-            title = reader.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String title = getUserInput();
         boolean success = library.returnBook(title);
         return success ? MESSAGE_RETURN_SUCCESSFUL : MESSAGE_RETURN_UNSUCCESSFUL;
     }
+
 }
