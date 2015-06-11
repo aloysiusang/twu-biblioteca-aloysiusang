@@ -28,7 +28,7 @@ public class MainMenuTest {
     public void testGetMainMenuOptions() throws Exception {
         MainMenu mainMenu = new MainMenu();
         ArrayList<String> options = mainMenu.getOptions();
-        assertEquals(1, options.size());
+        assertEquals(2, options.size());
         assertEquals("List Books", options.get(0));
     }
 
@@ -45,11 +45,24 @@ public class MainMenuTest {
     @Test
     public void testSelectInvalidOption() throws Exception {
         ArrayList<MainMenuOption> options = new ArrayList<MainMenuOption>() {{
-            add(new MainMenuOption("Test Option 1"));
-            add(new MainMenuOption("Test Option 2"));
+            add(new ListBooksOption());
+            add(new QuitOption());
         }};
         MainMenu menu = new MainMenu(options);
         String feedback = menu.selectOption(0, library);
         assertEquals("Select a valid option!", feedback);
+    }
+
+    @Test
+    public void testQuitExistsInMenu() throws Exception {
+        boolean quitExists = false;
+        MainMenu menu = new MainMenu();
+        for(String optionName : menu.getOptions()) {
+            if(optionName == "Quit") {
+                quitExists = true;
+                break;
+            }
+        }
+        assertTrue(quitExists);
     }
 }

@@ -3,7 +3,7 @@ package com.twu.biblioteca;
 /**
  * Created by aloysiusang on 10/6/15.
  */
-public class MainMenuOption {
+public abstract class MainMenuOption {
     private final String name;
 
     public MainMenuOption(String name) {
@@ -14,7 +14,5 @@ public class MainMenuOption {
         return name;
     }
 
-    public String execute(Library library) {
-        return LibraryBookFormatter.format(library.getAllBooks());
-    }
+    public abstract String execute(Library library);
 }

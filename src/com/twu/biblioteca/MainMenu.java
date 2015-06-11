@@ -11,7 +11,8 @@ public class MainMenu {
 
     public MainMenu() {
         options = new ArrayList<MainMenuOption>() {{
-            add(new MainMenuOption("List Books"));
+            add(new ListBooksOption());
+            add(new QuitOption());
         }};
     }
 

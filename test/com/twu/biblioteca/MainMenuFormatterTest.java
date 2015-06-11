@@ -14,13 +14,13 @@ public class MainMenuFormatterTest {
     @Test
     public void testGetMainMenuOptionsToString() throws Exception {
         ArrayList<MainMenuOption> mainMenuOptions = new ArrayList<MainMenuOption>() {{
-            add(new MainMenuOption("TEST OPTION 1"));
-            add(new MainMenuOption("TEST OPTION 2"));
+            add(new ListBooksOption());
+            add(new QuitOption());
         }};
         MainMenu mainMenu = new MainMenu(mainMenuOptions);
         String mainMenuToString = MainMenuFormatter.format(mainMenu);
         assertEquals("          -MENU-          \n" +
-                "  1|TEST OPTION 1                 \n" +
-                "  2|TEST OPTION 2                 ", mainMenuToString);
+                "  1|List Books                    \n" +
+                "  2|Quit                          ", mainMenuToString);
     }
 }
