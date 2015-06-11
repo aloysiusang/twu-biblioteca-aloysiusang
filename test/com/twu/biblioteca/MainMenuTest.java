@@ -27,9 +27,9 @@ public class MainMenuTest {
     @Test
     public void testGetMainMenuOptions() throws Exception {
         MainMenu mainMenu = new MainMenu();
-        ArrayList<String> options = mainMenu.getOptions();
+        ArrayList<MainMenuOption> options = mainMenu.getOptions();
         assertEquals(2, options.size());
-        assertEquals("List Books", options.get(0));
+        assertEquals("List Books", options.get(0).getName());
     }
 
     @Test
@@ -58,9 +58,9 @@ public class MainMenuTest {
         boolean hasExecuted = false;
         String feedback = "";
         MainMenu menu = new MainMenu();
-        ArrayList<String> options = menu.getOptions();
+        ArrayList<MainMenuOption> options = menu.getOptions();
         for(int i = 0; i < options.size(); i++) {
-            if(options.get(i) == "Quit") {
+            if(options.get(i).getClass() == QuitOption.class) {
                 feedback = menu.selectOption(i+1, library); //+1 for indexing
                 hasExecuted = true;
             }
@@ -68,4 +68,5 @@ public class MainMenuTest {
         assertTrue(hasExecuted);
         assertEquals(null, feedback);
     }
+
 }

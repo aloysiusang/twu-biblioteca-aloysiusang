@@ -20,12 +20,13 @@ public class MainMenu {
         this.options = mainMenuOptions;
     }
 
-    public ArrayList<String> getOptions() {
-        ArrayList<String> optionsToString = new ArrayList<String>();
-        for(MainMenuOption option : options) {
-            optionsToString.add(option.getName());
-        }
-        return optionsToString;
+    public ArrayList<MainMenuOption> getOptions() {
+//        ArrayList<String> optionsToString = new ArrayList<String>();
+//        for(MainMenuOption option : options) {
+//            optionsToString.add(option.getName());
+//        }
+//        return optionsToString;
+        return options;
     }
 
     public String selectOption(int optionNumber, Library library) {

@@ -12,9 +12,9 @@ public class MainMenuFormatter {
         Formatter formatter = new Formatter(sb);
         formatter.format("%10s-%4s-%10s", "", "MENU", "");
         int optionNumber = 1;
-        for(String option : mainMenu.getOptions()) {
+        for(MainMenuOption option : mainMenu.getOptions()) {
             formatter.format(System.getProperty("line.separator"));
-            formatter.format(format, optionNumber++, option);
+            formatter.format(format, optionNumber++, option.getName());
         }
         return sb.toString();
     }
