@@ -13,7 +13,7 @@ public class BibliotecaAppTest {
     @Test
     public void testWelcomeMessage() throws Exception {
         BibliotecaApp app = new BibliotecaApp();
-        assertEquals("Welcome to Biblioteca!", app.getWelcomeMessage());
+        assertEquals("Welcome to Biblioteca!", app.MESSAGE_WELCOME);
     }
 
 }

@@ -54,15 +54,18 @@ public class MainMenuTest {
     }
 
     @Test
-    public void testQuitExistsInMenu() throws Exception {
-        boolean quitExists = false;
+    public void testQuit() throws Exception {
+        boolean hasExecuted = false;
+        String feedback = "";
         MainMenu menu = new MainMenu();
-        for(String optionName : menu.getOptions()) {
-            if(optionName == "Quit") {
-                quitExists = true;
-                break;
+        ArrayList<String> options = menu.getOptions();
+        for(int i = 0; i < options.size(); i++) {
+            if(options.get(i) == "Quit") {
+                feedback = menu.selectOption(i+1, library); //+1 for indexing
+                hasExecuted = true;
             }
         }
-        assertTrue(quitExists);
+        assertTrue(hasExecuted);
+        assertEquals(null, feedback);
     }
 }
