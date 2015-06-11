@@ -1,7 +1,6 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 
 /**
@@ -22,8 +21,8 @@ public class Library {
     }
 
     public Library(ArrayList<LibraryBook> availableBooks, ArrayList<LibraryBook> checkedOutBooks) {
-        this.availableBooks = availableBooks;
-        this.checkedOutBooks = checkedOutBooks;
+        Library.availableBooks = availableBooks;
+        Library.checkedOutBooks = checkedOutBooks;
     }
 
     public ArrayList<LibraryBook> getAvailableBooks() {

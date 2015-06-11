@@ -7,9 +7,9 @@ import java.util.ArrayList;
 
 public class BibliotecaApp {
 
-    public static final String MESSAGE_WELCOME = "Welcome to Biblioteca!";
-    public static final String MESSAGE_EXIT = "Thank you for using Biblioteca!";
-    public static final String MESSAGE_SELECT_OPTION = "Select an option: ";
+    private static final String MESSAGE_WELCOME = "Welcome to Biblioteca!";
+    private static final String MESSAGE_EXIT = "Thank you for using Biblioteca!";
+    private static final String MESSAGE_SELECT_OPTION = "Select an option: ";
     private static final ArrayList<LibraryBook> books = new ArrayList<LibraryBook>() {{
         add(new LibraryBook("Book 1", "Author 1", 2001));
         add(new LibraryBook("Book 2", "Author 2", 2002));

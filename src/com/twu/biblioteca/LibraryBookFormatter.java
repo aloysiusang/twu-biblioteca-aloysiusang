@@ -8,7 +8,7 @@ import java.util.Formatter;
  */
 public class LibraryBookFormatter {
 
-    public static final String FORMAT_STYLE = "%15s||%15s||%6s";
+    private static final String FORMAT_STYLE = "%15s||%15s||%6s";
 
     public static String format(ArrayList<LibraryBook> books) {
         StringBuilder sb = new StringBuilder();
