@@ -26,18 +26,18 @@ public class LibraryTest {
     @Test
     public void testGetAllBooksWhenThereAreNoBooks() throws Exception {
         Library lib = new Library();
-        ArrayList<LibraryBook> books = lib.getAllBooks();
+        ArrayList<LibraryBook> books = lib.getAvailableBooks();
         assertEquals(0, books.size());
     }
 
     @Test
     public void testGetAllBooks() throws Exception {
         Library lib = new Library(expectedBooks);
-        ArrayList<LibraryBook> actualBooks = lib.getAllBooks();
+        ArrayList<LibraryBook> actualBooks = lib.getAvailableBooks();
         assertEquals(expectedBooks, actualBooks);
         assertEquals("Book 1", actualBooks.get(0).getTitle());
         assertEquals("Author 1", actualBooks.get(0).getAuthor());
         assertEquals(2001, actualBooks.get(0).getYearPublished());
     }
-    
+
 }

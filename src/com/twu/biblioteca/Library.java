@@ -1,23 +1,59 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
 /**
  * Created by aloysiusang on 10/6/15.
  */
 public class Library {
-    private static ArrayList<LibraryBook> allBooks;
+    private static ArrayList<LibraryBook> availableBooks;
+    private static ArrayList<LibraryBook> checkedOutBooks;
 
     public Library() {
-        allBooks = new ArrayList<LibraryBook>();
+        availableBooks = new ArrayList<LibraryBook>();
+        checkedOutBooks = new ArrayList<LibraryBook>();
     }
 
     public Library(ArrayList<LibraryBook> expectedBooks) {
-        allBooks = expectedBooks;
+        availableBooks = expectedBooks;
+        checkedOutBooks = new ArrayList<LibraryBook>();
     }
 
-    public ArrayList<LibraryBook> getAllBooks() {
-        return allBooks;
+    public Library(ArrayList<LibraryBook> availableBooks, ArrayList<LibraryBook> checkedOutBooks) {
+        this.availableBooks = availableBooks;
+        this.checkedOutBooks = checkedOutBooks;
+    }
+
+    public ArrayList<LibraryBook> getAvailableBooks() {
+        return availableBooks;
+    }
+
+    public ArrayList<LibraryBook> getCheckedOutBooks() {
+        return checkedOutBooks;
+    }
+
+    public boolean checkoutBook(String title) {
+        return moveBook(title, availableBooks, checkedOutBooks);
+    }
+
+    public boolean returnBook(String title) {
+        return moveBook(title, checkedOutBooks, availableBooks);
+    }
+
+    private boolean moveBook(String title, ArrayList<LibraryBook> from, ArrayList<LibraryBook> to) {
+        boolean isMoved = false;
+        for(Iterator<LibraryBook> iterator = from.iterator(); iterator.hasNext();) {
+            LibraryBook book = iterator.next();
+            if(book.getTitle().equals(title)) {
+                to.add(book);
+                iterator.remove();
+                isMoved = true;
+                break;
+            }
+        }
+        return isMoved;
     }
 
 }

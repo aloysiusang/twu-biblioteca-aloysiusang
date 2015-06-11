@@ -12,6 +12,8 @@ public class MainMenu {
     public MainMenu() {
         options = new ArrayList<MainMenuOption>() {{
             add(new ListBooksOption());
+            add(new CheckoutOption());
+            add(new ReturnOption());
             add(new QuitOption());
         }};
     }
@@ -21,11 +23,6 @@ public class MainMenu {
     }
 
     public ArrayList<MainMenuOption> getOptions() {
-//        ArrayList<String> optionsToString = new ArrayList<String>();
-//        for(MainMenuOption option : options) {
-//            optionsToString.add(option.getName());
-//        }
-//        return optionsToString;
         return options;
     }
 

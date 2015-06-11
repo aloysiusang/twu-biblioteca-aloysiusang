@@ -10,6 +10,6 @@ public class ListBooksOption extends MainMenuOption {
 
     @Override
     public String execute(Library library) {
-        return LibraryBookFormatter.format(library.getAllBooks());
+        return LibraryBookFormatter.format(library.getAvailableBooks());
     }
 }
