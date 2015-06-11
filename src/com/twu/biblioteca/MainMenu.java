@@ -6,6 +6,7 @@ import java.util.ArrayList;
  * Created by aloysiusang on 10/6/15.
  */
 public class MainMenu {
+    public static final String FEEDBACK_INVALID_OPTION = "Select a valid option!";
     private final ArrayList<MainMenuOption> options;
 
     public MainMenu() {
@@ -27,6 +28,11 @@ public class MainMenu {
     }
 
     public String selectOption(int optionNumber, Library library) {
-        return options.get(optionNumber).execute(library);
+        try {
+            return options.get(optionNumber - 1).execute(library);
+        }
+        catch(ArrayIndexOutOfBoundsException e) {
+            return FEEDBACK_INVALID_OPTION;
+        }
     }
 }
