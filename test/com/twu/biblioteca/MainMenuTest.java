@@ -15,7 +15,7 @@ public class MainMenuTest {
     public void testGetMainMenuOptions() throws Exception {
         MainMenu mainMenu = new MainMenu();
         ArrayList<MainMenuOption> options = mainMenu.getOptions();
-        assertEquals(4, options.size());
+        assertEquals(7, options.size());
         assertEquals("List Books", options.get(0).getName());
     }
 
@@ -76,7 +76,7 @@ public class MainMenuTest {
         }
 
         @Override
-        public String execute(AllLibraryStores libraryBookStore) {
+        public String execute(AllLibraryStores libraryStores) {
             return "Mock Executed";
         }
     }

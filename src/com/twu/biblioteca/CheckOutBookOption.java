@@ -14,10 +14,10 @@ public class CheckOutBookOption extends MainMenuOption{
     }
 
     @Override
-    public String execute(AllLibraryStores libraryBookStore) {
+    public String execute(AllLibraryStores libraryStores) {
         System.out.print(INPUT_TITLE);
         String title = getUserInput();
-        boolean success = libraryBookStore.checkoutBook(title, new BookTitleComparator());
+        boolean success = libraryStores.checkoutBook(title, new BookTitleComparator());
         return success ? MESSAGE_CHECKOUT_SUCCESSFUL : MESSAGE_CHECKOUT_UNSUCCESSFUL;
     }
 }

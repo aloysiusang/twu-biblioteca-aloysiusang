@@ -9,7 +9,7 @@ public class QuitOption extends MainMenuOption {
     }
 
     @Override
-    public String execute(AllLibraryStores libraryBookStore) {
+    public String execute(AllLibraryStores libraryStores) {
         return null;
     }
 }

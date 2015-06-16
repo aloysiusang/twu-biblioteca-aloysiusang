@@ -19,4 +19,16 @@ public class LibraryMovie {
     public String getName() {
         return name;
     }
+
+    public int getYear() {
+        return year;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public int getRating() {
+        return rating;
+    }
 }

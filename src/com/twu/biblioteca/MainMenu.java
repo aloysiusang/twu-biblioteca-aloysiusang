@@ -14,6 +14,9 @@ public class MainMenu {
             add(new ListBooksOption());
             add(new CheckOutBookOption());
             add(new ReturnBookOption());
+            add(new ListMoviesOption());
+            add(new CheckOutMovieOption());
+            add(new ReturnMovieOption());
             add(new QuitOption());
         }};
     }
