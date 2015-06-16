@@ -6,23 +6,23 @@ import java.util.Iterator;
 /**
  * Created by aloysiusang on 10/6/15.
  */
-public class Library {
+public class LibraryBookStore {
     private static ArrayList<LibraryBook> availableBooks;
     private static ArrayList<LibraryBook> checkedOutBooks;
 
-    public Library() {
+    public LibraryBookStore() {
         availableBooks = new ArrayList<LibraryBook>();
         checkedOutBooks = new ArrayList<LibraryBook>();
     }
 
-    public Library(ArrayList<LibraryBook> expectedBooks) {
+    public LibraryBookStore(ArrayList<LibraryBook> expectedBooks) {
         availableBooks = expectedBooks;
         checkedOutBooks = new ArrayList<LibraryBook>();
     }
 
-    public Library(ArrayList<LibraryBook> availableBooks, ArrayList<LibraryBook> checkedOutBooks) {
-        Library.availableBooks = availableBooks;
-        Library.checkedOutBooks = checkedOutBooks;
+    public LibraryBookStore(ArrayList<LibraryBook> availableBooks, ArrayList<LibraryBook> checkedOutBooks) {
+        LibraryBookStore.availableBooks = availableBooks;
+        LibraryBookStore.checkedOutBooks = checkedOutBooks;
     }
 
     public ArrayList<LibraryBook> getAvailableBooks() {

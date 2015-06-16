@@ -76,7 +76,7 @@ public class MainMenuTest {
         }
 
         @Override
-        public String execute(Library library) {
+        public String execute(LibraryBookStore libraryBookStore) {
             return "Mock Executed";
         }
     }

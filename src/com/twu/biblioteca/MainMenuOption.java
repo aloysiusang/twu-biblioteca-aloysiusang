@@ -29,5 +29,5 @@ public abstract class MainMenuOption {
         return userInput;
     }
 
-    public abstract String execute(Library library);
+    public abstract String execute(LibraryBookStore libraryBookStore);
 }

@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 /**
  * Created by aloysiusang on 10/6/15.
  */
-public class LibraryTest {
+public class LibraryBookStoreTest {
 
     private ArrayList<LibraryBook> expectedBooks;
 
@@ -25,14 +25,14 @@ public class LibraryTest {
 
     @Test
     public void testGetAllBooksWhenThereAreNoBooks() throws Exception {
-        Library lib = new Library();
+        LibraryBookStore lib = new LibraryBookStore();
         ArrayList<LibraryBook> books = lib.getAvailableBooks();
         assertEquals(0, books.size());
     }
 
     @Test
     public void testGetAllBooks() throws Exception {
-        Library lib = new Library(expectedBooks);
+        LibraryBookStore lib = new LibraryBookStore(expectedBooks);
         ArrayList<LibraryBook> actualBooks = lib.getAvailableBooks();
         assertEquals(expectedBooks, actualBooks);
         assertEquals("Book 1", actualBooks.get(0).getTitle());

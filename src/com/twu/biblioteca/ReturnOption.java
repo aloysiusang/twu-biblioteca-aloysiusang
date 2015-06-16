@@ -13,10 +13,10 @@ public class ReturnOption extends MainMenuOption{
     }
 
     @Override
-    public String execute(Library library) {
+    public String execute(LibraryBookStore libraryBookStore) {
         System.out.print(INPUT_TITLE);
         String title = getUserInput();
-        boolean success = library.returnBook(title);
+        boolean success = libraryBookStore.returnBook(title);
         return success ? MESSAGE_RETURN_SUCCESSFUL : MESSAGE_RETURN_UNSUCCESSFUL;
     }
 
