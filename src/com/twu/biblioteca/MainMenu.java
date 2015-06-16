@@ -12,8 +12,8 @@ public class MainMenu {
     public MainMenu() {
         options = new ArrayList<MainMenuOption>() {{
             add(new ListBooksOption());
-            add(new CheckoutOption());
-            add(new ReturnOption());
+            add(new CheckOutBookOption());
+            add(new ReturnBookOption());
             add(new QuitOption());
         }};
     }
@@ -26,7 +26,7 @@ public class MainMenu {
         return options;
     }
 
-    public String selectOption(int optionNumber, LibraryBookStore libraryBookStore) {
+    public String selectOption(int optionNumber, AllLibraryStores libraryBookStore) {
         try {
             return options.get(optionNumber - 1).execute(libraryBookStore);
         }

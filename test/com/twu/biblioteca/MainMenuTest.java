@@ -58,14 +58,14 @@ public class MainMenuTest {
     @Test
     public void testCheckoutIsInMenu() throws Exception {
         MainMenu mainMenu = new MainMenu();
-        Integer optionInMenu = findOption(mainMenu, CheckoutOption.class);
+        Integer optionInMenu = findOption(mainMenu, CheckOutBookOption.class);
         assertNotEquals(null, optionInMenu);
     }
 
     @Test
     public void testReturnIsInMenu() throws Exception {
         MainMenu mainMenu = new MainMenu();
-        Integer optionInMenu = findOption(mainMenu, ReturnOption.class);
+        Integer optionInMenu = findOption(mainMenu, ReturnBookOption.class);
         assertNotEquals(null, optionInMenu);
     }
 
@@ -76,7 +76,7 @@ public class MainMenuTest {
         }
 
         @Override
-        public String execute(LibraryBookStore libraryBookStore) {
+        public String execute(AllLibraryStores libraryBookStore) {
             return "Mock Executed";
         }
     }

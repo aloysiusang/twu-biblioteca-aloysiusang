@@ -13,7 +13,9 @@ import static org.junit.Assert.*;
 /**
  * Created by aloysiusang on 11/6/15.
  */
-public class ReturnOptionTest {
+public class CheckOutBookOptionTest {
+
+    private AllLibraryStores libraryStores;
     private LibraryBookStore libraryBookStore;
     private ArrayList<LibraryBook> availableBooks;
     private ArrayList<LibraryBook> checkedOutBooks;
@@ -31,6 +33,7 @@ public class ReturnOptionTest {
             add(new LibraryBook("Book 13", "Author 13", 2013));
         }};
         libraryBookStore = new LibraryBookStore(availableBooks, checkedOutBooks);
+        libraryStores = new AllLibraryStores(libraryBookStore);
         redirectOutput(new PrintStream(new ByteArrayOutputStream()));
     }
 
@@ -41,33 +44,38 @@ public class ReturnOptionTest {
     }
 
     @Test
-    public void testReturnInvalidBook() throws Exception {
-        MainMenuOption option = new ReturnOption();
-        setInput("Invalid Book");
-        String feedback = option.execute(libraryBookStore);
-        assertEquals("That is not a valid book to return.", feedback);
+    public void testCheckoutBook() throws Exception {
+        MainMenuOption option = new CheckOutBookOption();
+        String titleToCheckout = availableBooks.get(0).getTitle();
+
+        setInput(titleToCheckout);
+        String feedback = option.execute(libraryStores);
+
+        assertEquals("Thank you! Enjoy the book", feedback);
+        assertFalse(bookTitleExistsInCollection(titleToCheckout, libraryStores.getAvailableBooks()));
+        assertTrue(bookTitleExistsInCollection(titleToCheckout, libraryBookStore.getCheckedOutResource()));
     }
 
     @Test
-    public void testReturnBook() throws Exception {
-        MainMenuOption option = new ReturnOption();
-        String titleToReturn = checkedOutBooks.get(0).getTitle();
-        setInput(titleToReturn);
-        String feedback = option.execute(libraryBookStore);
-        assertEquals("Thank you for returning the book.", feedback);
-        assertTrue(bookTitleExistsInCollection(titleToReturn, libraryBookStore.getAvailableResource()));
-        assertFalse(bookTitleExistsInCollection(titleToReturn, libraryBookStore.getCheckedOutResource()));
+    public void testCheckoutInvalidBook() throws Exception {
+        MainMenuOption option = new CheckOutBookOption();
+        String titleToCheckout = "Invalid Book";
+
+        setInput(titleToCheckout);
+        String feedback = option.execute(libraryStores);
+        assertEquals("That book is not available.", feedback);
+
+        assertFalse(bookTitleExistsInCollection(titleToCheckout, libraryBookStore.getAvailableResource()));
     }
 
     @Test
-    public void testReturnAvailableBook() throws Exception {
-        MainMenuOption option = new ReturnOption();
-        String titleToReturn = availableBooks.get(0).getTitle();
-        setInput(titleToReturn);
-        String feedback = option.execute(libraryBookStore);
-        assertEquals("That is not a valid book to return.", feedback);
-        assertTrue(bookTitleExistsInCollection(titleToReturn, libraryBookStore.getAvailableResource()));
-        assertFalse(bookTitleExistsInCollection(titleToReturn, libraryBookStore.getCheckedOutResource()));
+    public void testCheckoutBookThatHasAlreadyBeenCheckedOut() throws Exception {
+        MainMenuOption option = new CheckOutBookOption();
+        String titleToCheckOut = checkedOutBooks.get(0).getTitle();
+        setInput(titleToCheckOut);
+        String feedback = option.execute(libraryStores);
+        assertEquals("That book is not available.", feedback);
+        assertFalse(bookTitleExistsInCollection(titleToCheckOut, libraryBookStore.getAvailableResource()));
     }
 
     private boolean bookTitleExistsInCollection(String title, Collection<LibraryBook> collection) {
@@ -86,5 +94,4 @@ public class ReturnOptionTest {
     private void setInput(String input) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
     }
-
 }

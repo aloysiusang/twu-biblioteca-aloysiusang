@@ -7,21 +7,21 @@ import java.util.Iterator;
 /**
  * Created by aloysiusang on 16/6/15.
  */
-public abstract class LibraryStore<E> {
+public abstract class LibraryStoreTemplate<E> {
     private ArrayList<E> availableResource;
     private ArrayList<E> checkedOutResource;
 
-    public LibraryStore() {
+    public LibraryStoreTemplate() {
         availableResource = new ArrayList<E>();
         checkedOutResource = new ArrayList<E>();
     }
 
-    public LibraryStore(ArrayList<E> availableResource) {
+    public LibraryStoreTemplate(ArrayList<E> availableResource) {
         this.availableResource = availableResource;
         this.checkedOutResource = new ArrayList<E>();
     }
 
-    public LibraryStore(ArrayList<E> availableResource, ArrayList<E> checkedOutResource) {
+    public LibraryStoreTemplate(ArrayList<E> availableResource, ArrayList<E> checkedOutResource) {
         this.availableResource = availableResource;
         this.checkedOutResource = checkedOutResource;
     }

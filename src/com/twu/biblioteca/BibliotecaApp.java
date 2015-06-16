@@ -10,12 +10,7 @@ public class BibliotecaApp {
     private static final String MESSAGE_WELCOME = "Welcome to Biblioteca!";
     private static final String MESSAGE_EXIT = "Thank you for using Biblioteca!";
     private static final String MESSAGE_SELECT_OPTION = "Select an option: ";
-    private static final ArrayList<LibraryBook> books = new ArrayList<LibraryBook>() {{
-        add(new LibraryBook("Book 1", "Author 1", 2001));
-        add(new LibraryBook("Book 2", "Author 2", 2002));
-        add(new LibraryBook("Book 3", "Author 3", 2003));
-    }};
-    private static LibraryBookStore libraryBookStore = new LibraryBookStore(books);
+    private static AllLibraryStores libraryStores = new AllLibraryStores();
 
     public static void main(String[] args) {
         System.out.println(MESSAGE_WELCOME);
@@ -26,7 +21,7 @@ public class BibliotecaApp {
         do {
             printMainMenu(mainMenu);
             input = Integer.parseInt(getInput(reader));
-            feedback = mainMenu.selectOption(input, libraryBookStore);
+            feedback = mainMenu.selectOption(input, libraryStores);
             printFeedback(feedback);
         }
         while(feedback != null);
