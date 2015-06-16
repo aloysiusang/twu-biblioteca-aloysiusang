@@ -51,8 +51,8 @@ public class CheckoutOptionTest {
         String feedback = option.execute(libraryBookStore);
 
         assertEquals("Thank you! Enjoy the book", feedback);
-        assertFalse(bookTitleExistsInCollection(titleToCheckout, libraryBookStore.getAvailableBooks()));
-        assertTrue(bookTitleExistsInCollection(titleToCheckout, libraryBookStore.getCheckedOutBooks()));
+        assertFalse(bookTitleExistsInCollection(titleToCheckout, libraryBookStore.getAvailableResource()));
+        assertTrue(bookTitleExistsInCollection(titleToCheckout, libraryBookStore.getCheckedOutResource()));
     }
 
     @Test
@@ -64,7 +64,7 @@ public class CheckoutOptionTest {
         String feedback = option.execute(libraryBookStore);
         assertEquals("That book is not available.", feedback);
 
-        assertFalse(bookTitleExistsInCollection(titleToCheckout, libraryBookStore.getAvailableBooks()));
+        assertFalse(bookTitleExistsInCollection(titleToCheckout, libraryBookStore.getAvailableResource()));
     }
 
     @Test
@@ -74,7 +74,7 @@ public class CheckoutOptionTest {
         setInput(titleToCheckOut);
         String feedback = option.execute(libraryBookStore);
         assertEquals("That book is not available.", feedback);
-        assertFalse(bookTitleExistsInCollection(titleToCheckOut, libraryBookStore.getAvailableBooks()));
+        assertFalse(bookTitleExistsInCollection(titleToCheckOut, libraryBookStore.getAvailableResource()));
     }
 
     private boolean bookTitleExistsInCollection(String title, Collection<LibraryBook> collection) {

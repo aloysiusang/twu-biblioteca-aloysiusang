@@ -26,14 +26,14 @@ public class LibraryBookStoreTest {
     @Test
     public void testGetAllBooksWhenThereAreNoBooks() throws Exception {
         LibraryBookStore lib = new LibraryBookStore();
-        ArrayList<LibraryBook> books = lib.getAvailableBooks();
+        ArrayList<LibraryBook> books = lib.getAvailableResource();
         assertEquals(0, books.size());
     }
 
     @Test
     public void testGetAllBooks() throws Exception {
         LibraryBookStore lib = new LibraryBookStore(expectedBooks);
-        ArrayList<LibraryBook> actualBooks = lib.getAvailableBooks();
+        ArrayList<LibraryBook> actualBooks = lib.getAvailableResource();
         assertEquals(expectedBooks, actualBooks);
         assertEquals("Book 1", actualBooks.get(0).getTitle());
         assertEquals("Author 1", actualBooks.get(0).getAuthor());

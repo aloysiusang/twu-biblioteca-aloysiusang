@@ -55,8 +55,8 @@ public class ReturnOptionTest {
         setInput(titleToReturn);
         String feedback = option.execute(libraryBookStore);
         assertEquals("Thank you for returning the book.", feedback);
-        assertTrue(bookTitleExistsInCollection(titleToReturn, libraryBookStore.getAvailableBooks()));
-        assertFalse(bookTitleExistsInCollection(titleToReturn, libraryBookStore.getCheckedOutBooks()));
+        assertTrue(bookTitleExistsInCollection(titleToReturn, libraryBookStore.getAvailableResource()));
+        assertFalse(bookTitleExistsInCollection(titleToReturn, libraryBookStore.getCheckedOutResource()));
     }
 
     @Test
@@ -66,8 +66,8 @@ public class ReturnOptionTest {
         setInput(titleToReturn);
         String feedback = option.execute(libraryBookStore);
         assertEquals("That is not a valid book to return.", feedback);
-        assertTrue(bookTitleExistsInCollection(titleToReturn, libraryBookStore.getAvailableBooks()));
-        assertFalse(bookTitleExistsInCollection(titleToReturn, libraryBookStore.getCheckedOutBooks()));
+        assertTrue(bookTitleExistsInCollection(titleToReturn, libraryBookStore.getAvailableResource()));
+        assertFalse(bookTitleExistsInCollection(titleToReturn, libraryBookStore.getCheckedOutResource()));
     }
 
     private boolean bookTitleExistsInCollection(String title, Collection<LibraryBook> collection) {

@@ -14,6 +14,7 @@ import static org.junit.Assert.*;
 public class LibraryMovieStoreTest {
 
     private ArrayList<LibraryMovie> expectedMovies;
+    private ArrayList<LibraryMovie> checkedOutMovies;
 
     @Before
     public void setUp() throws Exception {
@@ -22,22 +23,38 @@ public class LibraryMovieStoreTest {
             add(new LibraryMovie("Name 2", 2002, "Director 2", 2));
             add(new LibraryMovie("Name 3", 2003, "Director 3", 3));
         }};
+
+        checkedOutMovies = new ArrayList<LibraryMovie>() {{
+            add(new LibraryMovie("Name 4", 2004, "Director 4", 4));
+            add(new LibraryMovie("Name 5", 2005, "Director 5", 5));
+            add(new LibraryMovie("Name 6", 2006, "Director 6", 6));
+        }};
     }
 
     @Test
     public void testGetAllMovies() throws Exception {
         LibraryMovieStore movieLib = new LibraryMovieStore(expectedMovies);
-        assertEquals(expectedMovies, movieLib.getAvailableMovies());
+        assertEquals(expectedMovies, movieLib.getAvailableResource());
     }
 
     @Test
     public void testCheckoutMovie() throws Exception {
-        LibraryMovieStore movieLib = new LibraryMovieStore(expectedMovies);
+        LibraryMovieStore movieStore = new LibraryMovieStore(expectedMovies);
         String nameToCheckout = expectedMovies.get(0).getName();
-        boolean successfulCheckout = movieLib.checkoutMovie(nameToCheckout);
+        boolean successfulCheckout = movieStore.checkoutResource(nameToCheckout, new MovieNameComparator());
         assertTrue(successfulCheckout);
-        assertFalse(movieNameExistsInCollection(nameToCheckout, movieLib.getAvailableMovies()));
-        assertTrue(movieNameExistsInCollection(nameToCheckout, movieLib.getCheckedOutMovies()));
+        assertFalse(movieNameExistsInCollection(nameToCheckout, movieStore.getAvailableResource()));
+        assertTrue(movieNameExistsInCollection(nameToCheckout, movieStore.getCheckedOutResource()));
+    }
+
+    @Test
+    public void testReturnMovie() throws Exception {
+        LibraryMovieStore movieStore = new LibraryMovieStore(expectedMovies, checkedOutMovies);
+        String titleToReturn = checkedOutMovies.get(0).getName();
+        boolean successfulCheckout = movieStore.returnResource(titleToReturn, new MovieNameComparator());
+        assertTrue(successfulCheckout);
+        assertTrue(movieNameExistsInCollection(titleToReturn, movieStore.getAvailableResource()));
+        assertFalse(movieNameExistsInCollection(titleToReturn, movieStore.getCheckedOutResource()));
     }
 
     private boolean movieNameExistsInCollection(String name, Collection<LibraryMovie> collection) {

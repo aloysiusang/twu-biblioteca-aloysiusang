@@ -17,7 +17,7 @@ public class CheckoutOption extends MainMenuOption{
     public String execute(LibraryBookStore libraryBookStore) {
         System.out.print(INPUT_TITLE);
         String title = getUserInput();
-        boolean success = libraryBookStore.checkoutBook(title);
+        boolean success = libraryBookStore.checkoutResource(title, new BookTitleComparator());
         return success ? MESSAGE_CHECKOUT_SUCCESSFUL : MESSAGE_CHECKOUT_UNSUCCESSFUL;
     }
 }

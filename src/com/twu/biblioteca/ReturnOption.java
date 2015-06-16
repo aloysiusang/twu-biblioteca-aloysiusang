@@ -16,7 +16,7 @@ public class ReturnOption extends MainMenuOption{
     public String execute(LibraryBookStore libraryBookStore) {
         System.out.print(INPUT_TITLE);
         String title = getUserInput();
-        boolean success = libraryBookStore.returnBook(title);
+        boolean success = libraryBookStore.returnResource(title, new BookTitleComparator());
         return success ? MESSAGE_RETURN_SUCCESSFUL : MESSAGE_RETURN_UNSUCCESSFUL;
     }
 
