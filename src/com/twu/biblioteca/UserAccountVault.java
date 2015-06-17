@@ -8,7 +8,6 @@ import java.util.Map;
  */
 public class UserAccountVault {
     private static UserAccountVault instance = null;
-    private User currentUser;
 
     private static Map<LoginCredential, User> userAccounts;
 
@@ -28,12 +27,7 @@ public class UserAccountVault {
     }
 
     public User retrieveUser(LoginCredential loginCredential) {
-        currentUser = userAccounts.get(loginCredential);
-        return currentUser;
-    }
-
-    public User getCurrentUser() {
-        return currentUser;
+        return userAccounts.get(loginCredential);
     }
 
 }

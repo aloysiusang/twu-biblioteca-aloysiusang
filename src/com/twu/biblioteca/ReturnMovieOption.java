@@ -13,7 +13,7 @@ public class ReturnMovieOption extends MainMenuOption {
     }
 
     @Override
-    public String execute(User user, AllLibraryStores libraryStores) {
+    public String execute(UserAccountManager userAccountManager, AllLibraryStores libraryStores) {
         System.out.println(INPUT_TITLE);
         String name = getUserInput();
         boolean success = libraryStores.returnMovie(name, new MovieNameComparator());

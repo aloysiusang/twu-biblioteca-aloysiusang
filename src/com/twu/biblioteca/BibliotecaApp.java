@@ -12,7 +12,7 @@ public class BibliotecaApp {
     private static final String MESSAGE_EXIT = "Thank you for using Biblioteca!";
     private static final String MESSAGE_SELECT_OPTION = "Select an option: ";
     private static AllLibraryStores libraryStores;
-    private static UserAccountVault userAccountVault = UserAccountVault.getInstance();
+    private static UserAccountManager userAccountManager;
 
     static {
         ArrayList<LibraryBook> expectedBooks = new ArrayList<LibraryBook>() {{
@@ -27,10 +27,13 @@ public class BibliotecaApp {
             add(new LibraryMovie("Name 3", 2003, "Director 3", 3));
         }};
 
+        UserAccountVault userAccountVault = UserAccountVault.getInstance();
         userAccountVault.setUserAccounts(new HashMap<LoginCredential, User>() {{
             put(new LoginCredential("user1", "password1"), new User());
             put(new LoginCredential("user2", "password2"), new User());
         }});
+
+        userAccountManager = new UserAccountManager();
 
         libraryStores = new AllLibraryStores(new LibraryBookStore(expectedBooks), new LibraryMovieStore(expectedMovies));
     }
@@ -49,7 +52,7 @@ public class BibliotecaApp {
             MainMenu mainMenu = getMainMenu();
             printMainMenu(mainMenu);
             input = Integer.parseInt(getInput(reader));
-            feedback = mainMenu.selectOption(input, getCurrentUser(), libraryStores);
+            feedback = mainMenu.selectOption(input, userAccountManager, libraryStores);
             printFeedback(feedback);
         }
         while(feedback != null);
@@ -76,10 +79,6 @@ public class BibliotecaApp {
             System.out.println(feedback);
         else
             System.out.println(MESSAGE_EXIT);
-    }
-
-    public User getCurrentUser() {
-        return userAccountVault.getCurrentUser();
     }
 
     public MainMenu getMainMenu() {

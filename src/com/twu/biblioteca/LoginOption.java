@@ -13,22 +13,22 @@ public class LoginOption extends MainMenuOption {
     }
 
     @Override
-    public String execute(User user, AllLibraryStores libraryStores) {
+    public String execute(UserAccountManager userAccountManager, AllLibraryStores libraryStores) {
+        boolean success = false;
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         try {
             LoginCredential loginCredential = getLoginCredential(br);
-            user = getUserFromVault(loginCredential);
+            success = attemptLoginWithCredentials(userAccountManager, loginCredential);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return user!=null? "Login successful." : "Invalid credentials.";
+        return success ? "Login successful." : "Invalid credentials.";
     }
 
-    private User getUserFromVault(LoginCredential loginCredential) {
-        User user;UserAccountVault userAccountVault = UserAccountVault.getInstance();
-        user = userAccountVault.retrieveUser(loginCredential);
-        return user;
+    private boolean attemptLoginWithCredentials(UserAccountManager userAccountManager, LoginCredential loginCredential) {
+        boolean success = userAccountManager.login(loginCredential);
+        return success;
     }
 
     private LoginCredential getLoginCredential(BufferedReader br) throws IOException {

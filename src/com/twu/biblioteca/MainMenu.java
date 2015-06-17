@@ -29,9 +29,9 @@ public class MainMenu {
         return options;
     }
 
-    public String selectOption(int optionNumber, User currentUser, AllLibraryStores libraryBookStore) {
+    public String selectOption(int optionNumber, UserAccountManager userAccountManager, AllLibraryStores libraryBookStore) {
         try {
-            return options.get(optionNumber - 1).execute(currentUser, libraryBookStore);
+            return options.get(optionNumber - 1).execute(userAccountManager, libraryBookStore);
         }
         catch(ArrayIndexOutOfBoundsException e) {
             return FEEDBACK_INVALID_OPTION;
