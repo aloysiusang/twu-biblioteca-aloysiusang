@@ -11,13 +11,6 @@ import static org.junit.Assert.assertNotEquals;
  * Created by aloysiusang on 10/6/15.
  */
 public class MainMenuTest {
-    @Test
-    public void testGetMainMenuOptions() throws Exception {
-        MainMenu mainMenu = new MainMenu();
-        ArrayList<MainMenuOption> options = mainMenu.getOptions();
-        assertEquals(7, options.size());
-        assertEquals("List Books", options.get(0).getName());
-    }
 
     @Test
     public void testSelectInvalidOption() throws Exception {
@@ -39,34 +32,6 @@ public class MainMenuTest {
         MainMenu menu = new MainMenu(options);
         String feedback = menu.selectOption(1, null, null);
         assertEquals("Mock Executed", feedback);
-    }
-
-    @Test
-    public void testListBookIsInMenu() throws Exception {
-        MainMenu mainMenu = new MainMenu();
-        Integer optionInMenu = findOption(mainMenu, ListBooksOption.class);
-        assertNotEquals(null, optionInMenu);
-    }
-
-    @Test
-    public void testQuitIsInMenu() throws Exception {
-        MainMenu mainMenu = new MainMenu();
-        Integer optionInMenu = findOption(mainMenu, QuitOption.class);
-        assertNotEquals(null, optionInMenu);
-    }
-
-    @Test
-    public void testCheckoutIsInMenu() throws Exception {
-        MainMenu mainMenu = new MainMenu();
-        Integer optionInMenu = findOption(mainMenu, CheckOutBookOption.class);
-        assertNotEquals(null, optionInMenu);
-    }
-
-    @Test
-    public void testReturnIsInMenu() throws Exception {
-        MainMenu mainMenu = new MainMenu();
-        Integer optionInMenu = findOption(mainMenu, ReturnBookOption.class);
-        assertNotEquals(null, optionInMenu);
     }
 
     private class MockOption extends MainMenuOption {

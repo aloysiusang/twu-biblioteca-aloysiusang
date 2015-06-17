@@ -9,18 +9,6 @@ public class MainMenu {
     private static final String FEEDBACK_INVALID_OPTION = "Select a valid option!";
     private final ArrayList<MainMenuOption> options;
 
-    public MainMenu() {
-        options = new ArrayList<MainMenuOption>() {{
-            add(new ListBooksOption());
-            add(new CheckOutBookOption());
-            add(new ReturnBookOption());
-            add(new ListMoviesOption());
-            add(new CheckOutMovieOption());
-            add(new ReturnMovieOption());
-            add(new QuitOption());
-        }};
-    }
-
     public MainMenu(ArrayList<MainMenuOption> mainMenuOptions) {
         this.options = mainMenuOptions;
     }
