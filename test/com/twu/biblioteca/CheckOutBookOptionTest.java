@@ -4,7 +4,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -34,13 +33,12 @@ public class CheckOutBookOptionTest {
         }};
         libraryBookStore = new LibraryBookStore(availableBooks, checkedOutBooks);
         libraryStores = new AllLibraryStores(libraryBookStore);
-        redirectOutput(new PrintStream(new ByteArrayOutputStream()));
+        TestUtilities.redirectOutput();
     }
 
     @After
     public void tearDown() throws Exception {
-        System.setIn(new FileInputStream(FileDescriptor.in));
-        System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
+        TestUtilities.resetStreams();
     }
 
     @Test
@@ -48,8 +46,8 @@ public class CheckOutBookOptionTest {
         MainMenuOption option = new CheckOutBookOption();
         String titleToCheckout = availableBooks.get(0).getTitle();
 
-        setInput(titleToCheckout);
-        String feedback = option.execute(libraryStores);
+        TestUtilities.setInput(titleToCheckout);
+        String feedback = option.execute(null, libraryStores);
 
         assertEquals("Thank you! Enjoy the book", feedback);
         assertFalse(bookTitleExistsInCollection(titleToCheckout, libraryStores.getAvailableBooks()));
@@ -61,8 +59,8 @@ public class CheckOutBookOptionTest {
         MainMenuOption option = new CheckOutBookOption();
         String titleToCheckout = "Invalid Book";
 
-        setInput(titleToCheckout);
-        String feedback = option.execute(libraryStores);
+        TestUtilities.setInput(titleToCheckout);
+        String feedback = option.execute(null, libraryStores);
         assertEquals("That book is not available.", feedback);
 
         assertFalse(bookTitleExistsInCollection(titleToCheckout, libraryStores.getCheckedOutBooks()));
@@ -72,26 +70,19 @@ public class CheckOutBookOptionTest {
     public void testCheckoutBookThatHasAlreadyBeenCheckedOut() throws Exception {
         MainMenuOption option = new CheckOutBookOption();
         String titleToCheckOut = checkedOutBooks.get(0).getTitle();
-        setInput(titleToCheckOut);
-        String feedback = option.execute(libraryStores);
+        TestUtilities.setInput(titleToCheckOut);
+        String feedback = option.execute(null, libraryStores);
         assertEquals("That book is not available.", feedback);
         assertTrue(bookTitleExistsInCollection(titleToCheckOut, libraryStores.getCheckedOutBooks()));
     }
 
     private boolean bookTitleExistsInCollection(String title, Collection<LibraryBook> collection) {
-        for(LibraryBook book : collection) {
-            if(book.getTitle().equals(title)) {
+        for (LibraryBook book : collection) {
+            if (book.getTitle().equals(title)) {
                 return true;
             }
         }
         return false;
     }
 
-    private void redirectOutput(PrintStream printStream) {
-        System.setOut(printStream);
-    }
-
-    private void setInput(String input) {
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
-    }
 }

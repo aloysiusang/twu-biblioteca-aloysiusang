@@ -26,7 +26,7 @@ public class MainMenuTest {
             add(new QuitOption());
         }};
         MainMenu menu = new MainMenu(options);
-        String feedback = menu.selectOption(0, null);
+        String feedback = menu.selectOption(0, null, null);
         assertEquals("Select a valid option!", feedback);
     }
 
@@ -37,7 +37,7 @@ public class MainMenuTest {
             add(new MockOption());
         }};
         MainMenu menu = new MainMenu(options);
-        String feedback = menu.selectOption(1, null);
+        String feedback = menu.selectOption(1, null, null);
         assertEquals("Mock Executed", feedback);
     }
 
@@ -76,7 +76,7 @@ public class MainMenuTest {
         }
 
         @Override
-        public String execute(AllLibraryStores libraryStores) {
+        public String execute(User user, AllLibraryStores libraryStores) {
             return "Mock Executed";
         }
     }

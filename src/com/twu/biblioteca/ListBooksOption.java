@@ -9,7 +9,7 @@ public class ListBooksOption extends MainMenuOption {
     }
 
     @Override
-    public String execute(AllLibraryStores libraryStores) {
+    public String execute(User user, AllLibraryStores libraryStores) {
         return LibraryBookFormatter.format(libraryStores.getAvailableBooks());
     }
 }

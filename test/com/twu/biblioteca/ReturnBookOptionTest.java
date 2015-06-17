@@ -4,7 +4,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -33,20 +32,19 @@ public class ReturnBookOptionTest {
         }};
         libraryBookStore = new LibraryBookStore(availableBooks, checkedOutBooks);
         libraryStores = new AllLibraryStores(libraryBookStore);
-        redirectOutput(new PrintStream(new ByteArrayOutputStream()));
+        TestUtilities.redirectOutput();
     }
 
     @After
     public void tearDown() throws Exception {
-        System.setIn(new FileInputStream(FileDescriptor.in));
-        System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
+        TestUtilities.resetStreams();
     }
 
     @Test
     public void testReturnInvalidBook() throws Exception {
         MainMenuOption option = new ReturnBookOption();
-        setInput("Invalid Book");
-        String feedback = option.execute(libraryStores);
+        TestUtilities.setInput("Invalid Book");
+        String feedback = option.execute(null, libraryStores);
         assertEquals("That is not a valid book to return.", feedback);
     }
 
@@ -54,8 +52,8 @@ public class ReturnBookOptionTest {
     public void testReturnBook() throws Exception {
         MainMenuOption option = new ReturnBookOption();
         String titleToReturn = checkedOutBooks.get(0).getTitle();
-        setInput(titleToReturn);
-        String feedback = option.execute(libraryStores);
+        TestUtilities.setInput(titleToReturn);
+        String feedback = option.execute(null, libraryStores);
         assertEquals("Thank you for returning the book.", feedback);
         assertTrue(bookTitleExistsInCollection(titleToReturn, libraryBookStore.getAvailableResource()));
         assertFalse(bookTitleExistsInCollection(titleToReturn, libraryBookStore.getCheckedOutResource()));
@@ -65,8 +63,8 @@ public class ReturnBookOptionTest {
     public void testReturnAvailableBook() throws Exception {
         MainMenuOption option = new ReturnBookOption();
         String titleToReturn = availableBooks.get(0).getTitle();
-        setInput(titleToReturn);
-        String feedback = option.execute(libraryStores);
+        TestUtilities.setInput(titleToReturn);
+        String feedback = option.execute(null, libraryStores);
         assertEquals("That is not a valid book to return.", feedback);
         assertTrue(bookTitleExistsInCollection(titleToReturn, libraryBookStore.getAvailableResource()));
         assertFalse(bookTitleExistsInCollection(titleToReturn, libraryBookStore.getCheckedOutResource()));
@@ -79,14 +77,6 @@ public class ReturnBookOptionTest {
             }
         }
         return false;
-    }
-
-    private void redirectOutput(PrintStream printStream) {
-        System.setOut(printStream);
-    }
-
-    private void setInput(String input) {
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
     }
 
 }

@@ -14,7 +14,7 @@ public class CheckOutBookOption extends MainMenuOption{
     }
 
     @Override
-    public String execute(AllLibraryStores libraryStores) {
+    public String execute(User user, AllLibraryStores libraryStores) {
         System.out.print(INPUT_TITLE);
         String title = getUserInput();
         boolean success = libraryStores.checkoutBook(title, new BookTitleComparator());

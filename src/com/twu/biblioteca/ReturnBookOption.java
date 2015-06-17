@@ -13,7 +13,7 @@ public class ReturnBookOption extends MainMenuOption{
     }
 
     @Override
-    public String execute(AllLibraryStores libraryStores) {
+    public String execute(User user, AllLibraryStores libraryStores) {
         System.out.print(INPUT_TITLE);
         String title = getUserInput();
         boolean success = libraryStores.returnBook(title, new BookTitleComparator());

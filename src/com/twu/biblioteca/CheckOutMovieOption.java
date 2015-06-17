@@ -13,7 +13,7 @@ public class CheckOutMovieOption extends MainMenuOption {
     }
 
     @Override
-    public String execute(AllLibraryStores libraryStores) {
+    public String execute(User user, AllLibraryStores libraryStores) {
         System.out.println(INPUT_TITLE);
         String title = getUserInput();
         boolean success = libraryStores.checkoutMovie(title, new MovieNameComparator());

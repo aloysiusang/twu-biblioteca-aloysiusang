@@ -4,13 +4,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Created by aloysiusang on 16/6/15.
@@ -35,21 +32,20 @@ public class CheckOutMovieOptionTest {
         }};
         libraryMovieStore = new LibraryMovieStore(availableMovies, checkedOutMovies);
         libraryStores = new AllLibraryStores(libraryMovieStore);
-        redirectOutput(new PrintStream(new ByteArrayOutputStream()));
+        TestUtilities.redirectOutput();
     }
 
     @After
     public void tearDown() throws Exception {
-        System.setIn(new FileInputStream(FileDescriptor.in));
-        System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
+        TestUtilities.resetStreams();
     }
 
     @Test
     public void testCheckOutInvalidMovie() throws Exception {
         CheckOutMovieOption option = new CheckOutMovieOption();
         String invalidMovieName = "Invalid Movie";
-        setInput(invalidMovieName);
-        String feedback = option.execute(libraryStores);
+        TestUtilities.setInput(invalidMovieName);
+        String feedback = option.execute(null, libraryStores);
         assertEquals("That movie is not available.", feedback);
         assertFalse(movieNameExistsInCollection(invalidMovieName, libraryStores.getAvailableMovies()));
         assertFalse(movieNameExistsInCollection(invalidMovieName, libraryStores.getCheckedOutMovies()));
@@ -59,8 +55,8 @@ public class CheckOutMovieOptionTest {
     public void testCheckoutMovie() throws Exception {
         CheckOutMovieOption option = new CheckOutMovieOption();
         String movieName = availableMovies.get(0).getName();
-        setInput(movieName);
-        String feedback = option.execute(libraryStores);
+        TestUtilities.setInput(movieName);
+        String feedback = option.execute(null, libraryStores);
         assertEquals("Thank you! Enjoy the movie", feedback);
         assertFalse(movieNameExistsInCollection(movieName, libraryStores.getAvailableMovies()));
         assertTrue(movieNameExistsInCollection(movieName, libraryStores.getCheckedOutMovies()));
@@ -70,27 +66,19 @@ public class CheckOutMovieOptionTest {
     public void testCheckoutMovieThatHasAlreadyBeenCheckedOut() throws Exception {
         CheckOutMovieOption option = new CheckOutMovieOption();
         String movieName = checkedOutMovies.get(0).getName();
-        setInput(movieName);
-        String feedback = option.execute(libraryStores);
+        TestUtilities.setInput(movieName);
+        String feedback = option.execute(null, libraryStores);
         assertEquals("That movie is not available.", feedback);
         assertFalse(movieNameExistsInCollection(movieName, libraryStores.getAvailableMovies()));
         assertTrue(movieNameExistsInCollection(movieName, libraryStores.getCheckedOutMovies()));
     }
 
     private boolean movieNameExistsInCollection(String name, Collection<LibraryMovie> collection) {
-        for(LibraryMovie movie : collection) {
-            if(movie.getName().equals(name)) {
+        for (LibraryMovie movie : collection) {
+            if (movie.getName().equals(name)) {
                 return true;
             }
         }
         return false;
-    }
-
-    private void redirectOutput(PrintStream printStream) {
-        System.setOut(printStream);
-    }
-
-    private void setInput(String input) {
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
     }
 }

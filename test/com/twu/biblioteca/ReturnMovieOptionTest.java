@@ -4,7 +4,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -33,21 +32,20 @@ public class ReturnMovieOptionTest {
         }};
         libraryMovieStore = new LibraryMovieStore(availableMovies, checkedOutMovies);
         libraryStores = new AllLibraryStores(libraryMovieStore);
-        redirectOutput(new PrintStream(new ByteArrayOutputStream()));
+        TestUtilities.redirectOutput();
     }
 
     @After
     public void tearDown() throws Exception {
-        System.setIn(new FileInputStream(FileDescriptor.in));
-        System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
+        TestUtilities.resetStreams();
     }
 
     @Test
     public void testReturnInvalidMovie() throws Exception {
         String invalidMovie = "Invalid Movie";
         ReturnMovieOption option = new ReturnMovieOption();
-        setInput(invalidMovie);
-        String feedback = option.execute(libraryStores);
+        TestUtilities.setInput(invalidMovie);
+        String feedback = option.execute(null, libraryStores);
         assertEquals("That is not a valid movie to return.", feedback);
         assertFalse(movieNameExistsInCollection(invalidMovie, libraryStores.getAvailableMovies()));
         assertFalse(movieNameExistsInCollection(invalidMovie, libraryStores.getCheckedOutMovies()));
@@ -57,8 +55,8 @@ public class ReturnMovieOptionTest {
     public void testReturnMovie() throws Exception {
         String movieNameToReturn = checkedOutMovies.get(0).getName();
         ReturnMovieOption option = new ReturnMovieOption();
-        setInput(movieNameToReturn);
-        String feedback = option.execute(libraryStores);
+        TestUtilities.setInput(movieNameToReturn);
+        String feedback = option.execute(null, libraryStores);
         assertEquals("Thank you for returning the movie.", feedback);
         assertTrue(movieNameExistsInCollection(movieNameToReturn, libraryStores.getAvailableMovies()));
         assertFalse(movieNameExistsInCollection(movieNameToReturn, libraryStores.getCheckedOutMovies()));
@@ -68,8 +66,8 @@ public class ReturnMovieOptionTest {
     public void testReturnAvailableMovie() throws Exception {
         String movieNameToReturn = availableMovies.get(0).getName();
         ReturnMovieOption option = new ReturnMovieOption();
-        setInput(movieNameToReturn);
-        String feedback = option.execute(libraryStores);
+        TestUtilities.setInput(movieNameToReturn);
+        String feedback = option.execute(null, libraryStores);
         assertEquals("That is not a valid movie to return.", feedback);
         assertTrue(movieNameExistsInCollection(movieNameToReturn, libraryStores.getAvailableMovies()));
         assertFalse(movieNameExistsInCollection(movieNameToReturn, libraryStores.getCheckedOutMovies()));
@@ -84,11 +82,4 @@ public class ReturnMovieOptionTest {
         return false;
     }
 
-    private void redirectOutput(PrintStream printStream) {
-        System.setOut(printStream);
-    }
-
-    private void setInput(String input) {
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
-    }
 }
