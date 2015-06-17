@@ -27,8 +27,7 @@ public class LoginOption extends MainMenuOption {
     }
 
     private boolean attemptLoginWithCredentials(UserAccountManager userAccountManager, LoginCredential loginCredential) {
-        boolean success = userAccountManager.login(loginCredential);
-        return success;
+        return userAccountManager.login(loginCredential);
     }
 
     private LoginCredential getLoginCredential(BufferedReader br) throws IOException {

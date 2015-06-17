@@ -21,9 +21,9 @@ public class LoginOptionTest {
     public void setUp() throws Exception {
         TestUtilities.redirectOutput();
         userAccounts = new HashMap<LoginCredential, User>() {{
-            put(new LoginCredential("000-0001", "password1"), new User());
-            put(new LoginCredential("000-0002", "password2"), new User());
-            put(new LoginCredential("000-0003", "password3"), new User());
+            put(new LoginCredential("000-0001", "password1"), new User("user1", "user1@user1.com", "11111111"));
+            put(new LoginCredential("000-0002", "password2"), new User("user2", "user2@user2.com", "22222222"));
+            put(new LoginCredential("000-0003", "password3"), new User("user3", "user3@user3.com", "33333333"));
         }};
         userAccountVault = new UserAccountVault(userAccounts);
     }
@@ -50,6 +50,21 @@ public class LoginOptionTest {
         TestUtilities.setInput("000-0001" + System.getProperty("line.separator") + "password1");
         String feedback = option.execute(userAccountManager, null);
         assertEquals("Login successful.", feedback);
-        assertNotNull(userAccountManager.getCurrentUser());
+        User currentUser = userAccountManager.getCurrentUser();
+        assertNotNull(currentUser);
+        assertEquals("user1", currentUser.getName());
+        assertEquals("user1@user1.com", currentUser.getEmail());
+        assertEquals("11111111", currentUser.getPhoneNumber());
+    }
+
+    @Test
+    public void testLoginWithWrongPassword() throws Exception {
+        LoginOption option = new LoginOption();
+        UserAccountManager userAccountManager = new UserAccountManager(userAccountVault);
+        TestUtilities.setInput("000-0001" + System.getProperty("line.separator") + "password2");
+        String feedback = option.execute(userAccountManager, null);
+        assertEquals("Invalid credentials.", feedback);
+        User currentUser = userAccountManager.getCurrentUser();
+        assertNull(currentUser);
     }
 }

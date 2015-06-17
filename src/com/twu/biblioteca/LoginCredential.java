@@ -4,11 +4,11 @@ package com.twu.biblioteca;
  * Created by aloysiusang on 17/6/15.
  */
 public class LoginCredential {
-    private final String username;
+    private final String libraryNumber;
     private final String password;
 
-    public LoginCredential(String username, String password) {
-        this.username = username;
+    public LoginCredential(String libraryNumber, String password) {
+        this.libraryNumber = libraryNumber;
         this.password = password;
     }
 
@@ -19,14 +19,14 @@ public class LoginCredential {
 
         LoginCredential that = (LoginCredential) o;
 
-        if (!username.equals(that.username)) return false;
+        if (!libraryNumber.equals(that.libraryNumber)) return false;
         return password.equals(that.password);
 
     }
 
     @Override
     public int hashCode() {
-        int result = username.hashCode();
+        int result = libraryNumber.hashCode();
         result = 31 * result + password.hashCode();
         return result;
     }

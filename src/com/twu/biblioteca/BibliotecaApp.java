@@ -29,8 +29,8 @@ public class BibliotecaApp {
         }};
 
         UserAccountVault userAccountVault = new UserAccountVault( new HashMap<LoginCredential, User>() {{
-            put(new LoginCredential("user1", "password1"), new User());
-            put(new LoginCredential("user2", "password2"), new User());
+            put(new LoginCredential("000-0001", "password1"), new User("user1", "user1@user1.com", "11111111"));
+            put(new LoginCredential("000-0002", "password2"), new User("user2", "user2@user2.com", "22222222"));
         }});
 
         userAccountManager = new UserAccountManager(userAccountVault);

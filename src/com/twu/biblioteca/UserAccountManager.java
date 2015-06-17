@@ -33,4 +33,9 @@ public class UserAccountManager {
             this.loginCredential = null;
     }
 
+    public String formatCurrentUser() {
+        if(currentUser==null)
+            return "No user is logged in.";
+        return currentUser.formatUserString(new UserInformationFormatter());
+    }
 }
