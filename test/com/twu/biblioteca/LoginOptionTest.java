@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -13,9 +14,18 @@ import static org.junit.Assert.*;
  */
 public class LoginOptionTest {
 
+    private UserAccountVault userAccountVault;
+    private Map<LoginCredential, User> userAccounts;
+
     @Before
     public void setUp() throws Exception {
         TestUtilities.redirectOutput();
+        userAccounts = new HashMap<LoginCredential, User>() {{
+            put(new LoginCredential("000-0001", "password1"), new User());
+            put(new LoginCredential("000-0002", "password2"), new User());
+            put(new LoginCredential("000-0003", "password3"), new User());
+        }};
+        userAccountVault = new UserAccountVault(userAccounts);
     }
 
     @After
@@ -26,7 +36,7 @@ public class LoginOptionTest {
     @Test
     public void testLoginWithInvalidCredentials() throws Exception {
         LoginOption option = new LoginOption();
-        UserAccountManager userAccountManager = new UserAccountManager();
+        UserAccountManager userAccountManager = new UserAccountManager(userAccountVault);
         TestUtilities.setInput("invaliduser" + System.getProperty("line.separator") + "invalidpassword");
         String feedback = option.execute(userAccountManager, null);
         assertEquals("Invalid credentials.",  feedback);
@@ -36,11 +46,7 @@ public class LoginOptionTest {
     @Test
     public void testLoginWithValidCredentials() throws Exception {
         LoginOption option = new LoginOption();
-        UserAccountManager userAccountManager = new UserAccountManager();
-        UserAccountVault userAccountVault = UserAccountVault.getInstance();
-        userAccountVault.setUserAccounts(new HashMap<LoginCredential, User>() {{
-            put(new LoginCredential("000-0001", "password1"), new User());
-        }});
+        UserAccountManager userAccountManager = new UserAccountManager(userAccountVault);
         TestUtilities.setInput("000-0001" + System.getProperty("line.separator") + "password1");
         String feedback = option.execute(userAccountManager, null);
         assertEquals("Login successful.", feedback);

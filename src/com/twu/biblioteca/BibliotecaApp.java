@@ -13,6 +13,7 @@ public class BibliotecaApp {
     private static final String MESSAGE_SELECT_OPTION = "Select an option: ";
     private static AllLibraryStores libraryStores;
     private static UserAccountManager userAccountManager;
+    private static UserAccountVault userAccountVault;
 
     static {
         ArrayList<LibraryBook> expectedBooks = new ArrayList<LibraryBook>() {{
@@ -27,13 +28,12 @@ public class BibliotecaApp {
             add(new LibraryMovie("Name 3", 2003, "Director 3", 3));
         }};
 
-        UserAccountVault userAccountVault = UserAccountVault.getInstance();
-        userAccountVault.setUserAccounts(new HashMap<LoginCredential, User>() {{
+        UserAccountVault userAccountVault = new UserAccountVault( new HashMap<LoginCredential, User>() {{
             put(new LoginCredential("user1", "password1"), new User());
             put(new LoginCredential("user2", "password2"), new User());
         }});
 
-        userAccountManager = new UserAccountManager();
+        userAccountManager = new UserAccountManager(userAccountVault);
 
         libraryStores = new AllLibraryStores(new LibraryBookStore(expectedBooks), new LibraryMovieStore(expectedMovies));
     }
