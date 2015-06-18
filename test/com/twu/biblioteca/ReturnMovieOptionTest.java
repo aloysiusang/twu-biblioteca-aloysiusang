@@ -47,8 +47,8 @@ public class ReturnMovieOptionTest {
         TestUtilities.setInput(invalidMovie);
         String feedback = option.execute(null, libraryStores);
         assertEquals("That is not a valid movie to return.", feedback);
-        assertFalse(movieNameExistsInCollection(invalidMovie, libraryStores.getAvailableMovies()));
-        assertFalse(movieNameExistsInCollection(invalidMovie, libraryStores.getCheckedOutMovies()));
+        assertFalse(TestUtilities.movieNameExistsInCollection(invalidMovie, libraryStores.getAvailableMovies()));
+        assertFalse(TestUtilities.movieNameExistsInCollection(invalidMovie, libraryStores.getCheckedOutMovies()));
     }
 
     @Test
@@ -58,8 +58,8 @@ public class ReturnMovieOptionTest {
         TestUtilities.setInput(movieNameToReturn);
         String feedback = option.execute(null, libraryStores);
         assertEquals("Thank you for returning the movie.", feedback);
-        assertTrue(movieNameExistsInCollection(movieNameToReturn, libraryStores.getAvailableMovies()));
-        assertFalse(movieNameExistsInCollection(movieNameToReturn, libraryStores.getCheckedOutMovies()));
+        assertTrue(TestUtilities.movieNameExistsInCollection(movieNameToReturn, libraryStores.getAvailableMovies()));
+        assertFalse(TestUtilities.movieNameExistsInCollection(movieNameToReturn, libraryStores.getCheckedOutMovies()));
     }
 
     @Test
@@ -69,17 +69,8 @@ public class ReturnMovieOptionTest {
         TestUtilities.setInput(movieNameToReturn);
         String feedback = option.execute(null, libraryStores);
         assertEquals("That is not a valid movie to return.", feedback);
-        assertTrue(movieNameExistsInCollection(movieNameToReturn, libraryStores.getAvailableMovies()));
-        assertFalse(movieNameExistsInCollection(movieNameToReturn, libraryStores.getCheckedOutMovies()));
-    }
-
-    private boolean movieNameExistsInCollection(String name, Collection<LibraryMovie> collection) {
-        for(LibraryMovie movie : collection) {
-            if(movie.getName().equals(name)) {
-                return true;
-            }
-        }
-        return false;
+        assertTrue(TestUtilities.movieNameExistsInCollection(movieNameToReturn, libraryStores.getAvailableMovies()));
+        assertFalse(TestUtilities.movieNameExistsInCollection(movieNameToReturn, libraryStores.getCheckedOutMovies()));
     }
 
 }

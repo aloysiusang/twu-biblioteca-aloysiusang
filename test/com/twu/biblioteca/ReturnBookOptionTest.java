@@ -55,8 +55,8 @@ public class ReturnBookOptionTest {
         TestUtilities.setInput(titleToReturn);
         String feedback = option.execute(null, libraryStores);
         assertEquals("Thank you for returning the book.", feedback);
-        assertTrue(bookTitleExistsInCollection(titleToReturn, libraryBookStore.getAvailableResource()));
-        assertFalse(bookTitleExistsInCollection(titleToReturn, libraryBookStore.getCheckedOutResource()));
+        assertTrue(TestUtilities.bookTitleExistsInCollection(titleToReturn, libraryBookStore.getAvailableResource()));
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToReturn, libraryBookStore.getCheckedOutResource()));
     }
 
     @Test
@@ -66,17 +66,8 @@ public class ReturnBookOptionTest {
         TestUtilities.setInput(titleToReturn);
         String feedback = option.execute(null, libraryStores);
         assertEquals("That is not a valid book to return.", feedback);
-        assertTrue(bookTitleExistsInCollection(titleToReturn, libraryBookStore.getAvailableResource()));
-        assertFalse(bookTitleExistsInCollection(titleToReturn, libraryBookStore.getCheckedOutResource()));
-    }
-
-    private boolean bookTitleExistsInCollection(String title, Collection<LibraryBook> collection) {
-        for(LibraryBook book : collection) {
-            if(book.getTitle().equals(title)) {
-                return true;
-            }
-        }
-        return false;
+        assertTrue(TestUtilities.bookTitleExistsInCollection(titleToReturn, libraryBookStore.getAvailableResource()));
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToReturn, libraryBookStore.getCheckedOutResource()));
     }
 
 }

@@ -44,8 +44,8 @@ public class LibraryMovieStoreTest {
         User user = new User("user2", "user2@user2.com", "22222222");
         boolean successfulCheckout = movieStore.checkoutResource(user, nameToCheckout, new MovieNameComparator());
         assertTrue(successfulCheckout);
-        assertFalse(movieNameExistsInCollection(nameToCheckout, movieStore.getAvailableResource()));
-        assertTrue(movieNameExistsInCollection(nameToCheckout, movieStore.getCheckedOutResource()));
+        assertFalse(TestUtilities.movieNameExistsInCollection(nameToCheckout, movieStore.getAvailableResource()));
+        assertTrue(TestUtilities.movieNameExistsInCollection(nameToCheckout, movieStore.getCheckedOutResource()));
         //TODO: check out movie with user
 //        assertEquals(user, movieStore.getUserWhoCheckedOutResource(nameToCheckout, new MovieNameComparator()));
     }
@@ -56,16 +56,7 @@ public class LibraryMovieStoreTest {
         String titleToReturn = checkedOutMovies.get(0).getName();
         boolean successfulCheckout = movieStore.returnResource(titleToReturn, new MovieNameComparator());
         assertTrue(successfulCheckout);
-        assertTrue(movieNameExistsInCollection(titleToReturn, movieStore.getAvailableResource()));
-        assertFalse(movieNameExistsInCollection(titleToReturn, movieStore.getCheckedOutResource()));
-    }
-
-    private boolean movieNameExistsInCollection(String name, Collection<LibraryMovie> collection) {
-        for(LibraryMovie movie : collection) {
-            if(movie.getName().equals(name)) {
-                return true;
-            }
-        }
-        return false;
+        assertTrue(TestUtilities.movieNameExistsInCollection(titleToReturn, movieStore.getAvailableResource()));
+        assertFalse(TestUtilities.movieNameExistsInCollection(titleToReturn, movieStore.getCheckedOutResource()));
     }
 }

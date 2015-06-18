@@ -48,6 +48,8 @@ public class LibraryBookStoreTest {
         BookTitleComparator comparator = new BookTitleComparator();
         boolean successfulCheckout = lib.checkoutResource(null, titleToCheckout, comparator);
         assertFalse(successfulCheckout);
+        assertTrue(TestUtilities.bookTitleExistsInCollection(titleToCheckout, lib.getAvailableResource()));
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToCheckout, lib.getCheckedOutResource()));
         User retrievedUser = lib.getUserWhoCheckedOutResource(titleToCheckout, comparator);
         assertNull(retrievedUser);
     }
@@ -60,6 +62,8 @@ public class LibraryBookStoreTest {
         BookTitleComparator comparator = new BookTitleComparator();
         boolean successfulCheckout = lib.checkoutResource(user, titleToCheckout, comparator);
         assertTrue(successfulCheckout);
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToCheckout, lib.getAvailableResource()));
+        assertTrue(TestUtilities.bookTitleExistsInCollection(titleToCheckout, lib.getCheckedOutResource()));
         User retrievedUser = lib.getUserWhoCheckedOutResource(titleToCheckout, comparator);
         assertEquals(user, retrievedUser);
     }
@@ -73,11 +77,15 @@ public class LibraryBookStoreTest {
         BookTitleComparator comparator = new BookTitleComparator();
         boolean successfulCheckout = lib.checkoutResource(firstUser, titleToCheckout, comparator);
         assertTrue(successfulCheckout);
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToCheckout, lib.getAvailableResource()));
+        assertTrue(TestUtilities.bookTitleExistsInCollection(titleToCheckout, lib.getCheckedOutResource()));
         User retrievedUser = lib.getUserWhoCheckedOutResource(titleToCheckout, comparator);
         assertEquals(firstUser, retrievedUser);
 
         successfulCheckout = lib.checkoutResource(secondUser, titleToCheckout, comparator);
         assertFalse(successfulCheckout);
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToCheckout, lib.getAvailableResource()));
+        assertTrue(TestUtilities.bookTitleExistsInCollection(titleToCheckout, lib.getCheckedOutResource()));
         retrievedUser = lib.getUserWhoCheckedOutResource(titleToCheckout, comparator);
         assertEquals(firstUser, retrievedUser);
     }
@@ -90,6 +98,8 @@ public class LibraryBookStoreTest {
         BookTitleComparator comparator = new BookTitleComparator();
         boolean successfulCheckout = lib.checkoutResource(user, titleToCheckout, comparator);
         assertFalse(successfulCheckout);
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToCheckout, lib.getAvailableResource()));
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToCheckout, lib.getCheckedOutResource()));
         User retrievedUser = lib.getUserWhoCheckedOutResource(titleToCheckout, comparator);
         assertNull(retrievedUser);
     }

@@ -54,8 +54,8 @@ public class CheckOutBookOptionTest {
         String feedback = option.execute(new UserAccountManagerValidStub1(), libraryStores);
         assertEquals("That book is not available.", feedback);
 
-        assertFalse(bookTitleExistsInCollection(titleToCheckout, libraryStores.getCheckedOutBooks()));
-        assertFalse(bookTitleExistsInCollection(titleToCheckout, libraryStores.getAvailableBooks()));
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToCheckout, libraryStores.getCheckedOutBooks()));
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToCheckout, libraryStores.getAvailableBooks()));
         User user = libraryStores.getUserWhoCheckedOutBook(titleToCheckout, new BookTitleComparator());
         assertNull(user);
     }
@@ -69,8 +69,8 @@ public class CheckOutBookOptionTest {
         String feedback = option.execute(new UserAccountManagerInvalidStub(), libraryStores);
         assertEquals("That book is not available.", feedback);
 
-        assertFalse(bookTitleExistsInCollection(titleToCheckout, libraryStores.getCheckedOutBooks()));
-        assertTrue(bookTitleExistsInCollection(titleToCheckout, libraryStores.getAvailableBooks()));
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToCheckout, libraryStores.getCheckedOutBooks()));
+        assertTrue(TestUtilities.bookTitleExistsInCollection(titleToCheckout, libraryStores.getAvailableBooks()));
         User user = libraryStores.getUserWhoCheckedOutBook(titleToCheckout, new BookTitleComparator());
         assertNull(user);
     }
@@ -84,8 +84,8 @@ public class CheckOutBookOptionTest {
         String feedback = option.execute(new UserAccountManagerValidStub1(), libraryStores);
 
         assertEquals("Thank you! Enjoy the book", feedback);
-        assertFalse(bookTitleExistsInCollection(titleToCheckout, libraryStores.getAvailableBooks()));
-        assertTrue(bookTitleExistsInCollection(titleToCheckout, libraryStores.getCheckedOutBooks()));
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToCheckout, libraryStores.getAvailableBooks()));
+        assertTrue(TestUtilities.bookTitleExistsInCollection(titleToCheckout, libraryStores.getCheckedOutBooks()));
         User retrievedUser = libraryStores.getUserWhoCheckedOutBook(titleToCheckout, new BookTitleComparator());
         assertEquals(stubUser1, retrievedUser);
     }
@@ -97,27 +97,18 @@ public class CheckOutBookOptionTest {
         TestUtilities.setInput(titleToCheckout);
         String feedback = option.execute(new UserAccountManagerValidStub1(), libraryStores);
         assertEquals("Thank you! Enjoy the book", feedback);
-        assertFalse(bookTitleExistsInCollection(titleToCheckout, libraryStores.getAvailableBooks()));
-        assertTrue(bookTitleExistsInCollection(titleToCheckout, libraryStores.getCheckedOutBooks()));
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToCheckout, libraryStores.getAvailableBooks()));
+        assertTrue(TestUtilities.bookTitleExistsInCollection(titleToCheckout, libraryStores.getCheckedOutBooks()));
         User retrievedUser = libraryStores.getUserWhoCheckedOutBook(titleToCheckout, new BookTitleComparator());
         assertEquals(stubUser1, retrievedUser);
 
         TestUtilities.setInput(titleToCheckout);
         feedback = option.execute(new UserAccountManagerValidStub2(), libraryStores);
         assertEquals("That book is not available.", feedback);
-        assertFalse(bookTitleExistsInCollection(titleToCheckout, libraryStores.getAvailableBooks()));
-        assertTrue(bookTitleExistsInCollection(titleToCheckout, libraryStores.getCheckedOutBooks()));
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToCheckout, libraryStores.getAvailableBooks()));
+        assertTrue(TestUtilities.bookTitleExistsInCollection(titleToCheckout, libraryStores.getCheckedOutBooks()));
         retrievedUser = libraryStores.getUserWhoCheckedOutBook(titleToCheckout, new BookTitleComparator());
         assertEquals(stubUser1, retrievedUser);
-    }
-
-    private boolean bookTitleExistsInCollection(String title, Collection<LibraryBook> collection) {
-        for (LibraryBook book : collection) {
-            if (book.getTitle().equals(title)) {
-                return true;
-            }
-        }
-        return false;
     }
 
     private class UserAccountManagerValidStub1 extends UserAccountManager {

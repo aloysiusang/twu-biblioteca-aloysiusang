@@ -49,8 +49,8 @@ public class CheckOutMovieOptionTest {
         TestUtilities.setInput(invalidMovieName);
         String feedback = option.execute(new UserAccountManagerValidStub(), libraryStores);
         assertEquals("That movie is not available.", feedback);
-        assertFalse(movieNameExistsInCollection(invalidMovieName, libraryStores.getAvailableMovies()));
-        assertFalse(movieNameExistsInCollection(invalidMovieName, libraryStores.getCheckedOutMovies()));
+        assertFalse(TestUtilities.movieNameExistsInCollection(invalidMovieName, libraryStores.getAvailableMovies()));
+        assertFalse(TestUtilities.movieNameExistsInCollection(invalidMovieName, libraryStores.getCheckedOutMovies()));
     }
 
     @Test
@@ -60,8 +60,8 @@ public class CheckOutMovieOptionTest {
         TestUtilities.setInput(movieName);
         String feedback = option.execute(new UserAccountManagerValidStub(), libraryStores);
         assertEquals("Thank you! Enjoy the movie", feedback);
-        assertFalse(movieNameExistsInCollection(movieName, libraryStores.getAvailableMovies()));
-        assertTrue(movieNameExistsInCollection(movieName, libraryStores.getCheckedOutMovies()));
+        assertFalse(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getAvailableMovies()));
+        assertTrue(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getCheckedOutMovies()));
         //TODO: check for user who checked out movie
     }
 
@@ -72,18 +72,9 @@ public class CheckOutMovieOptionTest {
         TestUtilities.setInput(movieName);
         String feedback = option.execute(new UserAccountManagerValidStub(), libraryStores);
         assertEquals("That movie is not available.", feedback);
-        assertFalse(movieNameExistsInCollection(movieName, libraryStores.getAvailableMovies()));
-        assertTrue(movieNameExistsInCollection(movieName, libraryStores.getCheckedOutMovies()));
+        assertFalse(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getAvailableMovies()));
+        assertTrue(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getCheckedOutMovies()));
         //TODO:  user1 checks out movie, user2 checks out same movie and fails => check that movie is still recorded to be checked out by user1
-    }
-
-    private boolean movieNameExistsInCollection(String name, Collection<LibraryMovie> collection) {
-        for (LibraryMovie movie : collection) {
-            if (movie.getName().equals(name)) {
-                return true;
-            }
-        }
-        return false;
     }
 
     private class UserAccountManagerValidStub extends UserAccountManager {
