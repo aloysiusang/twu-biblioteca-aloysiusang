@@ -65,4 +65,8 @@ public class AllLibraryStores {
     public User getUserWhoCheckedOutBook(String titleToCheckout, BookTitleComparator bookTitleComparator) {
         return bookStore.getUserWhoCheckedOutResource(titleToCheckout, bookTitleComparator);
     }
+
+    public User getUserWhoCheckedOutMovie(String movieName, MovieNameComparator movieNameComparator) {
+        return movieStore.getUserWhoCheckedOutResource(movieName, movieNameComparator);
+    }
 }

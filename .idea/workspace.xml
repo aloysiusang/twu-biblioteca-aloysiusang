@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e570fb16-02bf-42a0-ac96-3cb161b66dce" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/LibraryBookStoreTest.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/LibraryBookStoreTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/LibraryMovieStoreTest.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/LibraryMovieStoreTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/LibraryStoreTemplate.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/LibraryStoreTemplate.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/AllLibraryStores.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/AllLibraryStores.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/CheckOutBookOptionTest.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/CheckOutBookOptionTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/CheckOutMovieOptionTest.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/CheckOutMovieOptionTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/ReturnBookOptionTest.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/ReturnBookOptionTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/ReturnMovieOptionTest.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/ReturnMovieOptionTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="biblioteca.iws" />
@@ -27,87 +29,120 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LibraryStoreTemplate.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/LibraryStoreTemplate.java">
+      <file leaf-file-name="CheckOutBookOptionTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/CheckOutBookOptionTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.69473684">
-              <caret line="68" column="4" selection-start-line="68" selection-start-column="4" selection-end-line="68" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="60" column="40" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
               <folding>
-                <element signature="docComment;class#LibraryStoreTemplate#0" expanded="false" />
-                <element signature="method#LibraryStoreTemplate#0;class#LibraryStoreTemplate#0" expanded="false" />
-                <element signature="method#LibraryStoreTemplate#1;class#LibraryStoreTemplate#0" expanded="false" />
-                <element signature="method#returnResource#0;class#LibraryStoreTemplate#0" expanded="false" />
-                <element signature="method#checkoutResource#0;class#LibraryStoreTemplate#0" expanded="false" />
-                <element signature="method#getUserWhoCheckedOutResource#0;class#LibraryStoreTemplate#0" expanded="false" />
-                <element signature="method#moveResource#0;class#LibraryStoreTemplate#0" expanded="false" />
-                <element signature="method#logCheckout#0;class#LibraryStoreTemplate#0" expanded="false" />
-                <element signature="method#findMatchingResource#0;class#LibraryStoreTemplate#0" expanded="false" />
+                <element signature="docComment;class#CheckOutBookOptionTest#0" expanded="false" />
+                <element signature="method#setUp#0;class#CheckOutBookOptionTest#0" expanded="false" />
+                <element signature="class#589:813" expanded="false" />
+                <element signature="initializer##0;class#589:813" expanded="false" />
+                <element signature="method#tearDown#0;class#CheckOutBookOptionTest#0" expanded="false" />
+                <element signature="method#testCheckoutInvalidBook#0;class#CheckOutBookOptionTest#0" expanded="false" />
+                <element signature="method#testCheckoutBookWithNullUser#0;class#CheckOutBookOptionTest#0" expanded="false" />
+                <element signature="method#testCheckoutBookWithValidUser#0;class#CheckOutBookOptionTest#0" expanded="false" />
+                <element signature="method#testCheckoutBookThatHasAlreadyBeenCheckedOut#0;class#CheckOutBookOptionTest#0" expanded="false" />
+                <element signature="class#UserAccountManagerStub#0;class#CheckOutBookOptionTest#0" expanded="false" />
+                <element signature="method#UserAccountManagerStub#0;class#UserAccountManagerStub#0;class#CheckOutBookOptionTest#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LibraryMovieStoreTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/LibraryMovieStoreTest.java">
+      <file leaf-file-name="ReturnBookOptionTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/ReturnBookOptionTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="105" column="5" selection-start-line="105" selection-start-column="5" selection-end-line="105" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.7473684">
+              <caret line="92" column="34" selection-start-line="92" selection-start-column="34" selection-end-line="92" selection-end-column="34" />
               <folding>
-                <element signature="docComment;class#LibraryMovieStoreTest#0" expanded="false" />
-                <element signature="method#setUp#0;class#LibraryMovieStoreTest#0" expanded="false" />
-                <element signature="class#386:629" expanded="false" />
-                <element signature="initializer##0;class#386:629" expanded="false" />
-                <element signature="method#testGetAllMoviesWhenThereAreNoMovies#0;class#LibraryMovieStoreTest#0" expanded="false" />
-                <element signature="method#testGetAllMovies#0;class#LibraryMovieStoreTest#0" expanded="false" />
-                <element signature="method#testCheckoutMovieWithNoUser#0;class#LibraryMovieStoreTest#0" expanded="false" />
-                <element signature="method#testCheckoutMovieWithUser#0;class#LibraryMovieStoreTest#0" expanded="false" />
-                <element signature="method#testCheckoutMovieThatHasBeenCheckedOut#0;class#LibraryMovieStoreTest#0" expanded="false" />
-                <element signature="method#testCheckoutInvalidMovie#0;class#LibraryMovieStoreTest#0" expanded="false" />
-                <element signature="method#testReturnInvalidMovie#0;class#LibraryMovieStoreTest#0" expanded="false" />
-                <element signature="method#testReturnAvailableMovie#0;class#LibraryMovieStoreTest#0" expanded="false" />
-                <element signature="method#testCheckoutWithUserReturnMovieWithoutUser#0;class#LibraryMovieStoreTest#0" expanded="false" />
-                <element signature="method#testCheckoutWithUserReturnMovieWithAnotherUser#0;class#LibraryMovieStoreTest#0" expanded="false" />
-                <element signature="method#testCheckoutAndReturnWithSameUser#0;class#LibraryMovieStoreTest#0" expanded="false" />
+                <element signature="docComment;class#ReturnBookOptionTest#0" expanded="false" />
+                <element signature="method#setUp#0;class#ReturnBookOptionTest#0" expanded="false" />
+                <element signature="class#557:781" expanded="false" />
+                <element signature="initializer##0;class#557:781" expanded="false" />
+                <element signature="method#tearDown#0;class#ReturnBookOptionTest#0" expanded="false" />
+                <element signature="method#testReturnInvalidBook#0;class#ReturnBookOptionTest#0" expanded="false" />
+                <element signature="method#testCheckoutAndReturnBook#0;class#ReturnBookOptionTest#0" expanded="false" />
+                <element signature="method#testReturnAvailableBook#0;class#ReturnBookOptionTest#0" expanded="false" />
+                <element signature="class#UserAccountManagerStub#0;class#ReturnBookOptionTest#0" expanded="false" />
+                <element signature="method#UserAccountManagerStub#0;class#UserAccountManagerStub#0;class#ReturnBookOptionTest#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/User.java">
+      <file leaf-file-name="UserAccountManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/UserAccountManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+              <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
               <folding>
-                <element signature="docComment;class#User#0" expanded="false" />
-                <element signature="method#User#0;class#User#0" expanded="false" />
-                <element signature="method#formatUserString#0;class#User#0" expanded="false" />
+                <element signature="method#login#0;class#UserAccountManager#0" expanded="false" />
+                <element signature="method#updateCurrentUser#0;class#UserAccountManager#0" expanded="false" />
+                <element signature="method#updateLoginCredential#0;class#UserAccountManager#0" expanded="false" />
+                <element signature="method#formatCurrentUser#0;class#UserAccountManager#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LibraryBookStoreTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/LibraryBookStoreTest.java">
+      <file leaf-file-name="UserAccountManagerTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/UserAccountManagerTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="192" selection-end-column="0" />
+              <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
               <folding>
-                <element signature="docComment;class#LibraryBookStoreTest#0" expanded="false" />
-                <element signature="method#setUp#0;class#LibraryBookStoreTest#0" expanded="false" />
-                <element signature="class#382:606" expanded="false" />
-                <element signature="initializer##0;class#382:606" expanded="false" />
-                <element signature="method#testGetAllBooksWhenThereAreNoBooks#0;class#LibraryBookStoreTest#0" expanded="false" />
-                <element signature="method#testGetAllBooks#0;class#LibraryBookStoreTest#0" expanded="false" />
-                <element signature="method#testCheckoutBookWithNoUser#0;class#LibraryBookStoreTest#0" expanded="false" />
-                <element signature="method#testCheckoutBookWithUser#0;class#LibraryBookStoreTest#0" expanded="false" />
-                <element signature="method#testCheckoutBookThatHasBeenCheckedOut#0;class#LibraryBookStoreTest#0" expanded="false" />
-                <element signature="method#testCheckoutInvalidBook#0;class#LibraryBookStoreTest#0" expanded="false" />
-                <element signature="method#testReturnInvalidBook#0;class#LibraryBookStoreTest#0" expanded="false" />
-                <element signature="method#testReturnAvailableBook#0;class#LibraryBookStoreTest#0" expanded="false" />
-                <element signature="method#testCheckoutWithUserReturnBookWithoutUser#0;class#LibraryBookStoreTest#0" expanded="false" />
-                <element signature="method#testCheckoutWithUserReturnBookWithAnotherUser#0;class#LibraryBookStoreTest#0" expanded="false" />
-                <element signature="method#testCheckoutAndReturnWithSameUser#0;class#LibraryBookStoreTest#0" expanded="false" />
+                <element signature="docComment;class#UserAccountManagerTest#0" expanded="false" />
+                <element signature="method#setUp#0;class#UserAccountManagerTest#0" expanded="false" />
+                <element signature="method#testLoginWithStubVault#0;class#UserAccountManagerTest#0" expanded="false" />
+                <element signature="method#testLoginWithWrongCredentialsWithStubVault#0;class#UserAccountManagerTest#0" expanded="false" />
+                <element signature="class#UserAccountVaultStub#0;class#UserAccountManagerTest#0" expanded="false" />
+                <element signature="method#retrieveUser#0;class#UserAccountVaultStub#0;class#UserAccountManagerTest#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CheckOutMovieOptionTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/CheckOutMovieOptionTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="121" column="0" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+              <folding>
+                <element signature="docComment;class#CheckOutMovieOptionTest#0" expanded="false" />
+                <element signature="method#setUp#0;class#CheckOutMovieOptionTest#0" expanded="false" />
+                <element signature="class#594:837" expanded="false" />
+                <element signature="initializer##0;class#594:837" expanded="false" />
+                <element signature="method#tearDown#0;class#CheckOutMovieOptionTest#0" expanded="false" />
+                <element signature="method#testCheckoutMovieWithoutUser#0;class#CheckOutMovieOptionTest#0" expanded="false" />
+                <element signature="method#testCheckOutInvalidMovie#0;class#CheckOutMovieOptionTest#0" expanded="false" />
+                <element signature="method#testCheckoutMovie#0;class#CheckOutMovieOptionTest#0" expanded="false" />
+                <element signature="method#testCheckoutMovieThatHasAlreadyBeenCheckedOut#0;class#CheckOutMovieOptionTest#0" expanded="false" />
+                <element signature="class#UserAccountManagerStub#0;class#CheckOutMovieOptionTest#0" expanded="false" />
+                <element signature="method#UserAccountManagerStub#0;class#UserAccountManagerStub#0;class#CheckOutMovieOptionTest#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AllLibraryStores.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/AllLibraryStores.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="68" column="101" selection-start-line="68" selection-start-column="101" selection-end-line="68" selection-end-column="101" />
+              <folding>
+                <element signature="docComment;class#AllLibraryStores#0" expanded="false" />
+                <element signature="method#AllLibraryStores#0;class#AllLibraryStores#0" expanded="false" />
+                <element signature="method#AllLibraryStores#1;class#AllLibraryStores#0" expanded="false" />
+                <element signature="method#AllLibraryStores#2;class#AllLibraryStores#0" expanded="false" />
+                <element signature="method#AllLibraryStores#3;class#AllLibraryStores#0" expanded="false" />
+                <element signature="method#returnBook#0;class#AllLibraryStores#0" expanded="false" />
+                <element signature="method#checkoutBook#0;class#AllLibraryStores#0" expanded="false" />
+                <element signature="method#checkoutMovie#0;class#AllLibraryStores#0" expanded="false" />
+                <element signature="method#returnMovie#0;class#AllLibraryStores#0" expanded="false" />
+                <element signature="method#getUserWhoCheckedOutBook#0;class#AllLibraryStores#0" expanded="false" />
+                <element signature="method#getUserWhoCheckedOutMovie#0;class#AllLibraryStores#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -147,7 +182,6 @@
         <option value="$PROJECT_DIR$/src/com/twu/biblioteca/UserCredentialVault.java" />
         <option value="$PROJECT_DIR$/src/com/twu/biblioteca/QuitOption.java" />
         <option value="$PROJECT_DIR$/src/com/twu/biblioteca/ListMoviesOption.java" />
-        <option value="$PROJECT_DIR$/test/com/twu/biblioteca/BibliotecaAppTest.java" />
         <option value="$PROJECT_DIR$/src/com/twu/biblioteca/MainMenuOption.java" />
         <option value="$PROJECT_DIR$/src/com/twu/biblioteca/ListBooksOption.java" />
         <option value="$PROJECT_DIR$/src/com/twu/biblioteca/UserAccountVault.java" />
@@ -171,20 +205,21 @@
         <option value="$PROJECT_DIR$/src/com/twu/biblioteca/CheckOutBookOption.java" />
         <option value="$PROJECT_DIR$/src/com/twu/biblioteca/LibraryBookFormatter.java" />
         <option value="$PROJECT_DIR$/src/com/twu/biblioteca/LibraryMovieFormatter.java" />
-        <option value="$PROJECT_DIR$/test/com/twu/biblioteca/TestUtilities.java" />
         <option value="$PROJECT_DIR$/src/com/twu/biblioteca/ReturnBookOption.java" />
         <option value="$PROJECT_DIR$/src/com/twu/biblioteca/ReturnMovieOption.java" />
         <option value="$PROJECT_DIR$/src/com/twu/biblioteca/LibraryMovieStore.java" />
         <option value="$PROJECT_DIR$/src/com/twu/biblioteca/LibraryBookStore.java" />
-        <option value="$PROJECT_DIR$/test/com/twu/biblioteca/ReturnMovieOptionTest.java" />
-        <option value="$PROJECT_DIR$/test/com/twu/biblioteca/CheckOutBookOptionTest.java" />
-        <option value="$PROJECT_DIR$/test/com/twu/biblioteca/CheckOutMovieOptionTest.java" />
-        <option value="$PROJECT_DIR$/src/com/twu/biblioteca/AllLibraryStores.java" />
-        <option value="$PROJECT_DIR$/test/com/twu/biblioteca/ReturnBookOptionTest.java" />
         <option value="$PROJECT_DIR$/src/com/twu/biblioteca/User.java" />
         <option value="$PROJECT_DIR$/src/com/twu/biblioteca/LibraryStoreTemplate.java" />
         <option value="$PROJECT_DIR$/test/com/twu/biblioteca/LibraryBookStoreTest.java" />
         <option value="$PROJECT_DIR$/test/com/twu/biblioteca/LibraryMovieStoreTest.java" />
+        <option value="$PROJECT_DIR$/test/com/twu/biblioteca/BibliotecaAppTest.java" />
+        <option value="$PROJECT_DIR$/test/com/twu/biblioteca/TestUtilities.java" />
+        <option value="$PROJECT_DIR$/test/com/twu/biblioteca/ReturnMovieOptionTest.java" />
+        <option value="$PROJECT_DIR$/src/com/twu/biblioteca/AllLibraryStores.java" />
+        <option value="$PROJECT_DIR$/test/com/twu/biblioteca/CheckOutBookOptionTest.java" />
+        <option value="$PROJECT_DIR$/test/com/twu/biblioteca/CheckOutMovieOptionTest.java" />
+        <option value="$PROJECT_DIR$/test/com/twu/biblioteca/ReturnBookOptionTest.java" />
       </list>
     </option>
   </component>
@@ -289,7 +324,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../TEST" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
@@ -318,11 +353,11 @@
     <property name="FullScreen" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="com.twu.biblioteca" />
-    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.twu.biblioteca" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.twu.biblioteca" />
@@ -561,12 +596,12 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933334" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933334" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32933334" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32933334" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933334" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -722,13 +757,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/BibliotecaAppTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/UserMainMenu.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -752,14 +780,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33240998">
           <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/CheckOutMovieOption.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.50526315">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -796,32 +816,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49473685">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-          <folding>
-            <element signature="method#main#0;class#BibliotecaApp#0" expanded="false" />
-            <element signature="method#start#0;class#BibliotecaApp#0" expanded="false" />
-            <element signature="method#printMainMenu#0;class#BibliotecaApp#0" expanded="false" />
-            <element signature="method#getInput#0;class#BibliotecaApp#0" expanded="false" />
-            <element signature="method#printFeedback#0;class#BibliotecaApp#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/MainMenuOption.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="31" column="27" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/CheckOutBookOption.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -831,17 +829,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/UserAccountManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <element signature="method#updateCurrentUser#0;class#UserAccountManager#0" expanded="false" />
-            <element signature="method#updateLoginCredential#0;class#UserAccountManager#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -885,14 +872,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/UserAccountManagerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/UserInformationOptionTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -917,19 +896,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/TestUtilities.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#TestUtilities#0" expanded="false" />
-            <element signature="method#resetStreams#0;class#TestUtilities#0" expanded="false" />
-            <element signature="method#bookTitleExistsInCollection#0;class#TestUtilities#0" expanded="false" />
-            <element signature="method#movieNameExistsInCollection#0;class#TestUtilities#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/ReturnBookOption.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.50526315">
@@ -949,62 +915,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/CheckOutBookOptionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
-          <folding>
-            <element signature="docComment;class#CheckOutBookOptionTest#0" expanded="false" />
-            <element signature="class#563:787" expanded="false" />
-            <element signature="initializer##0;class#563:787" expanded="false" />
-            <element signature="method#tearDown#0;class#CheckOutBookOptionTest#0" expanded="false" />
-            <element signature="method#testCheckoutInvalidBook#0;class#CheckOutBookOptionTest#0" expanded="false" />
-            <element signature="method#testCheckoutBookWithInvalidUser#0;class#CheckOutBookOptionTest#0" expanded="false" />
-            <element signature="method#testCheckoutBookWithValidUser#0;class#CheckOutBookOptionTest#0" expanded="false" />
-            <element signature="method#testCheckoutBookThatHasAlreadyBeenCheckedOut#0;class#CheckOutBookOptionTest#0" expanded="false" />
-            <element signature="class#UserAccountManagerValidStub1#0;class#CheckOutBookOptionTest#0" expanded="false" />
-            <element signature="class#UserAccountManagerValidStub2#0;class#CheckOutBookOptionTest#0" expanded="false" />
-            <element signature="class#UserAccountManagerInvalidStub#0;class#CheckOutBookOptionTest#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/LibraryBookStore.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/CheckOutMovieOptionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="65" column="45" selection-start-line="65" selection-start-column="45" selection-end-line="65" selection-end-column="45" />
-          <folding>
-            <element signature="docComment;class#CheckOutMovieOptionTest#0" expanded="false" />
-            <element signature="class#539:782" expanded="false" />
-            <element signature="initializer##0;class#539:782" expanded="false" />
-            <element signature="method#tearDown#0;class#CheckOutMovieOptionTest#0" expanded="false" />
-            <element signature="class#UserAccountManagerValidStub#0;class#CheckOutMovieOptionTest#0" expanded="false" />
-            <element signature="class#UserAccountManagerInvalidStub#0;class#CheckOutMovieOptionTest#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/AllLibraryStores.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="67" selection-start-line="37" selection-start-column="67" selection-end-line="37" selection-end-column="67" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;class#AllLibraryStores#0" expanded="false" />
-            <element signature="method#AllLibraryStores#0;class#AllLibraryStores#0" expanded="false" />
-            <element signature="method#AllLibraryStores#2;class#AllLibraryStores#0" expanded="false" />
-            <element signature="method#AllLibraryStores#3;class#AllLibraryStores#0" expanded="false" />
-            <element signature="method#checkoutMovie#0;class#AllLibraryStores#0" expanded="false" />
-            <element signature="method#getUserWhoCheckedOutBook#0;class#AllLibraryStores#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1016,37 +931,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/ReturnMovieOptionTest.java">
+    <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/BibliotecaAppTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="55" column="70" selection-start-line="55" selection-start-column="70" selection-end-line="55" selection-end-column="70" />
+          <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/LibraryStoreTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="68" column="4" selection-start-line="68" selection-start-column="4" selection-end-line="68" selection-end-column="4" />
           <folding>
-            <element signature="docComment;class#ReturnMovieOptionTest#0" expanded="false" />
-            <element signature="class#537:780" expanded="false" />
-            <element signature="initializer##0;class#537:780" expanded="false" />
-            <element signature="class#UserAccountManagerValidStub#0;class#ReturnMovieOptionTest#0" expanded="false" />
-            <element signature="class#UserAccountManagerInvalidStub#0;class#ReturnMovieOptionTest#0" expanded="false" />
+            <element signature="docComment;class#LibraryStoreTemplate#0" expanded="false" />
+            <element signature="method#LibraryStoreTemplate#0;class#LibraryStoreTemplate#0" expanded="false" />
+            <element signature="method#LibraryStoreTemplate#1;class#LibraryStoreTemplate#0" expanded="false" />
+            <element signature="method#returnResource#0;class#LibraryStoreTemplate#0" expanded="false" />
+            <element signature="method#checkoutResource#0;class#LibraryStoreTemplate#0" expanded="false" />
+            <element signature="method#getUserWhoCheckedOutResource#0;class#LibraryStoreTemplate#0" expanded="false" />
+            <element signature="method#moveResource#0;class#LibraryStoreTemplate#0" expanded="false" />
+            <element signature="method#logCheckout#0;class#LibraryStoreTemplate#0" expanded="false" />
+            <element signature="method#findMatchingResource#0;class#LibraryStoreTemplate#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/ReturnBookOptionTest.java">
+    <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="64" selection-start-line="27" selection-start-column="64" selection-end-line="27" selection-end-column="64" />
+          <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
           <folding>
-            <element signature="docComment;class#ReturnBookOptionTest#0" expanded="false" />
-            <element signature="method#tearDown#0;class#ReturnBookOptionTest#0" expanded="false" />
-            <element signature="class#UserAccountManagerValidStub#0;class#ReturnBookOptionTest#0" expanded="false" />
-            <element signature="class#UserAccountManagerInvalidStub#0;class#ReturnBookOptionTest#0" expanded="false" />
+            <element signature="docComment;class#User#0" expanded="false" />
+            <element signature="method#User#0;class#User#0" expanded="false" />
+            <element signature="method#formatUserString#0;class#User#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/LibraryBookStoreTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="192" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.77894735">
+          <caret line="192" column="0" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#LibraryBookStoreTest#0" expanded="false" />
             <element signature="method#setUp#0;class#LibraryBookStoreTest#0" expanded="false" />
@@ -1067,10 +993,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/TestUtilities.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#TestUtilities#0" expanded="false" />
+            <element signature="method#resetStreams#0;class#TestUtilities#0" expanded="false" />
+            <element signature="method#bookTitleExistsInCollection#0;class#TestUtilities#0" expanded="false" />
+            <element signature="method#movieNameExistsInCollection#0;class#TestUtilities#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/CheckOutMovieOption.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.50526315">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/LibraryMovieStoreTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="105" column="5" selection-start-line="105" selection-start-column="5" selection-end-line="105" selection-end-column="5" />
+          <caret line="51" column="32" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="32" />
           <folding>
             <element signature="docComment;class#LibraryMovieStoreTest#0" expanded="false" />
             <element signature="method#setUp#0;class#LibraryMovieStoreTest#0" expanded="false" />
@@ -1078,7 +1025,6 @@
             <element signature="initializer##0;class#386:629" expanded="false" />
             <element signature="method#testGetAllMoviesWhenThereAreNoMovies#0;class#LibraryMovieStoreTest#0" expanded="false" />
             <element signature="method#testGetAllMovies#0;class#LibraryMovieStoreTest#0" expanded="false" />
-            <element signature="method#testCheckoutMovieWithNoUser#0;class#LibraryMovieStoreTest#0" expanded="false" />
             <element signature="method#testCheckoutMovieWithUser#0;class#LibraryMovieStoreTest#0" expanded="false" />
             <element signature="method#testCheckoutMovieThatHasBeenCheckedOut#0;class#LibraryMovieStoreTest#0" expanded="false" />
             <element signature="method#testCheckoutInvalidMovie#0;class#LibraryMovieStoreTest#0" expanded="false" />
@@ -1091,32 +1037,157 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/User.java">
+    <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/CheckOutBookOption.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.5368421">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4105263">
+          <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
           <folding>
-            <element signature="docComment;class#User#0" expanded="false" />
-            <element signature="method#User#0;class#User#0" expanded="false" />
-            <element signature="method#formatUserString#0;class#User#0" expanded="false" />
+            <element signature="initializer##0;class#BibliotecaApp#0" expanded="false" />
+            <element signature="class#671:895" expanded="false" />
+            <element signature="initializer##0;class#671:895" expanded="false" />
+            <element signature="class#951:1194" expanded="false" />
+            <element signature="initializer##0;class#951:1194" expanded="false" />
+            <element signature="class#1267:1539" expanded="false" />
+            <element signature="initializer##0;class#1267:1539" expanded="false" />
+            <element signature="method#main#0;class#BibliotecaApp#0" expanded="false" />
+            <element signature="method#start#0;class#BibliotecaApp#0" expanded="false" />
+            <element signature="method#printMainMenu#0;class#BibliotecaApp#0" expanded="false" />
+            <element signature="method#getInput#0;class#BibliotecaApp#0" expanded="false" />
+            <element signature="method#printFeedback#0;class#BibliotecaApp#0" expanded="false" />
+            <element signature="method#getMainMenu#0;class#BibliotecaApp#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/LibraryStoreTemplate.java">
+    <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/AllLibraryStores.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.69473684">
-          <caret line="68" column="4" selection-start-line="68" selection-start-column="4" selection-end-line="68" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="68" column="101" selection-start-line="68" selection-start-column="101" selection-end-line="68" selection-end-column="101" />
           <folding>
-            <element signature="docComment;class#LibraryStoreTemplate#0" expanded="false" />
-            <element signature="method#LibraryStoreTemplate#0;class#LibraryStoreTemplate#0" expanded="false" />
-            <element signature="method#LibraryStoreTemplate#1;class#LibraryStoreTemplate#0" expanded="false" />
-            <element signature="method#returnResource#0;class#LibraryStoreTemplate#0" expanded="false" />
-            <element signature="method#checkoutResource#0;class#LibraryStoreTemplate#0" expanded="false" />
-            <element signature="method#getUserWhoCheckedOutResource#0;class#LibraryStoreTemplate#0" expanded="false" />
-            <element signature="method#moveResource#0;class#LibraryStoreTemplate#0" expanded="false" />
-            <element signature="method#logCheckout#0;class#LibraryStoreTemplate#0" expanded="false" />
-            <element signature="method#findMatchingResource#0;class#LibraryStoreTemplate#0" expanded="false" />
+            <element signature="docComment;class#AllLibraryStores#0" expanded="false" />
+            <element signature="method#AllLibraryStores#0;class#AllLibraryStores#0" expanded="false" />
+            <element signature="method#AllLibraryStores#1;class#AllLibraryStores#0" expanded="false" />
+            <element signature="method#AllLibraryStores#2;class#AllLibraryStores#0" expanded="false" />
+            <element signature="method#AllLibraryStores#3;class#AllLibraryStores#0" expanded="false" />
+            <element signature="method#returnBook#0;class#AllLibraryStores#0" expanded="false" />
+            <element signature="method#checkoutBook#0;class#AllLibraryStores#0" expanded="false" />
+            <element signature="method#checkoutMovie#0;class#AllLibraryStores#0" expanded="false" />
+            <element signature="method#returnMovie#0;class#AllLibraryStores#0" expanded="false" />
+            <element signature="method#getUserWhoCheckedOutBook#0;class#AllLibraryStores#0" expanded="false" />
+            <element signature="method#getUserWhoCheckedOutMovie#0;class#AllLibraryStores#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/ReturnMovieOptionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="44" column="50" selection-start-line="44" selection-start-column="50" selection-end-line="44" selection-end-column="50" />
+          <folding>
+            <element signature="docComment;class#ReturnMovieOptionTest#0" expanded="false" />
+            <element signature="method#setUp#0;class#ReturnMovieOptionTest#0" expanded="false" />
+            <element signature="class#563:806" expanded="false" />
+            <element signature="initializer##0;class#563:806" expanded="false" />
+            <element signature="method#tearDown#0;class#ReturnMovieOptionTest#0" expanded="false" />
+            <element signature="class#UserAccountManagerStub#0;class#ReturnMovieOptionTest#0" expanded="false" />
+            <element signature="method#UserAccountManagerStub#0;class#UserAccountManagerStub#0;class#ReturnMovieOptionTest#0" expanded="false" />
+            <element signature="e#3807#3808#0" expanded="true" />
+            <element signature="e#3855#3856#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/CheckOutMovieOptionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="121" column="0" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#CheckOutMovieOptionTest#0" expanded="false" />
+            <element signature="method#setUp#0;class#CheckOutMovieOptionTest#0" expanded="false" />
+            <element signature="class#594:837" expanded="false" />
+            <element signature="initializer##0;class#594:837" expanded="false" />
+            <element signature="method#tearDown#0;class#CheckOutMovieOptionTest#0" expanded="false" />
+            <element signature="method#testCheckoutMovieWithoutUser#0;class#CheckOutMovieOptionTest#0" expanded="false" />
+            <element signature="method#testCheckOutInvalidMovie#0;class#CheckOutMovieOptionTest#0" expanded="false" />
+            <element signature="method#testCheckoutMovie#0;class#CheckOutMovieOptionTest#0" expanded="false" />
+            <element signature="method#testCheckoutMovieThatHasAlreadyBeenCheckedOut#0;class#CheckOutMovieOptionTest#0" expanded="false" />
+            <element signature="class#UserAccountManagerStub#0;class#CheckOutMovieOptionTest#0" expanded="false" />
+            <element signature="method#UserAccountManagerStub#0;class#UserAccountManagerStub#0;class#CheckOutMovieOptionTest#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/UserAccountManagerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+          <folding>
+            <element signature="docComment;class#UserAccountManagerTest#0" expanded="false" />
+            <element signature="method#setUp#0;class#UserAccountManagerTest#0" expanded="false" />
+            <element signature="method#testLoginWithStubVault#0;class#UserAccountManagerTest#0" expanded="false" />
+            <element signature="method#testLoginWithWrongCredentialsWithStubVault#0;class#UserAccountManagerTest#0" expanded="false" />
+            <element signature="class#UserAccountVaultStub#0;class#UserAccountManagerTest#0" expanded="false" />
+            <element signature="method#retrieveUser#0;class#UserAccountVaultStub#0;class#UserAccountManagerTest#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/UserAccountManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
+          <folding>
+            <element signature="method#login#0;class#UserAccountManager#0" expanded="false" />
+            <element signature="method#updateCurrentUser#0;class#UserAccountManager#0" expanded="false" />
+            <element signature="method#updateLoginCredential#0;class#UserAccountManager#0" expanded="false" />
+            <element signature="method#formatCurrentUser#0;class#UserAccountManager#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/CheckOutBookOptionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="60" column="40" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
+          <folding>
+            <element signature="docComment;class#CheckOutBookOptionTest#0" expanded="false" />
+            <element signature="method#setUp#0;class#CheckOutBookOptionTest#0" expanded="false" />
+            <element signature="class#589:813" expanded="false" />
+            <element signature="initializer##0;class#589:813" expanded="false" />
+            <element signature="method#tearDown#0;class#CheckOutBookOptionTest#0" expanded="false" />
+            <element signature="method#testCheckoutInvalidBook#0;class#CheckOutBookOptionTest#0" expanded="false" />
+            <element signature="method#testCheckoutBookWithNullUser#0;class#CheckOutBookOptionTest#0" expanded="false" />
+            <element signature="method#testCheckoutBookWithValidUser#0;class#CheckOutBookOptionTest#0" expanded="false" />
+            <element signature="method#testCheckoutBookThatHasAlreadyBeenCheckedOut#0;class#CheckOutBookOptionTest#0" expanded="false" />
+            <element signature="class#UserAccountManagerStub#0;class#CheckOutBookOptionTest#0" expanded="false" />
+            <element signature="method#UserAccountManagerStub#0;class#UserAccountManagerStub#0;class#CheckOutBookOptionTest#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/ReturnBookOptionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7473684">
+          <caret line="92" column="34" selection-start-line="92" selection-start-column="34" selection-end-line="92" selection-end-column="34" />
+          <folding>
+            <element signature="docComment;class#ReturnBookOptionTest#0" expanded="false" />
+            <element signature="method#setUp#0;class#ReturnBookOptionTest#0" expanded="false" />
+            <element signature="class#557:781" expanded="false" />
+            <element signature="initializer##0;class#557:781" expanded="false" />
+            <element signature="method#tearDown#0;class#ReturnBookOptionTest#0" expanded="false" />
+            <element signature="method#testReturnInvalidBook#0;class#ReturnBookOptionTest#0" expanded="false" />
+            <element signature="method#testCheckoutAndReturnBook#0;class#ReturnBookOptionTest#0" expanded="false" />
+            <element signature="method#testReturnAvailableBook#0;class#ReturnBookOptionTest#0" expanded="false" />
+            <element signature="class#UserAccountManagerStub#0;class#ReturnBookOptionTest#0" expanded="false" />
+            <element signature="method#UserAccountManagerStub#0;class#UserAccountManagerStub#0;class#ReturnBookOptionTest#0" expanded="false" />
           </folding>
         </state>
       </provider>

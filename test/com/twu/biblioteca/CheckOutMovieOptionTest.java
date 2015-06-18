@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 import static org.junit.Assert.*;
 
@@ -16,7 +15,9 @@ public class CheckOutMovieOptionTest {
     private AllLibraryStores libraryStores;
     private LibraryMovieStore libraryMovieStore;
     private ArrayList<LibraryMovie> availableMovies;
-    private User stubUser;
+    private UserAccountManagerStub userAccountManager;
+    private User stubUser1;
+    private User stubUser2;
 
     @Before
     public void setUp() throws Exception {
@@ -27,7 +28,9 @@ public class CheckOutMovieOptionTest {
         }};
         libraryMovieStore = new LibraryMovieStore(availableMovies);
         libraryStores = new AllLibraryStores(libraryMovieStore);
-        stubUser = new User("stubuser", "stub@email.com", "11111111");
+        stubUser1 = new User("stubuser1", "stub1@email.com", "11111111");
+        stubUser2 = new User("stubuser2", "stub2@email.com", "22222222");
+        userAccountManager = new UserAccountManagerStub();
         TestUtilities.redirectOutput();
     }
 
@@ -37,11 +40,24 @@ public class CheckOutMovieOptionTest {
     }
 
     @Test
+    public void testCheckoutMovieWithoutUser() throws Exception {
+        CheckOutMovieOption option = new CheckOutMovieOption();
+        String movieName = availableMovies.get(availableMovies.size() - 1).getName();
+        userAccountManager.setCurrentUser(null);
+        TestUtilities.setInput(movieName);
+        String feedback = option.execute(userAccountManager, libraryStores);
+        assertEquals("That movie is not available.", feedback);
+        assertTrue(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getAvailableMovies()));
+        assertFalse(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getCheckedOutMovies()));
+    }
+
+    @Test
     public void testCheckOutInvalidMovie() throws Exception {
         CheckOutMovieOption option = new CheckOutMovieOption();
         String invalidMovieName = "Invalid Movie";
         TestUtilities.setInput(invalidMovieName);
-        String feedback = option.execute(new UserAccountManagerValidStub(), libraryStores);
+        userAccountManager.setCurrentUser(stubUser1);
+        String feedback = option.execute(userAccountManager, libraryStores);
         assertEquals("That movie is not available.", feedback);
         assertFalse(TestUtilities.movieNameExistsInCollection(invalidMovieName, libraryStores.getAvailableMovies()));
         assertFalse(TestUtilities.movieNameExistsInCollection(invalidMovieName, libraryStores.getCheckedOutMovies()));
@@ -52,50 +68,56 @@ public class CheckOutMovieOptionTest {
         CheckOutMovieOption option = new CheckOutMovieOption();
         String movieName = availableMovies.get(0).getName();
         TestUtilities.setInput(movieName);
-        String feedback = option.execute(new UserAccountManagerValidStub(), libraryStores);
+        userAccountManager.setCurrentUser(stubUser1);
+        String feedback = option.execute(userAccountManager, libraryStores);
         assertEquals("Thank you! Enjoy the movie", feedback);
         assertFalse(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getAvailableMovies()));
         assertTrue(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getCheckedOutMovies()));
-        //TODO: check for user who checked out movie
+
+        User user = libraryStores.getUserWhoCheckedOutMovie(movieName, new MovieNameComparator());
+        assertEquals(stubUser1, user);
     }
 
     @Test
     public void testCheckoutMovieThatHasAlreadyBeenCheckedOut() throws Exception {
         CheckOutMovieOption option = new CheckOutMovieOption();
+        userAccountManager.setCurrentUser(stubUser1);
         String movieName = availableMovies.get(0).getName();
-        //TODO: replace with 2 option execute
-        libraryStores.checkoutMovie(stubUser, movieName, new MovieNameComparator());
+
         TestUtilities.setInput(movieName);
-        String feedback = option.execute(new UserAccountManagerValidStub(), libraryStores);
+        String feedback = option.execute(userAccountManager, libraryStores);
+        assertEquals("Thank you! Enjoy the movie", feedback);
+        assertFalse(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getAvailableMovies()));
+        assertTrue(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getCheckedOutMovies()));
+
+        userAccountManager.setCurrentUser(stubUser2);
+        TestUtilities.setInput(movieName);
+        feedback = option.execute(userAccountManager, libraryStores);
         assertEquals("That movie is not available.", feedback);
         assertFalse(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getAvailableMovies()));
         assertTrue(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getCheckedOutMovies()));
-        //TODO:  user1 checks out movie, user2 checks out same movie and fails => check that movie is still recorded to be checked out by user1
+
+        User user = libraryStores.getUserWhoCheckedOutMovie(movieName, new MovieNameComparator());
+        assertEquals(stubUser1, user);
     }
 
-    private class UserAccountManagerValidStub extends UserAccountManager {
+    private class UserAccountManagerStub extends UserAccountManager {
+        private User currUser;
 
-        public UserAccountManagerValidStub() {
+        public UserAccountManagerStub() {
             super(null);
+            currUser = stubUser1;
         }
 
         @Override
         public User getCurrentUser() {
-            return stubUser;
-        }
-    }
-
-    //TODO: check out with invalid user
-    private class UserAccountManagerInvalidStub extends UserAccountManager {
-
-        public UserAccountManagerInvalidStub() {
-            super(null);
+            return currUser;
         }
 
-        @Override
-        public User getCurrentUser() {
-            return null;
+        public void setCurrentUser(User newUser) {
+            this.currUser = newUser;
         }
+
     }
 
 }

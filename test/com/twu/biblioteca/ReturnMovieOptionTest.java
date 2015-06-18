@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 import static org.junit.Assert.*;
 
@@ -16,6 +15,7 @@ public class ReturnMovieOptionTest {
     private AllLibraryStores libraryStores;
     private LibraryMovieStore libraryMovieStore;
     private ArrayList<LibraryMovie> availableMovies;
+    private UserAccountManagerStub userAccountManager;
     private User stubUser;
 
     @Before
@@ -28,6 +28,7 @@ public class ReturnMovieOptionTest {
         libraryMovieStore = new LibraryMovieStore(availableMovies);
         libraryStores = new AllLibraryStores(libraryMovieStore);
         stubUser = new User("stubuser", "stub@email.com", "12345678");
+        userAccountManager = new UserAccountManagerStub();
         TestUtilities.redirectOutput();
     }
 
@@ -41,7 +42,8 @@ public class ReturnMovieOptionTest {
         String invalidMovie = "Invalid Movie";
         ReturnMovieOption option = new ReturnMovieOption();
         TestUtilities.setInput(invalidMovie);
-        String feedback = option.execute(new UserAccountManagerValidStub(), libraryStores);
+        userAccountManager.setCurrentUser(stubUser);
+        String feedback = option.execute(userAccountManager, libraryStores);
         assertEquals("That is not a valid movie to return.", feedback);
         assertFalse(TestUtilities.movieNameExistsInCollection(invalidMovie, libraryStores.getAvailableMovies()));
         assertFalse(TestUtilities.movieNameExistsInCollection(invalidMovie, libraryStores.getCheckedOutMovies()));
@@ -55,7 +57,8 @@ public class ReturnMovieOptionTest {
 
         //TODO: do more tests for return, return same movie twice, etc
         libraryStores.checkoutMovie(stubUser, movieNameToReturn, new MovieNameComparator());
-        String feedback = option.execute(new UserAccountManagerValidStub(), libraryStores);
+        userAccountManager.setCurrentUser(stubUser);
+        String feedback = option.execute(userAccountManager, libraryStores);
         assertEquals("Thank you for returning the movie.", feedback);
         assertTrue(TestUtilities.movieNameExistsInCollection(movieNameToReturn, libraryStores.getAvailableMovies()));
         assertFalse(TestUtilities.movieNameExistsInCollection(movieNameToReturn, libraryStores.getCheckedOutMovies()));
@@ -66,34 +69,32 @@ public class ReturnMovieOptionTest {
         String movieNameToReturn = availableMovies.get(0).getName();
         ReturnMovieOption option = new ReturnMovieOption();
         TestUtilities.setInput(movieNameToReturn);
-        String feedback = option.execute(new UserAccountManagerValidStub(), libraryStores);
+        userAccountManager.setCurrentUser(stubUser);
+        String feedback = option.execute(userAccountManager, libraryStores);
         assertEquals("That is not a valid movie to return.", feedback);
         assertTrue(TestUtilities.movieNameExistsInCollection(movieNameToReturn, libraryStores.getAvailableMovies()));
         assertFalse(TestUtilities.movieNameExistsInCollection(movieNameToReturn, libraryStores.getCheckedOutMovies()));
     }
 
-    private class UserAccountManagerValidStub extends UserAccountManager {
+    private class UserAccountManagerStub extends UserAccountManager {
 
-        public UserAccountManagerValidStub() {
+        private User currUser;
+
+        public UserAccountManagerStub() {
             super(null);
+            this.currUser = stubUser;
         }
 
         @Override
         public User getCurrentUser() {
-            return stubUser;
+            return currUser;
+        }
+
+        public void setCurrentUser(User currUser) {
+            this.currUser = currUser;
         }
     }
 
-    private class UserAccountManagerInvalidStub extends UserAccountManager {
-
-        public UserAccountManagerInvalidStub() {
-            super(null);
-        }
-
-        @Override
-        public User getCurrentUser() {
-            return null;
-        }
-    }
+    //TODO: test with invalid user
 
 }
