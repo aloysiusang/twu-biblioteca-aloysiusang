@@ -17,7 +17,6 @@ public class CheckOutBookOptionTest {
     private AllLibraryStores libraryStores;
     private LibraryBookStore libraryBookStore;
     private ArrayList<LibraryBook> availableBooks;
-    private ArrayList<LibraryBook> checkedOutBooks;
     private User stubUser1;
     private User stubUser2;
 
@@ -28,12 +27,7 @@ public class CheckOutBookOptionTest {
             add(new LibraryBook("Book 2", "Author 2", 2002));
             add(new LibraryBook("Book 3", "Author 3", 2003));
         }};
-        checkedOutBooks = new ArrayList<LibraryBook>() {{
-            add(new LibraryBook("Book 11", "Author 11", 2011));
-            add(new LibraryBook("Book 12", "Author 12", 2012));
-            add(new LibraryBook("Book 13", "Author 13", 2013));
-        }};
-        libraryBookStore = new LibraryBookStore(availableBooks, checkedOutBooks);
+        libraryBookStore = new LibraryBookStore(availableBooks);
         libraryStores = new AllLibraryStores(libraryBookStore);
         stubUser1 = new User("stubUser1", "stub1@email.com", "stub1PhoneNumber");
         stubUser2 = new User("stubUser2", "stub2@email.com", "stub2PhoneNumber");

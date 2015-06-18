@@ -14,8 +14,4 @@ public class LibraryMovieStore extends LibraryStoreTemplate<LibraryMovie> {
         super(availableMovie);
     }
 
-    public LibraryMovieStore(ArrayList<LibraryMovie> availableMovie, ArrayList<LibraryMovie> checkedOutMovie) {
-        super(availableMovie, checkedOutMovie);
-    }
-
 }

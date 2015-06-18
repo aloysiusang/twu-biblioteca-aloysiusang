@@ -16,7 +16,7 @@ public class ReturnMovieOptionTest {
     private AllLibraryStores libraryStores;
     private LibraryMovieStore libraryMovieStore;
     private ArrayList<LibraryMovie> availableMovies;
-    private ArrayList<LibraryMovie> checkedOutMovies;
+    private User stubUser;
 
     @Before
     public void setUp() throws Exception {
@@ -25,13 +25,9 @@ public class ReturnMovieOptionTest {
             add(new LibraryMovie("Name 2", 2002, "Director 2", 2));
             add(new LibraryMovie("Name 3", 2003, "Director 3", 3));
         }};
-        checkedOutMovies = new ArrayList<LibraryMovie>() {{
-            add(new LibraryMovie("Name 4", 2004, "Director 4", 4));
-            add(new LibraryMovie("Name 5", 2005, "Director 5", 5));
-            add(new LibraryMovie("Name 6", 2006, "Director 6", 6));
-        }};
-        libraryMovieStore = new LibraryMovieStore(availableMovies, checkedOutMovies);
+        libraryMovieStore = new LibraryMovieStore(availableMovies);
         libraryStores = new AllLibraryStores(libraryMovieStore);
+        stubUser = new User("stubuser", "stub@email.com", "12345678");
         TestUtilities.redirectOutput();
     }
 
@@ -45,18 +41,21 @@ public class ReturnMovieOptionTest {
         String invalidMovie = "Invalid Movie";
         ReturnMovieOption option = new ReturnMovieOption();
         TestUtilities.setInput(invalidMovie);
-        String feedback = option.execute(null, libraryStores);
+        String feedback = option.execute(new UserAccountManagerValidStub(), libraryStores);
         assertEquals("That is not a valid movie to return.", feedback);
         assertFalse(TestUtilities.movieNameExistsInCollection(invalidMovie, libraryStores.getAvailableMovies()));
         assertFalse(TestUtilities.movieNameExistsInCollection(invalidMovie, libraryStores.getCheckedOutMovies()));
     }
 
     @Test
-    public void testReturnMovie() throws Exception {
-        String movieNameToReturn = checkedOutMovies.get(0).getName();
+    public void testCheckoutReturnMovie() throws Exception {
+        String movieNameToReturn = availableMovies.get(0).getName();
         ReturnMovieOption option = new ReturnMovieOption();
         TestUtilities.setInput(movieNameToReturn);
-        String feedback = option.execute(null, libraryStores);
+
+        //TODO: do more tests for return, return same movie twice, etc
+        libraryStores.checkoutMovie(stubUser, movieNameToReturn, new MovieNameComparator());
+        String feedback = option.execute(new UserAccountManagerValidStub(), libraryStores);
         assertEquals("Thank you for returning the movie.", feedback);
         assertTrue(TestUtilities.movieNameExistsInCollection(movieNameToReturn, libraryStores.getAvailableMovies()));
         assertFalse(TestUtilities.movieNameExistsInCollection(movieNameToReturn, libraryStores.getCheckedOutMovies()));
@@ -67,10 +66,34 @@ public class ReturnMovieOptionTest {
         String movieNameToReturn = availableMovies.get(0).getName();
         ReturnMovieOption option = new ReturnMovieOption();
         TestUtilities.setInput(movieNameToReturn);
-        String feedback = option.execute(null, libraryStores);
+        String feedback = option.execute(new UserAccountManagerValidStub(), libraryStores);
         assertEquals("That is not a valid movie to return.", feedback);
         assertTrue(TestUtilities.movieNameExistsInCollection(movieNameToReturn, libraryStores.getAvailableMovies()));
         assertFalse(TestUtilities.movieNameExistsInCollection(movieNameToReturn, libraryStores.getCheckedOutMovies()));
+    }
+
+    private class UserAccountManagerValidStub extends UserAccountManager {
+
+        public UserAccountManagerValidStub() {
+            super(null);
+        }
+
+        @Override
+        public User getCurrentUser() {
+            return stubUser;
+        }
+    }
+
+    private class UserAccountManagerInvalidStub extends UserAccountManager {
+
+        public UserAccountManagerInvalidStub() {
+            super(null);
+        }
+
+        @Override
+        public User getCurrentUser() {
+            return null;
+        }
     }
 
 }

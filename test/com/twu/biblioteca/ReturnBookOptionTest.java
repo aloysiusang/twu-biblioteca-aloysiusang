@@ -16,7 +16,7 @@ public class ReturnBookOptionTest {
     private AllLibraryStores libraryStores;
     private LibraryBookStore libraryBookStore;
     private ArrayList<LibraryBook> availableBooks;
-    private ArrayList<LibraryBook> checkedOutBooks;
+    private User stubUser;
 
     @Before
     public void setUp() throws Exception {
@@ -25,13 +25,9 @@ public class ReturnBookOptionTest {
             add(new LibraryBook("Book 2", "Author 2", 2002));
             add(new LibraryBook("Book 3", "Author 3", 2003));
         }};
-        checkedOutBooks = new ArrayList<LibraryBook>() {{
-            add(new LibraryBook("Book 11", "Author 11", 2011));
-            add(new LibraryBook("Book 12", "Author 12", 2012));
-            add(new LibraryBook("Book 13", "Author 13", 2013));
-        }};
-        libraryBookStore = new LibraryBookStore(availableBooks, checkedOutBooks);
+        libraryBookStore = new LibraryBookStore(availableBooks);
         libraryStores = new AllLibraryStores(libraryBookStore);
+        stubUser = new User("stubuser", "stub@user.com", "12345678");
         TestUtilities.redirectOutput();
     }
 
@@ -44,16 +40,18 @@ public class ReturnBookOptionTest {
     public void testReturnInvalidBook() throws Exception {
         MainMenuOption option = new ReturnBookOption();
         TestUtilities.setInput("Invalid Book");
-        String feedback = option.execute(null, libraryStores);
+        String feedback = option.execute(new UserAccountManagerValidStub(), libraryStores);
         assertEquals("That is not a valid book to return.", feedback);
     }
 
     @Test
-    public void testReturnBook() throws Exception {
+    public void testCheckoutAndReturnBook() throws Exception {
         MainMenuOption option = new ReturnBookOption();
-        String titleToReturn = checkedOutBooks.get(0).getTitle();
+        String titleToReturn = availableBooks.get(0).getTitle();
+        libraryStores.checkoutBook(stubUser, titleToReturn, new BookTitleComparator());
+
         TestUtilities.setInput(titleToReturn);
-        String feedback = option.execute(null, libraryStores);
+        String feedback = option.execute(new UserAccountManagerValidStub(), libraryStores);
         assertEquals("Thank you for returning the book.", feedback);
         assertTrue(TestUtilities.bookTitleExistsInCollection(titleToReturn, libraryBookStore.getAvailableResource()));
         assertFalse(TestUtilities.bookTitleExistsInCollection(titleToReturn, libraryBookStore.getCheckedOutResource()));
@@ -64,10 +62,34 @@ public class ReturnBookOptionTest {
         MainMenuOption option = new ReturnBookOption();
         String titleToReturn = availableBooks.get(0).getTitle();
         TestUtilities.setInput(titleToReturn);
-        String feedback = option.execute(null, libraryStores);
+        String feedback = option.execute(new UserAccountManagerValidStub(), libraryStores);
         assertEquals("That is not a valid book to return.", feedback);
         assertTrue(TestUtilities.bookTitleExistsInCollection(titleToReturn, libraryBookStore.getAvailableResource()));
         assertFalse(TestUtilities.bookTitleExistsInCollection(titleToReturn, libraryBookStore.getCheckedOutResource()));
+    }
+
+    private class UserAccountManagerValidStub extends UserAccountManager {
+
+        public UserAccountManagerValidStub() {
+            super(null);
+        }
+
+        @Override
+        public User getCurrentUser() {
+            return stubUser;
+        }
+    }
+
+    private class UserAccountManagerInvalidStub extends UserAccountManager {
+
+        public UserAccountManagerInvalidStub() {
+            super(null);
+        }
+
+        @Override
+        public User getCurrentUser() {
+            return null;
+        }
     }
 
 }

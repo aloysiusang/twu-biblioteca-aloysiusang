@@ -15,8 +15,4 @@ public class LibraryBookStore extends LibraryStoreTemplate<LibraryBook> {
         super(availableBooks);
     }
 
-    public LibraryBookStore(ArrayList<LibraryBook> availableBooks, ArrayList<LibraryBook> checkedOutBooks) {
-        super(availableBooks, checkedOutBooks);
-    }
-
 }

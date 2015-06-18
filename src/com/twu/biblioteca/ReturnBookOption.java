@@ -16,7 +16,7 @@ public class ReturnBookOption extends MainMenuOption{
     public String execute(UserAccountManager userAccountManager, AllLibraryStores libraryStores) {
         System.out.print(INPUT_TITLE);
         String title = getUserInput();
-        boolean success = libraryStores.returnBook(title, new BookTitleComparator());
+        boolean success = libraryStores.returnBook(userAccountManager.getCurrentUser(), title, new BookTitleComparator());
         return success ? MESSAGE_RETURN_SUCCESSFUL : MESSAGE_RETURN_UNSUCCESSFUL;
     }
 

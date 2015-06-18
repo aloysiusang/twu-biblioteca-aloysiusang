@@ -16,7 +16,6 @@ public class CheckOutMovieOptionTest {
     private AllLibraryStores libraryStores;
     private LibraryMovieStore libraryMovieStore;
     private ArrayList<LibraryMovie> availableMovies;
-    private ArrayList<LibraryMovie> checkedOutMovies;
     private User stubUser;
 
     @Before
@@ -26,12 +25,7 @@ public class CheckOutMovieOptionTest {
             add(new LibraryMovie("Name 2", 2002, "Director 2", 2));
             add(new LibraryMovie("Name 3", 2003, "Director 3", 3));
         }};
-        checkedOutMovies = new ArrayList<LibraryMovie>() {{
-            add(new LibraryMovie("Name 4", 2004, "Director 4", 4));
-            add(new LibraryMovie("Name 5", 2005, "Director 5", 5));
-            add(new LibraryMovie("Name 6", 2006, "Director 6", 6));
-        }};
-        libraryMovieStore = new LibraryMovieStore(availableMovies, checkedOutMovies);
+        libraryMovieStore = new LibraryMovieStore(availableMovies);
         libraryStores = new AllLibraryStores(libraryMovieStore);
         stubUser = new User("stubuser", "stub@email.com", "11111111");
         TestUtilities.redirectOutput();
@@ -68,7 +62,9 @@ public class CheckOutMovieOptionTest {
     @Test
     public void testCheckoutMovieThatHasAlreadyBeenCheckedOut() throws Exception {
         CheckOutMovieOption option = new CheckOutMovieOption();
-        String movieName = checkedOutMovies.get(0).getName();
+        String movieName = availableMovies.get(0).getName();
+        //TODO: replace with 2 option execute
+        libraryStores.checkoutMovie(stubUser, movieName, new MovieNameComparator());
         TestUtilities.setInput(movieName);
         String feedback = option.execute(new UserAccountManagerValidStub(), libraryStores);
         assertEquals("That movie is not available.", feedback);
