@@ -59,9 +59,9 @@ public class ReturnMovieOptionTest {
         userAccountManager.setCurrentUser(null);
         TestUtilities.setInput(titleToReturn);
         option.execute(userAccountManager, libraryStores);
-        assertFalse(TestUtilities.movieNameExistsInCollection(titleToReturn, libraryStores.getAvailableMovies()));
-        assertTrue(TestUtilities.movieNameExistsInCollection(titleToReturn, libraryStores.getCheckedOutMovies()));
-        User user = libraryStores.getUserWhoCheckedOutMovie(titleToReturn, comparator);
+        assertFalse(TestUtilities.movieNameExistsInCollection(titleToReturn, libraryStores.getMovieStore().getAvailableResource()));
+        assertTrue(TestUtilities.movieNameExistsInCollection(titleToReturn, libraryStores.getMovieStore().getCheckedOutResource()));
+        User user = libraryStores.getMovieStore().getUserWhoCheckedOutResource(titleToReturn, comparator);
         assertEquals(stubUser1, user);
 
     }
@@ -76,9 +76,9 @@ public class ReturnMovieOptionTest {
         userAccountManager.setCurrentUser(stubUser2);
         TestUtilities.setInput(titleToReturn);
         option.execute(userAccountManager, libraryStores);
-        assertFalse(TestUtilities.movieNameExistsInCollection(titleToReturn, libraryStores.getAvailableMovies()));
-        assertTrue(TestUtilities.movieNameExistsInCollection(titleToReturn, libraryStores.getCheckedOutMovies()));
-        User user = libraryStores.getUserWhoCheckedOutMovie(titleToReturn, comparator);
+        assertFalse(TestUtilities.movieNameExistsInCollection(titleToReturn, libraryStores.getMovieStore().getAvailableResource()));
+        assertTrue(TestUtilities.movieNameExistsInCollection(titleToReturn, libraryStores.getMovieStore().getCheckedOutResource()));
+        User user = libraryStores.getMovieStore().getUserWhoCheckedOutResource(titleToReturn, comparator);
         assertEquals(stubUser1, user);
 
     }
@@ -95,9 +95,9 @@ public class ReturnMovieOptionTest {
         userAccountManager.setCurrentUser(stubUser1);
         String feedback = option.execute(userAccountManager, libraryStores);
         assertEquals("Thank you for returning the movie.", feedback);
-        assertTrue(TestUtilities.movieNameExistsInCollection(titleToReturn, libraryMovieStore.getAvailableResource()));
-        assertFalse(TestUtilities.movieNameExistsInCollection(titleToReturn, libraryMovieStore.getCheckedOutResource()));
-        User user = libraryStores.getUserWhoCheckedOutMovie(titleToReturn, comparator);
+        assertTrue(TestUtilities.movieNameExistsInCollection(titleToReturn, libraryStores.getMovieStore().getAvailableResource()));
+        assertFalse(TestUtilities.movieNameExistsInCollection(titleToReturn, libraryStores.getMovieStore().getCheckedOutResource()));
+        User user = libraryStores.getMovieStore().getUserWhoCheckedOutResource(titleToReturn, comparator);
         assertNull(user);
     }
 
@@ -109,9 +109,9 @@ public class ReturnMovieOptionTest {
         userAccountManager.setCurrentUser(stubUser1);
         String feedback = option.execute(userAccountManager, libraryStores);
         assertEquals("That is not a valid movie to return.", feedback);
-        assertTrue(TestUtilities.movieNameExistsInCollection(titleToReturn, libraryMovieStore.getAvailableResource()));
-        assertFalse(TestUtilities.movieNameExistsInCollection(titleToReturn, libraryMovieStore.getCheckedOutResource()));
-        User user = libraryStores.getUserWhoCheckedOutMovie(titleToReturn, new MovieNameComparator());
+        assertTrue(TestUtilities.movieNameExistsInCollection(titleToReturn, libraryStores.getMovieStore().getAvailableResource()));
+        assertFalse(TestUtilities.movieNameExistsInCollection(titleToReturn, libraryStores.getMovieStore().getCheckedOutResource()));
+        User user = libraryStores.getMovieStore().getUserWhoCheckedOutResource(titleToReturn, new MovieNameComparator());
         assertNull(user);
     }
 
@@ -134,10 +134,10 @@ public class ReturnMovieOptionTest {
     }
 
     private void checkoutMovie(User user, String titleToCheckout, Comparator comparator) {
-        assertTrue(libraryStores.checkoutMovie(user, titleToCheckout, new MovieNameComparator()));
-        assertFalse(TestUtilities.movieNameExistsInCollection(titleToCheckout, libraryStores.getAvailableMovies()));
-        assertTrue(TestUtilities.movieNameExistsInCollection(titleToCheckout, libraryStores.getCheckedOutMovies()));
-        User retrievedUser = libraryStores.getUserWhoCheckedOutMovie(titleToCheckout, comparator);
+        assertTrue(libraryStores.getMovieStore().checkoutResource(user, titleToCheckout, new MovieNameComparator()));
+        assertFalse(TestUtilities.movieNameExistsInCollection(titleToCheckout, libraryStores.getMovieStore().getAvailableResource()));
+        assertTrue(TestUtilities.movieNameExistsInCollection(titleToCheckout, libraryStores.getMovieStore().getCheckedOutResource()));
+        User retrievedUser = libraryStores.getMovieStore().getUserWhoCheckedOutResource(titleToCheckout, comparator);
         assertEquals(user, retrievedUser);
     }
 

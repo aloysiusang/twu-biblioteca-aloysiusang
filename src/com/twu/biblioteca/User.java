@@ -26,7 +26,7 @@ public class User {
         return phoneNumber;
     }
 
-    public String formatUserString(UserInformationFormatter userInformationFormatterClass) {
-        return userInformationFormatterClass.format(this);
+    public String formatUserString() {
+        return UserInformationFormatter.format(this);
     }
 }

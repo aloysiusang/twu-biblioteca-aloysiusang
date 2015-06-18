@@ -10,6 +10,6 @@ public class ListMoviesOption extends MainMenuOption {
 
     @Override
     public String execute(UserAccountManager userAccountManager, AllLibraryStores libraryStores) {
-        return LibraryMovieFormatter.format(libraryStores.getAvailableMovies());
+        return LibraryMovieFormatter.format(libraryStores.getMovieStore().getAvailableResource());
     }
 }

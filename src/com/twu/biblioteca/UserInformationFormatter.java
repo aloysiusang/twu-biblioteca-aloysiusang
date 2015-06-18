@@ -9,7 +9,7 @@ public class UserInformationFormatter {
 
     public static final String FORMAT_STYLE = "%-15s:%30s";
 
-    public String format(User user) {
+    public static String format(User user) {
         StringBuilder sb = new StringBuilder();
         Formatter formatter = new Formatter(sb);
         formatField("Name", user.getName(), formatter);
@@ -18,7 +18,7 @@ public class UserInformationFormatter {
         return sb.toString();
     }
 
-    private void formatField(String fieldType, String fieldValue, Formatter formatter) {
+    private static void formatField(String fieldType, String fieldValue, Formatter formatter) {
         formatter.format(FORMAT_STYLE, fieldType, fieldValue);
         formatter.format(System.getProperty("line.separator"));
     }

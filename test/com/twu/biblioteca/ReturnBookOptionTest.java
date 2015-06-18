@@ -59,9 +59,9 @@ public class ReturnBookOptionTest {
         userAccountManager.setCurrentUser(null);
         TestUtilities.setInput(titleToReturn);
         option.execute(userAccountManager, libraryStores);
-        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToReturn, libraryStores.getAvailableBooks()));
-        assertTrue(TestUtilities.bookTitleExistsInCollection(titleToReturn, libraryStores.getCheckedOutBooks()));
-        User user = libraryStores.getUserWhoCheckedOutBook(titleToReturn, comparator);
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToReturn, libraryStores.getBookStore().getAvailableResource()));
+        assertTrue(TestUtilities.bookTitleExistsInCollection(titleToReturn, libraryStores.getBookStore().getCheckedOutResource()));
+        User user = libraryStores.getBookStore().getUserWhoCheckedOutResource(titleToReturn, comparator);
         assertEquals(stubUser1, user);
 
     }
@@ -76,9 +76,9 @@ public class ReturnBookOptionTest {
         userAccountManager.setCurrentUser(stubUser2);
         TestUtilities.setInput(titleToReturn);
         option.execute(userAccountManager, libraryStores);
-        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToReturn, libraryStores.getAvailableBooks()));
-        assertTrue(TestUtilities.bookTitleExistsInCollection(titleToReturn, libraryStores.getCheckedOutBooks()));
-        User user = libraryStores.getUserWhoCheckedOutBook(titleToReturn, comparator);
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToReturn, libraryStores.getBookStore().getAvailableResource()));
+        assertTrue(TestUtilities.bookTitleExistsInCollection(titleToReturn, libraryStores.getBookStore().getCheckedOutResource()));
+        User user = libraryStores.getBookStore().getUserWhoCheckedOutResource(titleToReturn, comparator);
         assertEquals(stubUser1, user);
 
     }
@@ -97,7 +97,7 @@ public class ReturnBookOptionTest {
         assertEquals("Thank you for returning the book.", feedback);
         assertTrue(TestUtilities.bookTitleExistsInCollection(titleToReturn, libraryBookStore.getAvailableResource()));
         assertFalse(TestUtilities.bookTitleExistsInCollection(titleToReturn, libraryBookStore.getCheckedOutResource()));
-        User user = libraryStores.getUserWhoCheckedOutBook(titleToReturn, comparator);
+        User user = libraryStores.getBookStore().getUserWhoCheckedOutResource(titleToReturn, comparator);
         assertNull(user);
     }
 
@@ -111,7 +111,7 @@ public class ReturnBookOptionTest {
         assertEquals("That is not a valid book to return.", feedback);
         assertTrue(TestUtilities.bookTitleExistsInCollection(titleToReturn, libraryBookStore.getAvailableResource()));
         assertFalse(TestUtilities.bookTitleExistsInCollection(titleToReturn, libraryBookStore.getCheckedOutResource()));
-        User user = libraryStores.getUserWhoCheckedOutBook(titleToReturn, new BookTitleComparator());
+        User user = libraryStores.getBookStore().getUserWhoCheckedOutResource(titleToReturn, new BookTitleComparator());
         assertNull(user);
     }
 
@@ -134,10 +134,10 @@ public class ReturnBookOptionTest {
     }
 
     private void checkoutBook(User user, String titleToCheckout, Comparator comparator) {
-        assertTrue(libraryStores.checkoutBook(user, titleToCheckout, new BookTitleComparator()));
-        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToCheckout, libraryStores.getAvailableBooks()));
-        assertTrue(TestUtilities.bookTitleExistsInCollection(titleToCheckout, libraryStores.getCheckedOutBooks()));
-        User retrievedUser = libraryStores.getUserWhoCheckedOutBook(titleToCheckout, comparator);
+        assertTrue(libraryStores.getBookStore().checkoutResource(user, titleToCheckout, new BookTitleComparator()));
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToCheckout, libraryStores.getBookStore().getAvailableResource()));
+        assertTrue(TestUtilities.bookTitleExistsInCollection(titleToCheckout, libraryStores.getBookStore().getCheckedOutResource()));
+        User retrievedUser = libraryStores.getBookStore().getUserWhoCheckedOutResource(titleToCheckout, comparator);
         assertEquals(user, retrievedUser);
     }
 }

@@ -16,7 +16,7 @@ public class ReturnMovieOption extends MainMenuOption {
     public String execute(UserAccountManager userAccountManager, AllLibraryStores libraryStores) {
         System.out.println(INPUT_TITLE);
         String name = getUserInput();
-        boolean success = libraryStores.returnMovie(userAccountManager.getCurrentUser(), name, new MovieNameComparator());
+        boolean success = libraryStores.getMovieStore().returnResource(userAccountManager.getCurrentUser(), name, new MovieNameComparator());
         return success ? MESSAGE_RETURN_SUCCESSFUL : MESSAGE_RETURN_UNSUCCESSFUL;
     }
 }

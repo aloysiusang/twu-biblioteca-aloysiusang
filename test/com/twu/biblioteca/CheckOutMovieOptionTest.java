@@ -47,8 +47,8 @@ public class CheckOutMovieOptionTest {
         TestUtilities.setInput(movieName);
         String feedback = option.execute(userAccountManager, libraryStores);
         assertEquals("That movie is not available.", feedback);
-        assertTrue(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getAvailableMovies()));
-        assertFalse(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getCheckedOutMovies()));
+        assertTrue(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getMovieStore().getAvailableResource()));
+        assertFalse(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getMovieStore().getCheckedOutResource()));
     }
 
     @Test
@@ -59,8 +59,8 @@ public class CheckOutMovieOptionTest {
         userAccountManager.setCurrentUser(stubUser1);
         String feedback = option.execute(userAccountManager, libraryStores);
         assertEquals("That movie is not available.", feedback);
-        assertFalse(TestUtilities.movieNameExistsInCollection(invalidMovieName, libraryStores.getAvailableMovies()));
-        assertFalse(TestUtilities.movieNameExistsInCollection(invalidMovieName, libraryStores.getCheckedOutMovies()));
+        assertFalse(TestUtilities.movieNameExistsInCollection(invalidMovieName, libraryStores.getMovieStore().getAvailableResource()));
+        assertFalse(TestUtilities.movieNameExistsInCollection(invalidMovieName, libraryStores.getMovieStore().getCheckedOutResource()));
     }
 
     @Test
@@ -71,10 +71,10 @@ public class CheckOutMovieOptionTest {
         userAccountManager.setCurrentUser(stubUser1);
         String feedback = option.execute(userAccountManager, libraryStores);
         assertEquals("Thank you! Enjoy the movie", feedback);
-        assertFalse(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getAvailableMovies()));
-        assertTrue(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getCheckedOutMovies()));
+        assertFalse(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getMovieStore().getAvailableResource()));
+        assertTrue(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getMovieStore().getCheckedOutResource()));
 
-        User user = libraryStores.getUserWhoCheckedOutMovie(movieName, new MovieNameComparator());
+        User user = libraryStores.getMovieStore().getUserWhoCheckedOutResource(movieName, new MovieNameComparator());
         assertEquals(stubUser1, user);
     }
 
@@ -87,17 +87,17 @@ public class CheckOutMovieOptionTest {
         TestUtilities.setInput(movieName);
         String feedback = option.execute(userAccountManager, libraryStores);
         assertEquals("Thank you! Enjoy the movie", feedback);
-        assertFalse(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getAvailableMovies()));
-        assertTrue(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getCheckedOutMovies()));
+        assertFalse(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getMovieStore().getAvailableResource()));
+        assertTrue(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getMovieStore().getCheckedOutResource()));
 
         userAccountManager.setCurrentUser(stubUser2);
         TestUtilities.setInput(movieName);
         feedback = option.execute(userAccountManager, libraryStores);
         assertEquals("That movie is not available.", feedback);
-        assertFalse(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getAvailableMovies()));
-        assertTrue(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getCheckedOutMovies()));
+        assertFalse(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getMovieStore().getAvailableResource()));
+        assertTrue(TestUtilities.movieNameExistsInCollection(movieName, libraryStores.getMovieStore().getCheckedOutResource()));
 
-        User user = libraryStores.getUserWhoCheckedOutMovie(movieName, new MovieNameComparator());
+        User user = libraryStores.getMovieStore().getUserWhoCheckedOutResource(movieName, new MovieNameComparator());
         assertEquals(stubUser1, user);
     }
 
