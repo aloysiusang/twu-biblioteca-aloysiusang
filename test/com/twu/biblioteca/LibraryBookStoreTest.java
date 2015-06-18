@@ -103,4 +103,19 @@ public class LibraryBookStoreTest {
         User retrievedUser = lib.getUserWhoCheckedOutResource(titleToCheckout, comparator);
         assertNull(retrievedUser);
     }
+
+    @Test
+    public void testReturnInvalidBook() throws Exception {
+        User user = new User("user1", "user1@user1.com", "11111111");
+        LibraryBookStore lib = new LibraryBookStore(expectedBooks);
+        String titleToReturn = "invalid book";
+        BookTitleComparator comparator = new BookTitleComparator();
+        boolean successfulReturn = lib.returnResource(user, titleToReturn, comparator);
+        assertFalse(successfulReturn);
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToReturn, lib.getAvailableResource()));
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToReturn, lib.getCheckedOutResource()));
+        User retrievedUser = lib.getUserWhoCheckedOutResource(titleToReturn, comparator);
+        assertNull(retrievedUser);
+    }
+    
 }

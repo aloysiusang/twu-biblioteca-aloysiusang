@@ -17,6 +17,7 @@ public class ReturnMovieOptionTest {
     private LibraryMovieStore libraryMovieStore;
     private ArrayList<LibraryMovie> availableMovies;
     private ArrayList<LibraryMovie> checkedOutMovies;
+    private User stubUser;
 
     @Before
     public void setUp() throws Exception {
@@ -32,6 +33,7 @@ public class ReturnMovieOptionTest {
         }};
         libraryMovieStore = new LibraryMovieStore(availableMovies, checkedOutMovies);
         libraryStores = new AllLibraryStores(libraryMovieStore);
+        stubUser = new User("stubuser", "stub@email.com", "12345678");
         TestUtilities.redirectOutput();
     }
 
@@ -45,7 +47,7 @@ public class ReturnMovieOptionTest {
         String invalidMovie = "Invalid Movie";
         ReturnMovieOption option = new ReturnMovieOption();
         TestUtilities.setInput(invalidMovie);
-        String feedback = option.execute(null, libraryStores);
+        String feedback = option.execute(new UserAccountManagerValidStub(), libraryStores);
         assertEquals("That is not a valid movie to return.", feedback);
         assertFalse(TestUtilities.movieNameExistsInCollection(invalidMovie, libraryStores.getAvailableMovies()));
         assertFalse(TestUtilities.movieNameExistsInCollection(invalidMovie, libraryStores.getCheckedOutMovies()));
@@ -56,7 +58,7 @@ public class ReturnMovieOptionTest {
         String movieNameToReturn = checkedOutMovies.get(0).getName();
         ReturnMovieOption option = new ReturnMovieOption();
         TestUtilities.setInput(movieNameToReturn);
-        String feedback = option.execute(null, libraryStores);
+        String feedback = option.execute(new UserAccountManagerValidStub(), libraryStores);
         assertEquals("Thank you for returning the movie.", feedback);
         assertTrue(TestUtilities.movieNameExistsInCollection(movieNameToReturn, libraryStores.getAvailableMovies()));
         assertFalse(TestUtilities.movieNameExistsInCollection(movieNameToReturn, libraryStores.getCheckedOutMovies()));
@@ -67,10 +69,34 @@ public class ReturnMovieOptionTest {
         String movieNameToReturn = availableMovies.get(0).getName();
         ReturnMovieOption option = new ReturnMovieOption();
         TestUtilities.setInput(movieNameToReturn);
-        String feedback = option.execute(null, libraryStores);
+        String feedback = option.execute(new UserAccountManagerValidStub(), libraryStores);
         assertEquals("That is not a valid movie to return.", feedback);
         assertTrue(TestUtilities.movieNameExistsInCollection(movieNameToReturn, libraryStores.getAvailableMovies()));
         assertFalse(TestUtilities.movieNameExistsInCollection(movieNameToReturn, libraryStores.getCheckedOutMovies()));
+    }
+
+    private class UserAccountManagerValidStub extends UserAccountManager {
+
+        public UserAccountManagerValidStub() {
+            super(null);
+        }
+
+        @Override
+        public User getCurrentUser() {
+            return stubUser;
+        }
+    }
+
+    private class UserAccountManagerInvalidStub extends UserAccountManager {
+
+        public UserAccountManagerInvalidStub() {
+            super(null);
+        }
+
+        @Override
+        public User getCurrentUser() {
+            return null;
+        }
     }
 
 }

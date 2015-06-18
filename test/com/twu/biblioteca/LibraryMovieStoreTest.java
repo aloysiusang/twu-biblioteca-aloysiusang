@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 import static org.junit.Assert.*;
 
@@ -54,7 +53,9 @@ public class LibraryMovieStoreTest {
     public void testReturnMovie() throws Exception {
         LibraryMovieStore movieStore = new LibraryMovieStore(expectedMovies, checkedOutMovies);
         String titleToReturn = checkedOutMovies.get(0).getName();
-        boolean successfulCheckout = movieStore.returnResource(titleToReturn, new MovieNameComparator());
+        //TODO: added user here for green. check test case again
+        User user = new User("user1", "user1@user1.com", "11111111");
+        boolean successfulCheckout = movieStore.returnResource(user, titleToReturn, new MovieNameComparator());
         assertTrue(successfulCheckout);
         assertTrue(TestUtilities.movieNameExistsInCollection(titleToReturn, movieStore.getAvailableResource()));
         assertFalse(TestUtilities.movieNameExistsInCollection(titleToReturn, movieStore.getCheckedOutResource()));

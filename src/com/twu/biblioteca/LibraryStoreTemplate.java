@@ -36,7 +36,7 @@ public abstract class LibraryStoreTemplate<E> {
         return checkedOutResource;
     }
 
-    public boolean returnResource(String title, Comparator comparator) {
+    public boolean returnResource(User user, String title, Comparator comparator) {
         E resourceToBeReturned = findMatchingResource(title, comparator, checkedOutResource);
         if(resourceToBeReturned != null) {
             moveResource(resourceToBeReturned, checkedOutResource, availableResource);
