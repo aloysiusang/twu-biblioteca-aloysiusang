@@ -103,4 +103,92 @@ public class LibraryBookStoreTest {
         User retrievedUser = lib.getUserWhoCheckedOutResource(titleToCheckout, comparator);
         assertNull(retrievedUser);
     }
+
+    @Test
+    public void testReturnInvalidBook() throws Exception {
+        User user = new User("user1", "user1@user1.com", "11111111");
+        LibraryBookStore lib = new LibraryBookStore(expectedBooks);
+        String titleToReturn = "invalid book";
+        BookTitleComparator comparator = new BookTitleComparator();
+        boolean successfulReturn = lib.returnResource(user, titleToReturn, comparator);
+        assertFalse(successfulReturn);
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToReturn, lib.getAvailableResource()));
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToReturn, lib.getCheckedOutResource()));
+        User retrievedUser = lib.getUserWhoCheckedOutResource(titleToReturn, comparator);
+        assertNull(retrievedUser);
+    }
+
+    @Test
+    public void testReturnAvailableBook() throws Exception {
+        User user = new User("user1", "user1@user1.com", "11111111");
+        LibraryBookStore lib = new LibraryBookStore(expectedBooks);
+        String titleToReturn = expectedBooks.get(0).getTitle();
+        BookTitleComparator comparator = new BookTitleComparator();
+        boolean successfulReturn = lib.returnResource(user, titleToReturn, comparator);
+        assertFalse(successfulReturn);
+        assertTrue(TestUtilities.bookTitleExistsInCollection(titleToReturn, lib.getAvailableResource()));
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToReturn, lib.getCheckedOutResource()));
+        User retrievedUser = lib.getUserWhoCheckedOutResource(titleToReturn, comparator);
+        assertNull(retrievedUser);
+    }
+
+    @Test
+    public void testCheckoutWithUserReturnBookWithoutUser() throws Exception {
+        LibraryBookStore lib = new LibraryBookStore(expectedBooks);
+        String titleToReturn = expectedBooks.get(0).getTitle();
+        BookTitleComparator comparator = new BookTitleComparator();
+
+        User user = new User("user1", "user1@user1.com", "11111111");
+        assertTrue(lib.checkoutResource(user, titleToReturn, comparator));
+
+        boolean successfulReturn = lib.returnResource(null, titleToReturn, comparator);
+        assertFalse(successfulReturn);
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToReturn, lib.getAvailableResource()));
+        assertTrue(TestUtilities.bookTitleExistsInCollection(titleToReturn, lib.getCheckedOutResource()));
+        User retrievedUser = lib.getUserWhoCheckedOutResource(titleToReturn, comparator);
+        assertEquals(user, retrievedUser);
+    }
+
+    @Test
+    public void testCheckoutWithUserReturnBookWithAnotherUser() throws Exception {
+        LibraryBookStore lib = new LibraryBookStore(expectedBooks);
+        String titleToReturn = expectedBooks.get(0).getTitle();
+        BookTitleComparator comparator = new BookTitleComparator();
+
+        User user1 = new User("user1", "user1@user1.com", "11111111");
+        assertTrue("Checkout book before attempting to return.", lib.checkoutResource(user1, titleToReturn, comparator));
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToReturn, lib.getAvailableResource()));
+        assertTrue(TestUtilities.bookTitleExistsInCollection(titleToReturn, lib.getCheckedOutResource()));
+        User retrievedUser = lib.getUserWhoCheckedOutResource(titleToReturn, comparator);
+        assertEquals(user1, retrievedUser);
+
+        User user2 = new User("user2", "user2@user2.com", "22222222");
+        boolean successfulReturn = lib.returnResource(user2, titleToReturn, comparator);
+        assertFalse(successfulReturn);
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToReturn, lib.getAvailableResource()));
+        assertTrue(TestUtilities.bookTitleExistsInCollection(titleToReturn, lib.getCheckedOutResource()));
+        retrievedUser = lib.getUserWhoCheckedOutResource(titleToReturn, comparator);
+        assertEquals(user1, retrievedUser);
+    }
+
+    @Test
+    public void testCheckoutAndReturnWithSameUser() throws Exception {
+        LibraryBookStore lib = new LibraryBookStore(expectedBooks);
+        String titleToReturn = expectedBooks.get(expectedBooks.size()-1).getTitle();
+        User user = new User("user1", "user1@user1.com", "11111111");
+        BookTitleComparator comparator = new BookTitleComparator();
+        assertTrue("Checkout book before attempting to return.", lib.checkoutResource(user, titleToReturn, comparator));
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToReturn, lib.getAvailableResource()));
+        assertTrue(TestUtilities.bookTitleExistsInCollection(titleToReturn, lib.getCheckedOutResource()));
+        User retrievedUser = lib.getUserWhoCheckedOutResource(titleToReturn, comparator);
+        assertEquals(user, retrievedUser);
+
+        boolean successReturn = lib.returnResource(user, titleToReturn, comparator);
+        assertTrue(successReturn);
+        assertTrue(TestUtilities.bookTitleExistsInCollection(titleToReturn, lib.getAvailableResource()));
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToReturn, lib.getCheckedOutResource()));
+        retrievedUser = lib.getUserWhoCheckedOutResource(titleToReturn, comparator);
+        assertNull(retrievedUser);
+    }
+
 }

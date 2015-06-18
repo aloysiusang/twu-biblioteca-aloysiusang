@@ -22,12 +22,6 @@ public abstract class LibraryStoreTemplate<E> {
         userCheckoutLog = new HashMap<E, User>();
     }
 
-    public LibraryStoreTemplate(List<E> availableResource, List<E> checkedOutResource) {
-        this.availableResource = availableResource;
-        this.checkedOutResource = checkedOutResource;
-        userCheckoutLog = new HashMap<E, User>();
-    }
-
     public List<E> getAvailableResource() {
         return availableResource;
     }
@@ -36,12 +30,19 @@ public abstract class LibraryStoreTemplate<E> {
         return checkedOutResource;
     }
 
-    public boolean returnResource(String title, Comparator comparator) {
+    public boolean returnResource(User user, String title, Comparator comparator) {
+        if(user==null)
+            return false;
+
+        boolean isReturned = false;
         E resourceToBeReturned = findMatchingResource(title, comparator, checkedOutResource);
-        if(resourceToBeReturned != null) {
+        User userThatCheckedOutResource = getUserWhoCheckedOutResource(title,comparator);
+        if(resourceToBeReturned != null && userThatCheckedOutResource!=null && userThatCheckedOutResource.equals(user)) {
             moveResource(resourceToBeReturned, checkedOutResource, availableResource);
+            removeFromCheckoutLog(resourceToBeReturned);
+            isReturned = true;
         }
-        return (resourceToBeReturned!=null);
+        return isReturned;
     }
 
     public boolean checkoutResource(User user, String title, Comparator comparator) {
@@ -65,15 +66,13 @@ public abstract class LibraryStoreTemplate<E> {
         return user;
     }
 
-
-
-    private void logCheckout(E resourceToBeCheckedOut, User user) {
-        this.userCheckoutLog.put(resourceToBeCheckedOut, user);
-    }
-
     private void moveResource(E resourceToBeMoved, List<E> from, List<E> to) {
         to.add(resourceToBeMoved);
         from.remove(resourceToBeMoved);
+    }
+
+    private void logCheckout(E resourceToBeCheckedOut, User user) {
+        this.userCheckoutLog.put(resourceToBeCheckedOut, user);
     }
 
     private E findMatchingResource(String title, Comparator comparator, Collection<E> listToFind) {
@@ -86,5 +85,9 @@ public abstract class LibraryStoreTemplate<E> {
             }
         }
         return matchingResource;
+    }
+
+    private void removeFromCheckoutLog(E resourceToBeReturned) {
+        userCheckoutLog.remove(resourceToBeReturned);
     }
 }
