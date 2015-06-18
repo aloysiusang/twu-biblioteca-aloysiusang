@@ -62,11 +62,11 @@ public class AllLibraryStores {
         return movieStore.returnResource(user, name, movieNameComparator);
     }
 
-    public User getUserWhoCheckedOutBook(String titleToCheckout, BookTitleComparator bookTitleComparator) {
+    public User getUserWhoCheckedOutBook(String titleToCheckout, Comparator bookTitleComparator) {
         return bookStore.getUserWhoCheckedOutResource(titleToCheckout, bookTitleComparator);
     }
 
-    public User getUserWhoCheckedOutMovie(String movieName, MovieNameComparator movieNameComparator) {
+    public User getUserWhoCheckedOutMovie(String movieName, Comparator movieNameComparator) {
         return movieStore.getUserWhoCheckedOutResource(movieName, movieNameComparator);
     }
 }
