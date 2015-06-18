@@ -18,6 +18,7 @@ public class CheckOutBookOptionTest {
     private LibraryBookStore libraryBookStore;
     private ArrayList<LibraryBook> availableBooks;
     private ArrayList<LibraryBook> checkedOutBooks;
+    private User stubUser;
 
     @Before
     public void setUp() throws Exception {
@@ -33,6 +34,7 @@ public class CheckOutBookOptionTest {
         }};
         libraryBookStore = new LibraryBookStore(availableBooks, checkedOutBooks);
         libraryStores = new AllLibraryStores(libraryBookStore);
+        stubUser = new User("stubUser", "stubEmail", "stubPhoneNumber");
         TestUtilities.redirectOutput();
     }
 
@@ -47,11 +49,12 @@ public class CheckOutBookOptionTest {
         String titleToCheckout = availableBooks.get(0).getTitle();
 
         TestUtilities.setInput(titleToCheckout);
-        String feedback = option.execute(null, libraryStores);
+        String feedback = option.execute(new UserAccountManagerValidStub(), libraryStores);
 
         assertEquals("Thank you! Enjoy the book", feedback);
         assertFalse(bookTitleExistsInCollection(titleToCheckout, libraryStores.getAvailableBooks()));
         assertTrue(bookTitleExistsInCollection(titleToCheckout, libraryStores.getCheckedOutBooks()));
+
     }
 
     @Test
@@ -60,7 +63,7 @@ public class CheckOutBookOptionTest {
         String titleToCheckout = "Invalid Book";
 
         TestUtilities.setInput(titleToCheckout);
-        String feedback = option.execute(null, libraryStores);
+        String feedback = option.execute(new UserAccountManagerValidStub(), libraryStores);
         assertEquals("That book is not available.", feedback);
 
         assertFalse(bookTitleExistsInCollection(titleToCheckout, libraryStores.getCheckedOutBooks()));
@@ -71,9 +74,11 @@ public class CheckOutBookOptionTest {
         MainMenuOption option = new CheckOutBookOption();
         String titleToCheckOut = checkedOutBooks.get(0).getTitle();
         TestUtilities.setInput(titleToCheckOut);
-        String feedback = option.execute(null, libraryStores);
+        String feedback = option.execute(new UserAccountManagerValidStub(), libraryStores);
         assertEquals("That book is not available.", feedback);
+        assertFalse(bookTitleExistsInCollection(titleToCheckOut, libraryStores.getAvailableBooks()));
         assertTrue(bookTitleExistsInCollection(titleToCheckOut, libraryStores.getCheckedOutBooks()));
+        //TODO: check out with user1, check out again with user2, and ensure the book is still recorded as checked out with user1
     }
 
     private boolean bookTitleExistsInCollection(String title, Collection<LibraryBook> collection) {
@@ -83,6 +88,31 @@ public class CheckOutBookOptionTest {
             }
         }
         return false;
+    }
+
+    private class UserAccountManagerValidStub extends UserAccountManager {
+
+        public UserAccountManagerValidStub() {
+            super(null);
+        }
+
+        @Override
+        public User getCurrentUser() {
+            return stubUser;
+        }
+    }
+
+    //TODO: check out with invalid user
+    private class UserAccountManagerInvalidStub extends UserAccountManager {
+
+        public UserAccountManagerInvalidStub() {
+            super(null);
+        }
+
+        @Override
+        public User getCurrentUser() {
+            return null;
+        }
     }
 
 }

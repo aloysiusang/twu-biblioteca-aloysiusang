@@ -17,6 +17,7 @@ public class CheckOutMovieOptionTest {
     private LibraryMovieStore libraryMovieStore;
     private ArrayList<LibraryMovie> availableMovies;
     private ArrayList<LibraryMovie> checkedOutMovies;
+    private User stubUser;
 
     @Before
     public void setUp() throws Exception {
@@ -32,6 +33,7 @@ public class CheckOutMovieOptionTest {
         }};
         libraryMovieStore = new LibraryMovieStore(availableMovies, checkedOutMovies);
         libraryStores = new AllLibraryStores(libraryMovieStore);
+        stubUser = new User("stubuser", "stub@email.com", "11111111");
         TestUtilities.redirectOutput();
     }
 
@@ -45,7 +47,7 @@ public class CheckOutMovieOptionTest {
         CheckOutMovieOption option = new CheckOutMovieOption();
         String invalidMovieName = "Invalid Movie";
         TestUtilities.setInput(invalidMovieName);
-        String feedback = option.execute(null, libraryStores);
+        String feedback = option.execute(new UserAccountManagerValidStub(), libraryStores);
         assertEquals("That movie is not available.", feedback);
         assertFalse(movieNameExistsInCollection(invalidMovieName, libraryStores.getAvailableMovies()));
         assertFalse(movieNameExistsInCollection(invalidMovieName, libraryStores.getCheckedOutMovies()));
@@ -56,10 +58,11 @@ public class CheckOutMovieOptionTest {
         CheckOutMovieOption option = new CheckOutMovieOption();
         String movieName = availableMovies.get(0).getName();
         TestUtilities.setInput(movieName);
-        String feedback = option.execute(null, libraryStores);
+        String feedback = option.execute(new UserAccountManagerValidStub(), libraryStores);
         assertEquals("Thank you! Enjoy the movie", feedback);
         assertFalse(movieNameExistsInCollection(movieName, libraryStores.getAvailableMovies()));
         assertTrue(movieNameExistsInCollection(movieName, libraryStores.getCheckedOutMovies()));
+        //TODO: check for user who checked out movie
     }
 
     @Test
@@ -67,10 +70,11 @@ public class CheckOutMovieOptionTest {
         CheckOutMovieOption option = new CheckOutMovieOption();
         String movieName = checkedOutMovies.get(0).getName();
         TestUtilities.setInput(movieName);
-        String feedback = option.execute(null, libraryStores);
+        String feedback = option.execute(new UserAccountManagerValidStub(), libraryStores);
         assertEquals("That movie is not available.", feedback);
         assertFalse(movieNameExistsInCollection(movieName, libraryStores.getAvailableMovies()));
         assertTrue(movieNameExistsInCollection(movieName, libraryStores.getCheckedOutMovies()));
+        //TODO:  user1 checks out movie, user2 checks out same movie and fails => check that movie is still recorded to be checked out by user1
     }
 
     private boolean movieNameExistsInCollection(String name, Collection<LibraryMovie> collection) {
@@ -81,4 +85,30 @@ public class CheckOutMovieOptionTest {
         }
         return false;
     }
+
+    private class UserAccountManagerValidStub extends UserAccountManager {
+
+        public UserAccountManagerValidStub() {
+            super(null);
+        }
+
+        @Override
+        public User getCurrentUser() {
+            return stubUser;
+        }
+    }
+
+    //TODO: check out with invalid user
+    private class UserAccountManagerInvalidStub extends UserAccountManager {
+
+        public UserAccountManagerInvalidStub() {
+            super(null);
+        }
+
+        @Override
+        public User getCurrentUser() {
+            return null;
+        }
+    }
+
 }

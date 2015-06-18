@@ -82,6 +82,9 @@ public class BibliotecaApp {
     }
 
     public MainMenu getMainMenu() {
-        return new GuestMainMenu();
+        if(userAccountManager.getCurrentUser() == null)
+            return new GuestMainMenu();
+        else
+            return new UserMainMenu();
     }
 }

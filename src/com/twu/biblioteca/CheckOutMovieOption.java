@@ -16,7 +16,7 @@ public class CheckOutMovieOption extends MainMenuOption {
     public String execute(UserAccountManager userAccountManager, AllLibraryStores libraryStores) {
         System.out.println(INPUT_TITLE);
         String title = getUserInput();
-        boolean success = libraryStores.checkoutMovie(title, new MovieNameComparator());
+        boolean success = libraryStores.checkoutMovie(userAccountManager.getCurrentUser(), title, new MovieNameComparator());
         return success ? MESSAGE_CHECKOUT_SUCCESSFUL : MESSAGE_CHECKOUT_UNSUCCESSFUL;
     }
 }

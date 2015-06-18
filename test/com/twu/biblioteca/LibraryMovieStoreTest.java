@@ -41,10 +41,13 @@ public class LibraryMovieStoreTest {
     public void testCheckoutMovie() throws Exception {
         LibraryMovieStore movieStore = new LibraryMovieStore(expectedMovies);
         String nameToCheckout = expectedMovies.get(0).getName();
-        boolean successfulCheckout = movieStore.checkoutResource(nameToCheckout, new MovieNameComparator());
+        User user = new User("user2", "user2@user2.com", "22222222");
+        boolean successfulCheckout = movieStore.checkoutResource(user, nameToCheckout, new MovieNameComparator());
         assertTrue(successfulCheckout);
         assertFalse(movieNameExistsInCollection(nameToCheckout, movieStore.getAvailableResource()));
         assertTrue(movieNameExistsInCollection(nameToCheckout, movieStore.getCheckedOutResource()));
+        //TODO: check out movie with user
+//        assertEquals(user, movieStore.getUserWhoCheckedOutResource(nameToCheckout, new MovieNameComparator()));
     }
 
     @Test

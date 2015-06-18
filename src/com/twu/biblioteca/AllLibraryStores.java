@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by aloysiusang on 16/6/15.
@@ -33,28 +34,28 @@ public class AllLibraryStores {
         return bookStore.returnResource(title, bookTitleComparator);
     }
 
-    public boolean checkoutBook(String title, BookTitleComparator bookTitleComparator) {
-        return bookStore.checkoutResource(title, bookTitleComparator);
+    public boolean checkoutBook(User user, String title, BookTitleComparator bookTitleComparator) {
+        return bookStore.checkoutResource(user, title, bookTitleComparator);
     }
 
-    public ArrayList<LibraryBook> getAvailableBooks() {
+    public List<LibraryBook> getAvailableBooks() {
         return bookStore.getAvailableResource();
     }
 
-    public ArrayList<LibraryBook> getCheckedOutBooks() {
+    public List<LibraryBook> getCheckedOutBooks() {
         return bookStore.getCheckedOutResource();
     }
 
-    public ArrayList<LibraryMovie> getAvailableMovies() {
+    public List<LibraryMovie> getAvailableMovies() {
         return movieStore.getAvailableResource();
     }
 
-    public ArrayList<LibraryMovie> getCheckedOutMovies() {
+    public List<LibraryMovie> getCheckedOutMovies() {
         return movieStore.getCheckedOutResource();
     }
 
-    public boolean checkoutMovie(String name, MovieNameComparator movieNameComparator) {
-        return movieStore.checkoutResource(name, movieNameComparator);
+    public boolean checkoutMovie(User user, String name, MovieNameComparator movieNameComparator) {
+        return movieStore.checkoutResource(user, name, movieNameComparator);
     }
 
     public boolean returnMovie(String name, MovieNameComparator movieNameComparator) {
