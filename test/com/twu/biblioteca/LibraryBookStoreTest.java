@@ -117,5 +117,40 @@ public class LibraryBookStoreTest {
         User retrievedUser = lib.getUserWhoCheckedOutResource(titleToReturn, comparator);
         assertNull(retrievedUser);
     }
-    
+
+    @Test
+    public void testCheckoutWithUserReturnBookWithoutUser() throws Exception {
+        LibraryBookStore lib = new LibraryBookStore(expectedBooks);
+        String titleToReturn = expectedBooks.get(0).getTitle();
+        BookTitleComparator comparator = new BookTitleComparator();
+
+        User user = new User("user1", "user1@user1.com", "11111111");
+        assertTrue(lib.checkoutResource(user, titleToReturn, comparator));
+
+        boolean successfulReturn = lib.returnResource(null, titleToReturn, comparator);
+        assertFalse(successfulReturn);
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToReturn, lib.getAvailableResource()));
+        assertTrue(TestUtilities.bookTitleExistsInCollection(titleToReturn, lib.getCheckedOutResource()));
+        User retrievedUser = lib.getUserWhoCheckedOutResource(titleToReturn, comparator);
+        assertEquals(user, retrievedUser);
+    }
+
+    @Test
+    public void testCheckoutWithUserReturnBookWithAnotherUser() throws Exception {
+        LibraryBookStore lib = new LibraryBookStore(expectedBooks);
+        String titleToReturn = expectedBooks.get(0).getTitle();
+        BookTitleComparator comparator = new BookTitleComparator();
+
+        User user1 = new User("user1", "user1@user1.com", "11111111");
+        assertTrue(lib.checkoutResource(user1, titleToReturn, comparator));
+
+        User user2 = new User("user2", "user2@user2.com", "22222222");
+        boolean successfulReturn = lib.returnResource(user2, titleToReturn, comparator);
+        assertFalse(successfulReturn);
+        assertFalse(TestUtilities.bookTitleExistsInCollection(titleToReturn, lib.getAvailableResource()));
+        assertTrue(TestUtilities.bookTitleExistsInCollection(titleToReturn, lib.getCheckedOutResource()));
+        User retrievedUser = lib.getUserWhoCheckedOutResource(titleToReturn, comparator);
+        assertEquals(user1, retrievedUser);
+
+    }
 }
