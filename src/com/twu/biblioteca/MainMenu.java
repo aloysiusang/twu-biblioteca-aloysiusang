@@ -1,19 +1,19 @@
 package com.twu.biblioteca;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by aloysiusang on 10/6/15.
  */
 public class MainMenu {
     private static final String FEEDBACK_INVALID_OPTION = "Select a valid option!";
-    private final ArrayList<MainMenuOption> options;
+    private final List<MainMenuOption> options;
 
-    public MainMenu(ArrayList<MainMenuOption> mainMenuOptions) {
+    public MainMenu(List<MainMenuOption> mainMenuOptions) {
         this.options = mainMenuOptions;
     }
 
-    public ArrayList<MainMenuOption> getOptions() {
+    public List<MainMenuOption> getOptions() {
         return options;
     }
 

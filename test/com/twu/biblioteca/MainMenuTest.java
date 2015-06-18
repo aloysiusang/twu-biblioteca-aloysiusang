@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -47,7 +48,7 @@ public class MainMenuTest {
 
     private Integer findOption(MainMenu menu, Class optionClass) {
         Integer option = null;
-        ArrayList<MainMenuOption> options = menu.getOptions();
+        List<MainMenuOption> options = menu.getOptions();
         for(int i=0; i<options.size(); i++) {
             if(options.get(i).getClass() == optionClass) {
                 option = i+1;

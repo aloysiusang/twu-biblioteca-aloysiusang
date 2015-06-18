@@ -3,11 +3,11 @@ package com.twu.biblioteca;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by aloysiusang on 17/6/15.
@@ -32,7 +32,7 @@ public class UserMainMenuTest {
     @Test
     public void testGetOptions() throws Exception {
         UserMainMenu userMainMenu = new UserMainMenu();
-        ArrayList<MainMenuOption> options = userMainMenu.getOptions();
+        List<MainMenuOption> options = userMainMenu.getOptions();
         for(MainMenuOption option : options) {
             if(menuClasses.contains(option.getClass())) {
                 menuClasses.remove(option.getClass());
