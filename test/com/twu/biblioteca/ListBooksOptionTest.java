@@ -44,6 +44,16 @@ public class ListBooksOptionTest {
                 "         Book 3||       Author 3||  2003", feedback);
     }
 
-
-
+    @Test
+    public void testListLibraryWithUser() throws Exception {
+        Stub_UserAccountManager userAccountManager = new Stub_UserAccountManager();
+        userAccountManager.setCurrentUser(new User("000-0001", "email@email.com", "11111111"));
+        AllLibraryStores libraryStores = new AllLibraryStores(new LibraryBookStore(expectedBooks));
+        ListBooksOption option = new ListBooksOption();
+        String feedback = option.execute(userAccountManager, libraryStores);
+        assertEquals("          TITLE||         AUTHOR||  YEAR\n" +
+                "         Book 1||       Author 1||  2001\n" +
+                "         Book 2||       Author 2||  2002\n" +
+                "         Book 3||       Author 3||  2003", feedback);
+    }
 }

@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by aloysiusang on 12/6/15.
@@ -10,8 +10,12 @@ public class LibraryMovieStore extends LibraryStoreTemplate<LibraryMovie> {
         super();
     }
 
-    public LibraryMovieStore(ArrayList<LibraryMovie> availableMovie) {
+    public LibraryMovieStore(List<LibraryMovie> availableMovie) {
         super(availableMovie);
     }
 
+    @Override
+    public String availableResourceToString() {
+        return LibraryMovieFormatter.format(this.getAvailableResource());
+    }
 }

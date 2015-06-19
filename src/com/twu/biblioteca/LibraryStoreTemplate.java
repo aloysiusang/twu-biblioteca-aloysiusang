@@ -90,4 +90,6 @@ public abstract class LibraryStoreTemplate<E> {
     private void removeFromCheckoutLog(E resourceToBeReturned) {
         userCheckoutLog.remove(resourceToBeReturned);
     }
+
+    public abstract String availableResourceToString();
 }

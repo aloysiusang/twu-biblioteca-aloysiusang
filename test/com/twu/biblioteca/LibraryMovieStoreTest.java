@@ -191,4 +191,14 @@ public class LibraryMovieStoreTest {
         assertNull(retrievedUser);
     }
 
+    @Test
+    public void testFormatMovieStoreOutput() throws Exception {
+        LibraryMovieStore libraryMovieStore = new LibraryMovieStore(expectedMovies);
+        String feedback = libraryMovieStore.availableResourceToString();
+        assertEquals("           NAME||  YEAR||       DIRECTOR||RATING\n" +
+                "         Name 1||  2001||     Director 1||     1\n" +
+                "         Name 2||  2002||     Director 2||     2\n" +
+                "         Name 3||  2003||     Director 3||     3", feedback);
+    }
+
 }

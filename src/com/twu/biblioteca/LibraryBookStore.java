@@ -15,6 +15,7 @@ public class LibraryBookStore extends LibraryStoreTemplate<LibraryBook> {
         super(availableBooks);
     }
 
+    @Override
     public String availableResourceToString() {
         return LibraryBookFormatter.format(this.getAvailableResource());
     }
