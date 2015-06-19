@@ -16,7 +16,7 @@ public class CheckOutBookOptionTest {
     private AllLibraryStores libraryStores;
     private LibraryBookStore libraryBookStore;
     private ArrayList<LibraryBook> availableBooks;
-    private UserAccountManagerStub userAccountManager;
+    private Stub_UserAccountManager userAccountManager;
     private User stubUser1;
     private User stubUser2;
 
@@ -31,7 +31,7 @@ public class CheckOutBookOptionTest {
         libraryStores = new AllLibraryStores(libraryBookStore);
         stubUser1 = new User("stubUser1", "stub1@email.com", "stub1PhoneNumber");
         stubUser2 = new User("stubUser2", "stub2@email.com", "stub2PhoneNumber");
-        userAccountManager = new UserAccountManagerStub();
+        userAccountManager = new Stub_UserAccountManager();
         TestUtilities.redirectOutput();
     }
 
@@ -95,6 +95,7 @@ public class CheckOutBookOptionTest {
         String titleToCheckout = availableBooks.get(0).getTitle();
         TestUtilities.setInput(titleToCheckout);
 
+        userAccountManager.setCurrentUser(stubUser1);
         String feedback = option.execute(userAccountManager, libraryStores);
         assertEquals("Thank you! Enjoy the book", feedback);
         assertFalse(TestUtilities.bookTitleExistsInCollection(titleToCheckout, libraryStores.getBookStore().getAvailableResource()));
@@ -112,21 +113,4 @@ public class CheckOutBookOptionTest {
         assertEquals(stubUser1, retrievedUser);
     }
 
-    private class UserAccountManagerStub extends UserAccountManager {
-
-        private User currentUser;
-        public UserAccountManagerStub() {
-            super(null);
-            currentUser = stubUser1;
-        }
-
-        @Override
-        public User getCurrentUser() {
-            return currentUser;
-        }
-
-        public void setCurrentUser(User currentUser) {
-            this.currentUser = currentUser;
-        }
-    }
 }

@@ -28,7 +28,7 @@ public class BibliotecaApp {
             add(new LibraryMovie("Name 3", 2003, "Director 3", 3));
         }};
 
-        UserAccountVault userAccountVault = new UserAccountVault( new HashMap<LoginCredential, User>() {{
+        userAccountVault = new UserAccountVault( new HashMap<LoginCredential, User>() {{
             put(new LoginCredential("000-0001", "password1"), new User("user1", "user1@user1.com", "11111111"));
             put(new LoginCredential("000-0002", "password2"), new User("user2", "user2@user2.com", "22222222"));
         }});

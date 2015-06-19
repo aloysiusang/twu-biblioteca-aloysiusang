@@ -16,7 +16,7 @@ public class ReturnBookOptionTest {
     private AllLibraryStores libraryStores;
     private LibraryBookStore libraryBookStore;
     private ArrayList<LibraryBook> availableBooks;
-    private UserAccountManagerStub userAccountManager;
+    private Stub_UserAccountManager userAccountManager;
     private User stubUser1;
     private User stubUser2;
 
@@ -31,7 +31,7 @@ public class ReturnBookOptionTest {
         libraryStores = new AllLibraryStores(libraryBookStore);
         stubUser1 = new User("stubuser1", "stub1@user.com", "12345678");
         stubUser2 = new User("stubuser2", "stub2@user.com", "87654321");
-        userAccountManager = new UserAccountManagerStub();
+        userAccountManager = new Stub_UserAccountManager();
         TestUtilities.redirectOutput();
     }
 
@@ -113,24 +113,6 @@ public class ReturnBookOptionTest {
         assertFalse(TestUtilities.bookTitleExistsInCollection(titleToReturn, libraryBookStore.getCheckedOutResource()));
         User user = libraryStores.getBookStore().getUserWhoCheckedOutResource(titleToReturn, new BookTitleComparator());
         assertNull(user);
-    }
-
-    private class UserAccountManagerStub extends UserAccountManager {
-
-        private User currUser;
-        public UserAccountManagerStub() {
-            super(null);
-            currUser = stubUser1;
-        }
-
-        @Override
-        public User getCurrentUser() {
-            return currUser;
-        }
-
-        public void setCurrentUser(User currUser) {
-            this.currUser = currUser;
-        }
     }
 
     private void checkoutBook(User user, String titleToCheckout, Comparator comparator) {

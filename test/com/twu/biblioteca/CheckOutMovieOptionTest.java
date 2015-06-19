@@ -15,7 +15,7 @@ public class CheckOutMovieOptionTest {
     private AllLibraryStores libraryStores;
     private LibraryMovieStore libraryMovieStore;
     private ArrayList<LibraryMovie> availableMovies;
-    private UserAccountManagerStub userAccountManager;
+    private Stub_UserAccountManager userAccountManager;
     private User stubUser1;
     private User stubUser2;
 
@@ -30,7 +30,7 @@ public class CheckOutMovieOptionTest {
         libraryStores = new AllLibraryStores(libraryMovieStore);
         stubUser1 = new User("stubuser1", "stub1@email.com", "11111111");
         stubUser2 = new User("stubuser2", "stub2@email.com", "22222222");
-        userAccountManager = new UserAccountManagerStub();
+        userAccountManager = new Stub_UserAccountManager();
         TestUtilities.redirectOutput();
     }
 
@@ -99,25 +99,6 @@ public class CheckOutMovieOptionTest {
 
         User user = libraryStores.getMovieStore().getUserWhoCheckedOutResource(movieName, new MovieNameComparator());
         assertEquals(stubUser1, user);
-    }
-
-    private class UserAccountManagerStub extends UserAccountManager {
-        private User currUser;
-
-        public UserAccountManagerStub() {
-            super(null);
-            currUser = stubUser1;
-        }
-
-        @Override
-        public User getCurrentUser() {
-            return currUser;
-        }
-
-        public void setCurrentUser(User newUser) {
-            this.currUser = newUser;
-        }
-
     }
 
 }
