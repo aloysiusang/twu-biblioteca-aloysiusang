@@ -191,4 +191,13 @@ public class LibraryBookStoreTest {
         assertNull(retrievedUser);
     }
 
+    @Test
+    public void testFormatLibraryBookStoreOutput() throws Exception {
+        LibraryBookStore libraryBookStore = new LibraryBookStore(expectedBooks);
+        String feedback = libraryBookStore.availableResourceToString();
+        assertEquals("          TITLE||         AUTHOR||  YEAR\n" +
+                "         Book 1||       Author 1||  2001\n" +
+                "         Book 2||       Author 2||  2002\n" +
+                "         Book 3||       Author 3||  2003", feedback);
+    }
 }
