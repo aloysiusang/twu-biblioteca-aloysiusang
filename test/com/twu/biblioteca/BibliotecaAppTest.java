@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.menus.GuestMainMenu;
+import com.twu.biblioteca.menus.MainMenu;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

@@ -3,6 +3,9 @@ package com.twu.biblioteca;
 import com.twu.biblioteca.libstores.AllLibraryStores;
 import com.twu.biblioteca.libstores.LibraryBookStore;
 import com.twu.biblioteca.libstores.LibraryMovieStore;
+import com.twu.biblioteca.menus.GuestMainMenu;
+import com.twu.biblioteca.menus.MainMenu;
+import com.twu.biblioteca.menus.UserMainMenu;
 
 import java.io.BufferedReader;
 import java.io.IOException;

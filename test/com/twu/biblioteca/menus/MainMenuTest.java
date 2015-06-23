@@ -1,6 +1,8 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.menus;
 
+import com.twu.biblioteca.UserAccountManager;
 import com.twu.biblioteca.libstores.AllLibraryStores;
+import com.twu.biblioteca.menus.MainMenu;
 import com.twu.biblioteca.options.ListBooksOption;
 import com.twu.biblioteca.options.MainMenuOption;
 import com.twu.biblioteca.options.QuitOption;
