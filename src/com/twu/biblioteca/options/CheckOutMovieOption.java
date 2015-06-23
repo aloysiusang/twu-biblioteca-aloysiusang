@@ -1,4 +1,8 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.options;
+
+import com.twu.biblioteca.AllLibraryStores;
+import com.twu.biblioteca.MovieNameComparator;
+import com.twu.biblioteca.UserAccountManager;
 
 /**
  * Created by aloysiusang on 16/6/15.
