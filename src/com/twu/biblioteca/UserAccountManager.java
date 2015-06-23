@@ -5,7 +5,6 @@ package com.twu.biblioteca;
  */
 public class UserAccountManager {
     private final UserAccountVault userAccountVault;
-    private LoginCredential loginCredential;
     private User currentUser;
 
     public UserAccountManager(UserAccountVault userAccountVault) {
@@ -18,24 +17,16 @@ public class UserAccountManager {
 
     public boolean login(LoginCredential loginCredential) {
         updateCurrentUser(loginCredential);
-        updateLoginCredential(loginCredential);
         return currentUser!=null;
-    }
-
-    private void updateCurrentUser(LoginCredential loginCredential) {
-        currentUser = userAccountVault.retrieveUser(loginCredential);
-    }
-
-    private void updateLoginCredential(LoginCredential loginCredential) {
-        if(currentUser!=null)
-            this.loginCredential = loginCredential;
-        else
-            this.loginCredential = null;
     }
 
     public String formatCurrentUser() {
         if(currentUser==null)
             return "No user is logged in.";
         return currentUser.formatUserString();
+    }
+
+    private void updateCurrentUser(LoginCredential loginCredential) {
+        currentUser = userAccountVault.retrieveUser(loginCredential);
     }
 }
