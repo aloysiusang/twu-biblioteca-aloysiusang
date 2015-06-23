@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.libstores.AllLibraryStores;
 import com.twu.biblioteca.options.MainMenuOption;
 
 import java.util.List;

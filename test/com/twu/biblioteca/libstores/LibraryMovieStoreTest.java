@@ -1,5 +1,10 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.libstores;
 
+import com.twu.biblioteca.LibraryMovie;
+import com.twu.biblioteca.MovieNameComparator;
+import com.twu.biblioteca.TestUtilities;
+import com.twu.biblioteca.User;
+import com.twu.biblioteca.libstores.LibraryMovieStore;
 import org.junit.Before;
 import org.junit.Test;
 

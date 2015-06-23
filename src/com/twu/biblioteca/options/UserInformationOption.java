@@ -1,6 +1,6 @@
 package com.twu.biblioteca.options;
 
-import com.twu.biblioteca.AllLibraryStores;
+import com.twu.biblioteca.libstores.AllLibraryStores;
 import com.twu.biblioteca.UserAccountManager;
 
 /**

@@ -1,7 +1,8 @@
 package com.twu.biblioteca.options;
 
 import com.twu.biblioteca.*;
-import com.twu.biblioteca.options.CheckOutMovieOption;
+import com.twu.biblioteca.libstores.AllLibraryStores;
+import com.twu.biblioteca.libstores.LibraryMovieStore;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

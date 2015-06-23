@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.libstores;
 
 /**
  * Created by aloysiusang on 16/6/15.

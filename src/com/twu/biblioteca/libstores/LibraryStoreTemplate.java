@@ -1,4 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.libstores;
+
+import com.twu.biblioteca.User;
 
 import java.util.*;
 

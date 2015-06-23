@@ -1,9 +1,8 @@
 package com.twu.biblioteca.options;
 
-import com.twu.biblioteca.AllLibraryStores;
+import com.twu.biblioteca.libstores.AllLibraryStores;
 import com.twu.biblioteca.LoginCredential;
 import com.twu.biblioteca.UserAccountManager;
-import com.twu.biblioteca.options.MainMenuOption;
 
 import java.io.BufferedReader;
 import java.io.IOException;

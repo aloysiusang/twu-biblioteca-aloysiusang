@@ -1,5 +1,9 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.libstores.AllLibraryStores;
+import com.twu.biblioteca.libstores.LibraryBookStore;
+import com.twu.biblioteca.libstores.LibraryMovieStore;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

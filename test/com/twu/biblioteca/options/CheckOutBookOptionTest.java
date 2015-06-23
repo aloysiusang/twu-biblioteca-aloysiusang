@@ -1,8 +1,8 @@
 package com.twu.biblioteca.options;
 
 import com.twu.biblioteca.*;
-import com.twu.biblioteca.options.CheckOutBookOption;
-import com.twu.biblioteca.options.MainMenuOption;
+import com.twu.biblioteca.libstores.AllLibraryStores;
+import com.twu.biblioteca.libstores.LibraryBookStore;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
