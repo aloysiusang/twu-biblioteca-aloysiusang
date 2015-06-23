@@ -1,5 +1,7 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.options;
 
+import com.twu.biblioteca.*;
+import com.twu.biblioteca.options.ListMoviesOption;
 import org.junit.Before;
 import org.junit.Test;
 

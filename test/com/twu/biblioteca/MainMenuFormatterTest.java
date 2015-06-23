@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.options.ListBooksOption;
+import com.twu.biblioteca.options.MainMenuOption;
 import org.junit.Test;
 
 import java.util.ArrayList;

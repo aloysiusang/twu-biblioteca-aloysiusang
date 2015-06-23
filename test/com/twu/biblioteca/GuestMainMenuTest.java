@@ -1,5 +1,9 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.options.ListBooksOption;
+import com.twu.biblioteca.options.ListMoviesOption;
+import com.twu.biblioteca.options.LoginOption;
+import com.twu.biblioteca.options.MainMenuOption;
 import org.junit.Test;
 
 import java.util.List;
