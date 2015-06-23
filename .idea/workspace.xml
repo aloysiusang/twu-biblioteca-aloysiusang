@@ -2,11 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e570fb16-02bf-42a0-ac96-3cb161b66dce" name="Default" comment="">
+<<<<<<< HEAD
       <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/QuitOption.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/options/QuitOption.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/GuestMainMenu.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/GuestMainMenu.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/GuestMainMenuTest.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/GuestMainMenuTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/MainMenuFormatterTest.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/MainMenuFormatterTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/MainMenuTest.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/MainMenuTest.java" />
+=======
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/CheckOutBookOption.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/options/CheckOutBookOption.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/CheckOutMovieOption.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/options/CheckOutMovieOption.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/ListBooksOption.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/options/ListBooksOption.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/ListMoviesOption.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/options/ListMoviesOption.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/LoginOption.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/options/LoginOption.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/MainMenuOption.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/options/MainMenuOption.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/ReturnBookOption.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/options/ReturnBookOption.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/ReturnMovieOption.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/options/ReturnMovieOption.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/UserInformationOption.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/options/UserInformationOption.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/CheckOutBookOptionTest.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/options/CheckOutBookOptionTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/CheckOutMovieOptionTest.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/options/CheckOutMovieOptionTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/ListBooksOptionTest.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/options/ListBooksOptionTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/ListMoviesOptionTest.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/options/ListMoviesOptionTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/LoginOptionTest.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/options/LoginOptionTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/ReturnBookOptionTest.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/options/ReturnBookOptionTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/ReturnMovieOptionTest.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/options/ReturnMovieOptionTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/UserInformationOptionTest.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/options/UserInformationOptionTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/GuestMainMenu.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/GuestMainMenu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/GuestMainMenuTest.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/GuestMainMenuTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/MainMenu.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/MainMenu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/MainMenuFormatter.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/MainMenuFormatter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/MainMenuFormatterTest.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/MainMenuFormatterTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/MainMenuTest.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/MainMenuTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/QuitOption.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/QuitOption.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/UserMainMenu.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/UserMainMenu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/UserMainMenuTest.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/UserMainMenuTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+>>>>>>> 5fa7f678f3194b3eb822fb59ad5a07e763c2d416
     </list>
     <ignored path="biblioteca.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -96,6 +126,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="GuestMainMenu.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/GuestMainMenu.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -111,6 +142,13 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.14542936">
               <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+=======
+      <file leaf-file-name="GuestMainMenu.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/GuestMainMenu.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.33240998">
+              <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+>>>>>>> 5fa7f678f3194b3eb822fb59ad5a07e763c2d416
               <folding />
             </state>
           </provider>
@@ -137,6 +175,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< HEAD
+=======
+        <option value="$PROJECT_DIR$/test/com/twu/biblioteca/AllUserAccountsTest.java" />
+>>>>>>> 5fa7f678f3194b3eb822fb59ad5a07e763c2d416
         <option value="$PROJECT_DIR$/src/com/twu/biblioteca/UserCredentialVault.java" />
         <option value="$PROJECT_DIR$/src/com/twu/biblioteca/QuitOption.java" />
         <option value="$PROJECT_DIR$/src/com/twu/biblioteca/MainMenuOption.java" />
@@ -187,7 +229,10 @@
         <option value="$PROJECT_DIR$/test/com/twu/biblioteca/options/ListMoviesOptionTest.java" />
         <option value="$PROJECT_DIR$/src/com/twu/biblioteca/options/LoginOption.java" />
         <option value="$PROJECT_DIR$/test/com/twu/biblioteca/options/ReturnMovieOptionTest.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/com/twu/biblioteca/options/QuitOption.java" />
+=======
+>>>>>>> 5fa7f678f3194b3eb822fb59ad5a07e763c2d416
       </list>
     </option>
   </component>
@@ -572,7 +617,11 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> 5fa7f678f3194b3eb822fb59ad5a07e763c2d416
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933334" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -628,6 +677,17 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/UserMainMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="18" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> 5fa7f678f3194b3eb822fb59ad5a07e763c2d416
     <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/BookTitleComparator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1188,6 +1248,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/GuestMainMenu.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
           <folding />
@@ -1198,6 +1259,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.14542936">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+=======
+        <state vertical-scroll-proportion="0.33240998">
+          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+>>>>>>> 5fa7f678f3194b3eb822fb59ad5a07e763c2d416
           <folding />
         </state>
       </provider>
