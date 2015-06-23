@@ -1,5 +1,8 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.libresources.LibraryBook;
+import com.twu.biblioteca.libresources.LibraryMovie;
+
 import java.io.*;
 import java.util.Collection;
 

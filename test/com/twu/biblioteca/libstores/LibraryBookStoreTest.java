@@ -1,10 +1,9 @@
 package com.twu.biblioteca.libstores;
 
 import com.twu.biblioteca.BookTitleComparator;
-import com.twu.biblioteca.LibraryBook;
+import com.twu.biblioteca.libresources.LibraryBook;
 import com.twu.biblioteca.TestUtilities;
 import com.twu.biblioteca.User;
-import com.twu.biblioteca.libstores.LibraryBookStore;
 import org.junit.Before;
 import org.junit.Test;
 

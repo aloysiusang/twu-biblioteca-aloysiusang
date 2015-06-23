@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.libresources.LibraryBook;
+import com.twu.biblioteca.libresources.LibraryMovie;
 import com.twu.biblioteca.libstores.AllLibraryStores;
 import com.twu.biblioteca.libstores.LibraryBookStore;
 import com.twu.biblioteca.libstores.LibraryMovieStore;

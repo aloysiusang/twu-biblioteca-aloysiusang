@@ -1,6 +1,6 @@
 package com.twu.biblioteca.libstores;
 
-import com.twu.biblioteca.LibraryMovie;
+import com.twu.biblioteca.libresources.LibraryMovie;
 import com.twu.biblioteca.LibraryMovieFormatter;
 
 import java.util.List;

@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.libresources.LibraryMovie;
+
 import java.util.Comparator;
 
 /**

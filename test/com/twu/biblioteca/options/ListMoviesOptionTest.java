@@ -1,6 +1,7 @@
 package com.twu.biblioteca.options;
 
 import com.twu.biblioteca.*;
+import com.twu.biblioteca.libresources.LibraryMovie;
 import com.twu.biblioteca.libstores.AllLibraryStores;
 import com.twu.biblioteca.libstores.LibraryMovieStore;
 import org.junit.Before;

@@ -1,6 +1,6 @@
 package com.twu.biblioteca.libstores;
 
-import com.twu.biblioteca.LibraryBook;
+import com.twu.biblioteca.libresources.LibraryBook;
 import com.twu.biblioteca.LibraryBookFormatter;
 
 import java.util.List;

@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.libresources.LibraryBook;
+
 import java.util.Formatter;
 import java.util.List;
 

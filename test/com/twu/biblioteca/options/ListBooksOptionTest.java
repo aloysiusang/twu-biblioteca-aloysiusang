@@ -1,6 +1,7 @@
 package com.twu.biblioteca.options;
 
 import com.twu.biblioteca.*;
+import com.twu.biblioteca.libresources.LibraryBook;
 import com.twu.biblioteca.libstores.AllLibraryStores;
 import com.twu.biblioteca.libstores.LibraryBookStore;
 import org.junit.Before;
